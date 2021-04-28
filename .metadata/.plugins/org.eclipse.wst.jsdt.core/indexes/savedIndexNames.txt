@@ -1,0 +1,19 @@
+INDEX VERSION 1.4+C:\z_kdy\jsp\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+736985483.index
+2655639746.index
+1212402444.index
+3271424215.index
+4266834834.index
+1752948316.index
+2612676328.index
+1876857446.index
+1393743826.index
+2239000122.index
+2795787554.index
+3154573480.index
+4238630350.index
+4193462689.index
+3043596335.index
+1809811872.index
+125336532.index
+3087544504.index

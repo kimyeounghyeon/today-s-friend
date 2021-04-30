@@ -12,7 +12,7 @@ public class Member {
 	private char gender;
 	private int locnum;
 	private Date mdate;
-	private int phone;
+	private String phone;
 	private int age;
 	private int ageid;
 	private int Mpoint;
@@ -26,7 +26,7 @@ public class Member {
 				+ ", Mpoint=" + Mpoint + ", gradeid=" + gradeid + ", LEVnum=" + LEVnum + "]";
 	}
 
-	public Member(String id, String passwd, String name, String email, char gender, int locnum, Date mdate, int phone,
+	public Member(String id, String passwd, String name, String email, char gender, int locnum, Date mdate, String phone,
 			int age, int ageid, int Mpoint, int gradeid, int LEVnum) {
 		super();
 		this.id = id;
@@ -101,11 +101,11 @@ public class Member {
 		this.mdate = mdate;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

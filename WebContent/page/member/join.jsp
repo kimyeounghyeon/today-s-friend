@@ -116,6 +116,7 @@
 				</button>
 			</div>
 		</form>
+		</div>
 		<!-- content-->
 	</div>
 	<!-- wrapper -->
@@ -124,7 +125,7 @@
 <script>
 	$("#btnJoin").click(function(){
 		var frm = document.getElementById("frm");
-		frm.action = "<%=request.getContextPath()%>/insertmember";
+		frm.action = "<%= request.getContextPath()%>/page/indexPage/insertmember";
 		frm.method = "post";
 		frm.submit();
 	});

@@ -58,24 +58,24 @@
 </head>
 <body>
    <header>
+<% String CPath = request.getContextPath(); %>
       <div id="d1">
-         <a href="<%=request.getContextPath()%>/page/indexPage/main"><img src="../../img/logo.png"></a>
+         <a href="<%=CPath%>/page/indexPage/main"><img src="../../img/logo.png"></a>
       </div>
-      <a href="<%=request.getContextPath()%>/page/indexPage/introduceourself" id="introduce" class="bar-item button">5조 소개</a> 
-      <a href="<%=request.getContextPath()%>/page/indexPage/serviceintro" id="introduce1" class="bar-item button">서비스 소개</a>
+      <a href="<%=CPath%>/page/indexPage/introduceourself" id="introduce" class="bar-item button">5조 소개</a> 
+      <a href="<%=CPath%>/page/indexPage/serviceintro" id="introduce1" class="bar-item button">서비스 소개</a>
       <div class="dropdown-hover">
          <button class="button">친구 만나러 가기</button>
          <div class="dropdown-content bar-block">
-            <a href="#" class="bar-item button">운동</a> 
-            <a href="#" class="bar-item button">게임</a>
-            <a href="#" class="bar-item button">영화</a>
-            <a href="#" class="bar-item button">음식</a> 
-            <a href="#" class="bar-item button">주식</a> 
-            <a href="#" class="bar-item button">자유/후기</a>
+            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">운동</a> 
+            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">게임</a>
+            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">영화</a>
+            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">음식</a> 
+            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">주식</a> 
+            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">자유/후기</a>
          </div>
       </div>
-      <a href="<%=request.getContextPath()%>/page/member/myPageIndex" class="bar-item button">마이페이지</a>
-      
+      <a href="<%=CPath%>/page/member/myPageIndex" class="bar-item button">마이페이지</a>
       <div id="d2">
 <%
 Member member = (Member)session.getAttribute("member");
@@ -101,8 +101,8 @@ if (member == null){
 반가운 <%=member.getName()%>님! <br> <span>등급 : <%=grade%> / </span> <span>포인트: <%=member.getMpoint()%> </span>
 			</p>
 			<div class="myinfo_btn">
-			<button type="button" id="btnLogout" onclick="location.href='<%=request.getContextPath()%>/logout';">정보수정</button>
-			<button type="button" id="btnLogout" onclick="location.href='<%=request.getContextPath()%>/page/indexpage/logout';">로그아웃</button>
+			<button type="button" id="btnLogout" onclick="location.href='<%=CPath%>/logout';">정보수정</button>
+			<button type="button" id="btnLogout" onclick="location.href='<%=CPath%>/page/indexpage/logout';">로그아웃</button>
 			</div>
 <%	
 }
@@ -118,7 +118,7 @@ if (member == null){
                <button class="header-btn button" id="btnLogin">login</button>
                <p class="message">
                   <a href="#">ID/PW찾기</a>
-                  <a href="<%=request.getContextPath()%>/page/member/join" id="join" class="join">회원가입</a>
+                  <a href="<%=CPath%>/page/member/join" id="join" class="join">회원가입</a>
                </p>
             </form>
          </div>

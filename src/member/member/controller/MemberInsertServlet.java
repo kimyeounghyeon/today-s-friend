@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import member.member.model.service.MemberService;
 import member.member.model.vo.Member;
 
-
-
-@WebServlet("/insertmember")
+@WebServlet("/page/indexPage/insertmember")
 public class MemberInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -26,20 +24,19 @@ public class MemberInsertServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = null;
-		view = request.getRequestDispatcher("/page/member/join");
+		view = request.getRequestDispatcher("/page/member/join.jsp");
 		view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("포스트");
 		Member vo = new Member();
-
 		
 		vo.setId(request.getParameter("id")); 
 		vo.setPasswd(request.getParameter("pswd1"));
 		vo.setName(request.getParameter("name")); 
 		vo.setEmail(request.getParameter("email"));
-    	vo.setGender(request.getParameter("gender").charAt(0));
+		vo.setGender(request.getParameter("gender").charAt(0));
 		vo.setLocnum(Integer.parseInt(request.getParameter("local")));
 		vo.setPhone(request.getParameter("phone"));
 		vo.setAge(Integer.parseInt(request.getParameter("age")));
@@ -54,7 +51,6 @@ public class MemberInsertServlet extends HttpServlet {
 			out.println("<script>alert('회원가입에 성공하였습니다')</script>");
 			System.out.println("성공");
 		} else {  // insert 실패
-			
 			out.println("<script>alert('회원가입을 실패하였습니다)</script>");
 			System.out.println("실패");
 		}

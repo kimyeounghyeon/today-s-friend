@@ -33,22 +33,23 @@ if (member == null){
         <br>
         <p id="pabouttitle">취미를 선택 하세요~</p>
         <div id="intr">
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='../select/exercise'">
+        <% String CPath = request.getContextPath(); %>
+            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
                 <img src="../../img/운동.png">
             </button>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='../select/movie'">
+            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
                 <img src="../../img/영화.png">
             </button>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='../select/game'">
+            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
                 <img src="../../img/게임.png">
             </button><br>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='../select/food'">
+            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
                 <img src="../../img/음식.png">
             </button>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='../select/stock'">
+            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
                 <img src="../../img/주식.png">
             </button>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='../select/freeboard'">
+            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
                 <img src="../../img/자유.png">
             </button>
             <br><br><br>

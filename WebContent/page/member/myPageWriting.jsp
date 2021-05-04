@@ -1,4 +1,5 @@
 <%@page import="member.member.model.vo.Member"%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypagewriting.css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
@@ -6,13 +7,12 @@
 
 	<div class="mypagelist">
 		<h2>내가 쓴 글/댓글</h2>
-		<button>내 글</button>
-		<button>내 댓글</button>
+		<button class="mywrite_btn">내 글</button>
+		<button class="mywrite_btn">내 댓글</button>
 
 		<div class=row>
 			<table class="table" id="table">
 				<thead>
-
 					<tr>
 						<th><input type="checkbox" id="checkall" /></th>
 						<th>No.</th>
@@ -95,6 +95,6 @@
 			</table>
 		</div>
 	</div>
-	<input class="changeBtn" type="button" value="공개여부변경">
+	<input class="change_btn" type="button" value="공개여부변경">
 </section>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

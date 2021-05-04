@@ -1,0 +1,27 @@
+@charset "UTF-8";
+th {
+    background-color: #eee;
+    text-align: center;
+}
+table {
+    text-align: center;
+    border:1px solid #ddd;
+    width: 800px;
+    display: inline-block;
+}
+.date{
+    width: 150px;
+}
+.num{
+    width: 50px;
+}
+.sub{
+    width: 600px;
+}
+body{
+    text-align: center;
+    margin: auto;
+}
+.row {
+    text-align: center;
+}

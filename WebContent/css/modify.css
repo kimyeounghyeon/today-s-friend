@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.readbox {
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: rgb(235, 235, 235);
+    position: relative;
+}

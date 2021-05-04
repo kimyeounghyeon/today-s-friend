@@ -1,0 +1,159 @@
+@charset "UTF-8";
+/*  메인페이지 */
+.btm_image{
+	border:none;
+	background-color:white;
+}
+#d2{
+    position: relative;
+    display: inline-block;
+    float: right;
+	left: -100px;
+}
+#d2>p{
+	text-align:left;
+}
+.dropdown-click,.dropdown-hover {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.dropdown-hover:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content {
+    cursor: auto;
+    color: rgb(84, 168, 130);
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    min-width: 130px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+.bar-block .bar-item {
+    width: 100%;
+    display: block;
+    padding: 8px 16px;
+    text-align: left;
+    border: none;
+    white-space: normal;
+    float: none;
+    outline: 0;
+}
+.button:hover {
+    color:rgb(96, 189, 147) !important;
+}
+.hover-shadow:hover {
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+}
+.header-btn{
+    margin: 50px 30px 0 0 ;
+    width: 130px;
+    border:none;
+    padding: 8px 16px;
+    text-transform:capitalize;
+    border-radius:30px;
+    cursor:pointer;
+    color:#fff;
+    transition:0.6s;
+    box-shadow:0px 7px 21px 0px rgba(0,0,0,0.12);
+    background-image:linear-gradient(to left, #46C0BE, #6DD56F, #46C0BE);
+    background-position:right;
+    background-size:200%;
+    font: inherit;
+    clear: both;
+}
+.header-btn:hover{
+    background-position:left
+}
+.setop{
+    margin-top: 150px;
+    height: 100%;
+    display: block;
+}
+.inputtxt {
+    width: 100px;
+}
+#pabouttitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30pt;
+    color : gray;
+    font-style: italic;
+}
+#fdiv {
+    border: 1px solid gray;
+}
+#pcs {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 0;
+}
+#petc {
+    font-size: small;
+    text-align: center;
+}
+#mainlogo {
+    width: 300px;
+    height: 300px;
+}
+#mainlog_{
+    text-align: center;
+}
+#mainlog{
+   width: 900px;
+    height: 500px;
+}
+/*  serviceintro */
+#intr {
+    text-align: center;
+}
+#intr_1 {
+    width: 300px;
+    height: 300px;
+}
+/*  introduceour */
+#review {
+    text-align: center;
+}
+#rv {
+    width: 300px;
+    height: 300px;
+}
+footer{
+   display: block;
+}
+.myinfo_btn{
+	margin-top:-13px;
+	float : left;
+}
+	
+.myinfo_btn>button{
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:GmarketSansMedium;
+	<!--font-family:Arial;-->
+	<!--font-weight:bold;-->
+	font-size:15px;
+	padding:3px 10px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myinfo_btn>button:hover{
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	background-color:#e9e9e9;
+}
+.myinfo_btn>button:active {
+	position:relative;
+	top:1px;
+}
+

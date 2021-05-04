@@ -103,8 +103,8 @@
 			</div>
 			<!-- JOIN BTN-->
 			<div class="btn_area">
-				<button type="button" id="btnJoin" class="header-btn">
-					<span>가입하기</span>
+				<button type="button" id="btnModify" class="header-btn">
+					<span>수정하기</span>
 				</button>
 			</div>
 		</form>
@@ -115,7 +115,7 @@
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-	$("#btnJoin").click(function(){
+	$("#btnModify").click(function(){
 		var frm = document.getElementById("frm");
 		frm.action = "<%= request.getContextPath()%>/insertmember";
 		frm.method = "post";

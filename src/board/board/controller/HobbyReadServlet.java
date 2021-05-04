@@ -32,10 +32,11 @@ public class HobbyReadServlet extends HttpServlet {
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardService sv = new BoardService();
 		List<Board> blist = null;
+		
 		try {
 			blist = sv.getBoardAll();
-			System.out.println(blist);
-			request.setAttribute("boardcontent", blist);
+			System.out.println(blist);			
+			request.setAttribute("blist", blist);
 			request.getRequestDispatcher("/page/select/exercise.jsp").forward(request, response);
 			System.out.println("보냇어용");
 		} catch (SQLException e) {

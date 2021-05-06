@@ -152,6 +152,4 @@ version="3.1">
        <url-pattern>/page/select/stock</url-pattern>
     </servlet-mapping>
     
-    
-    
 </web-app>

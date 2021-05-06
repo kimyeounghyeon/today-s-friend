@@ -34,24 +34,26 @@ if (member == null){
         <p id="pabouttitle">취미를 선택 하세요~</p>
         <div id="intr">
         <% String CPath = request.getContextPath(); %>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
+        <form id="frm">
+            <button type="button" class="btm_image" onclick="location.href='<%=CPath%>/page/hobby/hobbyread?hobbyId=1'">
                 <img src="../../img/운동.png">
             </button>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
+            <button type="button" class="btm_image" onclick="location.href='<%=CPath%>/page/hobby/hobbyread?hobbyId=2'">
                 <img src="../../img/영화.png">
             </button>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
+            <button type="button" class="btm_image" onclick="location.href='<%=CPath%>/page/hobby/hobbyread?hobbyId=3'">
                 <img src="../../img/게임.png">
             </button><br>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
+            <button type="button" class="btm_image" onclick="location.href='<%=CPath%>/page/hobby/hobbyread?hobbyId=4'">
                 <img src="../../img/음식.png">
             </button>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
+            <button type="button" class="btm_image" onclick="location.href='<%=CPath%>/page/hobby/hobbyread?hobbyId=5'">
                 <img src="../../img/주식.png">
             </button>
-            <button type="button" class="btm_image" id="select_h" onclick="location.href='<%=CPath%>/page/hobby/hobbyread'">
+            <button type="button" class="btm_image" onclick="location.href='<%=CPath%>/page/hobby/hobbyread?hobbyId=6'">
                 <img src="../../img/자유.png">
             </button>
+           </form>
             <br><br><br>
         </div>
     </article>

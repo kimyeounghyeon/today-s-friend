@@ -67,12 +67,12 @@
       <div class="dropdown-hover">
          <button class="button">친구 만나러 가기</button>
          <div class="dropdown-content bar-block">
-            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">운동</a> 
-            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">게임</a>
-            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">영화</a>
-            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">음식</a> 
-            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">주식</a> 
-            <a href="<%=CPath%>/page/hobby/hobbyread" class="bar-item button">자유/후기</a>
+            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=1" class="bar-item button">운동</a> 
+            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=2" class="bar-item button">영화</a>
+            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=3" class="bar-item button">게임</a>
+            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=4" class="bar-item button">음식</a> 
+            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=5" class="bar-item button">주식</a> 
+            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=6" class="bar-item button">자유/후기</a>
          </div>
       </div>
       <a href="<%=CPath%>/page/member/myPageIndex" class="bar-item button">마이페이지</a>

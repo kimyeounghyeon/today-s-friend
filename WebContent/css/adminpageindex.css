@@ -7,15 +7,13 @@
     box-shadow: 0 0 0 2px rgb(255, 223, 223) inset;
     color: black;
     background-color: rgb(255, 255, 255);
-    /* margin: auto; */
-    /* margin-top: 30px; */
-    /* margin-right : 30px; */
-    /* padding: 3rem 6rem; */
-    text-align: center;
+    margin: auto;
+    
     position: relative;
     cursor: pointer;
     width: 150px;
     height: 100px;
+    margin-top: 30px;
     font-color: white;
     
     /* background: linear-gradient(to right, #8db8a2, #a1eeee); */

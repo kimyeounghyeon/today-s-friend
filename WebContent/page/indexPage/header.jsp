@@ -1,4 +1,4 @@
-<%@page import="member.member.model.vo.Member"%>
+<%@page import="member.model.vo.Member"%>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/font.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/main.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css">
@@ -67,12 +67,12 @@
       <div class="dropdown-hover">
          <button class="button">친구 만나러 가기</button>
          <div class="dropdown-content bar-block">
-            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=1" class="bar-item button">운동</a> 
-            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=2" class="bar-item button">영화</a>
-            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=3" class="bar-item button">게임</a>
-            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=4" class="bar-item button">음식</a> 
-            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=5" class="bar-item button">주식</a> 
-            <a href="<%=CPath%>/page/hobby/hobbyread?hobbyId=6" class="bar-item button">자유/후기</a>
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=1" class="bar-item button">운동</a> 
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=2" class="bar-item button">영화</a>
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=3" class="bar-item button">게임</a>
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=4" class="bar-item button">음식</a> 
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=5" class="bar-item button">주식</a> 
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=6" class="bar-item button">자유/후기</a>
          </div>
       </div>
       <a href="<%=CPath%>/page/member/myPageIndex" class="bar-item button">마이페이지</a>
@@ -101,7 +101,7 @@ if (member == null){
 반가운 <%=member.getName()%>님! <br> <span>등급 : <%=grade%> / </span> <span>포인트: <%=member.getMpoint()%> </span>
 			</p>
 			<div class="myinfo_btn">
-			<button type="button" id="btnLogout" onclick="location.href='<%=CPath%>/logout';">정보수정</button>
+			<button type="button" id="btnLogout" onclick="location.href='<%=CPath%>/page/member/modify.jsp';">정보수정</button>
 			<button type="button" id="btnLogout" onclick="location.href='<%=CPath%>/page/indexpage/logout';">로그아웃</button>
 			</div>
 <%	

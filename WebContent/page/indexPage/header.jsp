@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/join.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/modify.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/searchIdNPw.css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
         $(function () {
             $("#loginbtn").click(login);
             $(".pointspan").click(point);
-            $("#close").click(loginclose);
+            $(".close").click(loginclose);
             $("#close2").click(pointclose);
 
             function login() {
@@ -122,13 +123,13 @@ if (member == null){
       <!-- 로그인 모달창 -->
       <div class="loginmodal">
          <div class="form">
-            <span id=close>&#10006;</span>
+            <span class=close>&#10006;</span>
             <form class="login-form" id="frm">
                <input type="text" placeholder="id" name="id" /> <input
                   type="password" placeholder="password" name="passwd" />
                <button class="header-btn button" id="btnLogin">login</button>
                <p class="message">
-                  <a href="#">ID/PW찾기</a>
+                  <a href="<%=CPath%>/page/member/search.jsp">ID/PW찾기</a>
                   <a href="<%=CPath%>/page/member/join" id="join" class="join">회원가입</a>
                </p>
             </form>

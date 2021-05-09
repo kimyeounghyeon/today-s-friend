@@ -1,4 +1,4 @@
-package member.member.model.service;
+package member.model.service;
 
 import java.sql.*;
 import java.sql.ResultSet;
@@ -6,9 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import static member.common.JDBCTemplate.*;
-import member.member.model.dao.MemberDao;
-import member.member.model.vo.Member;
+import member.model.dao.MemberDao;
+import member.model.vo.Member;
+
+import static common.JDBCPool.*;
 
 public class MemberService {
 
@@ -39,5 +40,18 @@ public class MemberService {
 			}
 			close(conn);
 			return result;
+		}
+		
+		// 멤버 포인트 조회
+		public ArrayList<Member> memberPoint(String search){
+			ArrayList<Member> list = null;
+			Connection conn = getConnection();
+			try {
+				list = new MemberDao().memberPoint(conn, search);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			close(conn);
+			return list;
 		}
 }

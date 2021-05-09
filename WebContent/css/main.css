@@ -177,3 +177,34 @@ footer{
 .pointbg {
 	display : none;
 }
+
+#close2 {
+	color : black;
+	float: right;
+	margin:0;
+	}
+
+#close2:hover{
+	cursor:pointer;
+}
+
+.pointimg {
+	width:600px;
+	height:800px;
+	box-shadow: 5px 5px 5px #e8e8e8;
+}
+
+.pointmodal {
+	position : relative;
+	width:600px;
+	height:900px;
+	margin: auto;
+}
+
+
+.pointspan:hover {
+	cursor:pointer;
+}
+
+
+

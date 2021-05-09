@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import member.model.vo.Member;
 
@@ -98,4 +99,45 @@ public class MemberDao {
 		return resultVO;
 	}
 	
+	public ArrayList<Member> memberPoint (Connection conn, String search) {
+		ArrayList<Member> list = null;
+		String sql = "select * from member ";
+		
+		if(search == null) {
+			sql += " order by mpoint";
+		} else {
+			sql += " where id like '%" + search + "%' order by mpoint";
+		}
+		
+		
+		pstmt = null;
+		rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				list = new ArrayList<Member>();
+				do {
+					Member ResultVO = new Member();
+					
+					ResultVO.setId(rs.getString("id"));
+					ResultVO.setPasswd(rs.getString("passwd"));
+					ResultVO.setName(rs.getString("name"));
+					ResultVO.setEmail(rs.getString("email"));
+					ResultVO.setGender(rs.getString("gender").charAt(0));
+					ResultVO.setLocnum(rs.getInt("locnum"));
+					ResultVO.setPhone(rs.getString("phone"));
+					ResultVO.setAge(rs.getInt("age"));
+
+					list.add(ResultVO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
 }

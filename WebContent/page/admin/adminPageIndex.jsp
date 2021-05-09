@@ -1,4 +1,4 @@
-<%@page import="member.member.model.vo.Member"%>
+<%@page import="member.model.vo.Member"%>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/adminpageindex.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/font.css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"

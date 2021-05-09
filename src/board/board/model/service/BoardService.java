@@ -11,10 +11,17 @@ import static member.common.JDBCTemplate.*;
 
 public class BoardService {
 	
-	public List<Board> getBoardAll() throws SQLException{
+	public List<Board> getBoardAll(int hobbyId) throws SQLException{
 		Connection conn = getConnection();
-		List<Board> list = new BoardDao().getBoardAll(conn);
+		List<Board> list = new BoardDao().getBoardAll(hobbyId,conn);
 		close(conn);
 		return list;
+	}
+	
+	public int boardWrite(Board vo) {
+		Connection conn = getConnection();
+		int result = new BoardDao().boardWrite(conn, vo);
+		close(conn);
+		return result;
 	}
 }

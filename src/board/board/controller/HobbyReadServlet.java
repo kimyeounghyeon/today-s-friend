@@ -30,14 +30,47 @@ public class HobbyReadServlet extends HttpServlet {
 	}
 
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int hobbyId = Integer.parseInt(request.getParameter("hobbyId"));
+		System.out.println("hobbyId"+hobbyId);
+		
 		BoardService sv = new BoardService();
 		List<Board> blist = null;
 		
 		try {
-			blist = sv.getBoardAll();
+			blist = sv.getBoardAll(hobbyId);
 			System.out.println(blist);			
 			request.setAttribute("blist", blist);
-			request.getRequestDispatcher("/page/select/exercise.jsp").forward(request, response);
+			String page = "";
+			
+			switch(hobbyId) {
+			
+			case 1 : 
+				page = "/page/select/exercise.jsp";
+				break;
+			
+			case 2 : 
+				page = "/page/select/movie.jsp";
+				break;
+				
+			case 3 : 
+				page = "/page/select/game.jsp";
+				break;
+				
+			case 4 : 
+				page ="/page/select/food.jsp";
+				break;
+				
+			case 5 : 
+				page ="/page/select/stock.jsp";
+				break;
+				
+			case 6 : 
+				page ="/page/select/freeboard.jsp";
+				break;
+				
+			}	
+			request.getRequestDispatcher(page).forward(request, response);
+			
 			System.out.println("보냇어용");
 		} catch (SQLException e) {
 			e.printStackTrace();

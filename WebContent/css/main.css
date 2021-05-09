@@ -154,9 +154,26 @@ img {
     text-align: center;
 }
 #rv {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 600px;
 }
 footer{
 	display: block;
+}
+
+.btm_image {
+	border : none;
+	background : white;
+	cursor:pointer
+}
+
+.label_friend {
+	font-family: "GmarketSansMedium";
+	font-size: 25px;
+	color: #3f3f3f;
+	cursor:pointer;
+}
+
+.pointbg {
+	display : none;
 }

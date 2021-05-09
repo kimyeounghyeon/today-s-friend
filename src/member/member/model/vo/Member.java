@@ -18,8 +18,6 @@ public class Member {
 	private int Mpoint;
 	private int gradeid;
 	private int LEVnum;
-	
-	
 
 	@Override
 	public String toString() {

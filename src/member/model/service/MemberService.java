@@ -19,7 +19,7 @@ public class MemberService {
 		Connection conn = getConnection();
 		try {
 			result = new MemberDao().insert(conn, vo);
-			if(result!=0) {
+			if (result != 0) {
 				commit(conn);
 			}
 		} catch (Exception e) {
@@ -28,13 +28,26 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
-	
+
 	// login()
-		public Member loginAndReadMember(Member vo) {
+	public Member loginAndReadMember(Member vo) {
+		Member result = null;
+		Connection conn = getConnection();
+		try {
+			result = new MemberDao().loginAndReadMember(conn, vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close(conn);
+		return result;
+	}
+	
+	// search()
+		public Member searchIdNPw(Member vo) {
 			Member result = null;
 			Connection conn = getConnection();
 			try {
-				result = new MemberDao().loginAndReadMember(conn, vo);
+				result = new MemberDao().searchIdNPw(conn, vo);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

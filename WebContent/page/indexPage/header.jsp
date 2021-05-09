@@ -16,15 +16,27 @@
 <script>
         $(function () {
             $("#loginbtn").click(login);
+            $(".pointspan").click(point);
             $("#close").click(loginclose);
+            $("#close2").click(pointclose);
 
             function login() {
                 $(".loginmodal").css("display", "block");
                 $(".form").css("display", "block");
             };
-
+            
             function loginclose() {
                 $(".loginmodal").css("display", "none");
+            };           
+            
+            
+            function point() {
+                $(".pointbg").css("display", "block");
+                $(".pointmodal").css("display", "block");
+            };
+
+            function pointclose() {
+                $(".pointbg").css("display", "none");
             };           
             
            $("#btnLogin").click(function(){
@@ -84,6 +96,7 @@ if (member == null){
          <button class="header-btn button" id="loginbtn">로그인</button>
 <%
 }  else {
+
 	 String grade ="";
      if(member.getGradeid()==1){
         grade = "브론즈";
@@ -97,9 +110,7 @@ if (member == null){
         grade = "다이아몬드";
      }
 %>
-<p>
-반가운 <%=member.getName()%>님! <br> <span>등급 : <%=grade%> / </span> <span>포인트: <%=member.getMpoint()%> </span>
-			</p>
+<p>반가운 <%=member.getName()%>님! <br> <span class="pointspan"><span>등급 : <%=grade%> / </span> <span>포인트: <%=member.getMpoint()%></span></span></p>
 			<div class="myinfo_btn">
 			<button type="button" id="btnLogout" onclick="location.href='<%=CPath%>/page/member/modify.jsp';">정보수정</button>
 			<button type="button" id="btnLogout" onclick="location.href='<%=CPath%>/page/indexpage/logout';">로그아웃</button>
@@ -121,6 +132,14 @@ if (member == null){
                   <a href="<%=CPath%>/page/member/join" id="join" class="join">회원가입</a>
                </p>
             </form>
+         </div>
+      </div>
+      <!-- 모달 끝! -->
+      <!-- 포인트 모달창 -->
+        <div class="pointbg" id="pointbg">
+         <div class="pointmodal">
+            <span id=close2>&#10006;</span>
+	 			<img src="../../img/포인트모달.png" class="pointimg"> 
          </div>
       </div>
       <!-- 모달 끝! -->

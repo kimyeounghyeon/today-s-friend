@@ -100,6 +100,7 @@ public class MemberDao {
 		return resultVO;
 	}
 	
+
 	public Member searchIdNPw(Connection conn, Member vo) {
 		String email = vo.getEmail();
 		String sql = "SELECT * FROM MEMBER WHERE EMAIL=?";
@@ -123,12 +124,54 @@ public class MemberDao {
 			} else {
 				System.out.println("이메일 확인 실패");
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-
 		return resultVO;
+	}
+				
+	public ArrayList<Member> memberPoint (Connection conn, String search) {
+		ArrayList<Member> list = null;
+		String sql = "select * from member ";
+		
+		if(search == null) {
+			sql += " order by mpoint";
+		} else {
+			sql += " where id like '%" + search + "%' order by mpoint";
+		}
+		
+		
+		pstmt = null;
+		rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				list = new ArrayList<Member>();
+				do {
+					Member ResultVO = new Member();
+					
+					ResultVO.setId(rs.getString("id"));
+					ResultVO.setPasswd(rs.getString("passwd"));
+					ResultVO.setName(rs.getString("name"));
+					ResultVO.setEmail(rs.getString("email"));
+					ResultVO.setGender(rs.getString("gender").charAt(0));
+					ResultVO.setLocnum(rs.getInt("locnum"));
+					ResultVO.setPhone(rs.getString("phone"));
+					ResultVO.setAge(rs.getInt("age"));
+
+					list.add(ResultVO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
 	}
 }

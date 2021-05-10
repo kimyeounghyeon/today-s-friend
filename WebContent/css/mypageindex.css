@@ -1,21 +1,17 @@
-    .outline-button {
-    -webkit-appearance: none;
-        -moz-appearance: none;
-            appearance: none;
-    background-color: transparent;
+.outline-button {
+    appearance: none;
     border: none;
     box-shadow: 0 0 0 2px rgb(223, 237, 255) inset;
-    color: black;
     background-color: rgb(255, 255, 255);
     margin: auto;
-    
     position: relative;
     cursor: pointer;
     width: 300px;
     height: 100px;
     margin-top: 30px;
-    color : rgb(107, 166, 253);
-    /* background: linear-gradient(to right, #8db8a2, #a1eeee); */
+    color : gray;
+    font: inherit;
+    background : #cfefe8;
     }
     .outline-button::before, .outline-button::after {
     content: "";
@@ -25,12 +21,12 @@
     transition: height 0.4s 0.4s cubic-bezier(0.86, 0, 0.07, 1), width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
     }
     .outline-button::before {
-    box-shadow: 2px 2px 0 rgba(85, 173, 255, 0.514) inset;
+    box-shadow: 2px 2px 0 #00d9a3 inset;
     bottom: 0;
     left: 0;
     }
     .outline-button::after {
-    box-shadow: -2px -2px 0 rgba(85, 173, 255, 0.514) inset;
+    box-shadow: -2px -2px 0 #00d9a3 inset;
     top: 0;
     right: 0;
     }
@@ -41,30 +37,7 @@
     }
 
     /* Extra Junk */
-     html {
-    box-sizing: border-box;
-    font-size: 100%;
-    } 
-
-    *, ::before, ::after {
-    box-sizing: inherit;
-    }
-
-   /*  html, body {
-    height: 100%;
-    } */
-
-    /*body {
-    background-color: white(224, 131, 131);
-    display: flex;
-    font-size: 1.6rem;
-    width: 100%;
-    } */
     .mypage {
         text-align: center;
         width: 100%;
-    }
-    a {
-    	text-decoration: none;
-    	color :rgb(107, 166, 253)
     }

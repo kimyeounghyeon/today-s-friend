@@ -8,6 +8,7 @@
 Member member = (Member)session.getAttribute("member");
 
 String phone = member.getPhone();
+
 %>
       
 <section class="setop">
@@ -16,7 +17,7 @@ String phone = member.getPhone();
    <div id="wrapper">
       <!-- content-->
       <div id="content">
-      <form id="frm">
+      <form id="frm" method=post action="<%= request.getContextPath()%>/page/member/MemberUpdateServlet">
          <!-- ID -->
          <div>
             <h3 class="join_title">
@@ -24,6 +25,7 @@ String phone = member.getPhone();
             </h3>
             <span class="readbox int_id"><%=member.getId()%></span>
             <span id="id" class="int"></span> 
+            <input type=hidden value=<%=member.getId()%> name=id>
          </div>
          <!-- PW1 -->
          <div>
@@ -79,9 +81,8 @@ String phone = member.getPhone();
             <h3 class="join_title">
                <label for="local">지역 선택</label>
             </h3>
-            <span class="box local_code"> 
+            <span class="box local_code" value="<%=member.getLocnum()%>">       
             <select id="local" name="local" class="sel">
-                  <option><%=member.getLocnum()%></option>
                   <option value="1">서울</option>
                   <option value="2">경기</option>
                   <option value="3">인천</option>
@@ -113,7 +114,7 @@ String phone = member.getPhone();
          </div>
          <!-- JOIN BTN-->
          <div class="btn_area">
-            <button type="button" id="btnModify" class="header-btn">
+            <button type="submit" id="btnModify" class="header-btn">
                <span>수정하기</span>
             </button>
          </div>
@@ -124,13 +125,13 @@ String phone = member.getPhone();
    <!-- wrapper -->
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+  <script>
 
-   $("#btnModify").click(function(){
+<%--    $("#btnModify").click(function(){
       var frm = document.getElementById("frm");
-      frm.action = "<%= request.getContextPath()%>/insertmember";
+      frm.action = "<%= request.getContextPath()%>/member/controller/MemberUpdateServlet.java";
       frm.method = "post";
       frm.submit();
-   });
+   }); --%>
 </script>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

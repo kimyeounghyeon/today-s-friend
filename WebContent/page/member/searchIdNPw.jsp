@@ -5,7 +5,7 @@
 	<p id="pabouttitle">아이디 / 비밀번호 찾기</p>
 	<div class="loginmodal" id="modelid">
 		<div class="form idpw" id="dfrmsi">
-			<span id=close onclick="loginclose();">&#10006;</span>
+			<span class=close onclick="loginclose();">&#10006;</span>
 			<p class="pabouttitle">아이디 찾기</p>
 			<br> <span class="smsg">회원 정보에 등록한 이름과 이메일 주소가 같아야,<br>아이디를 찾을 수 있습니다.</span>
 			<br><br>
@@ -19,7 +19,7 @@
 	</div>
 	<div class="loginmodal" id="modelpw">
 		<div class="form idpw" id="dfrmpw">
-			<span id=close onclick="loginclose();">&#10006;</span>
+			<span class=close onclick="loginclose();">&#10006;</span>
 			<p class="pabouttitle">비밀번호 찾기</p>
 			<br> <span class="smsg">회원 정보에 등록한 아이디와 이메일 주소가 같아야,<br>아이디를 찾을 수 있습니다.</span>
 			<br><br>

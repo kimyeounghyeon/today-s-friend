@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import board.model.vo.Board;
+import member.model.vo.Member;
 
 public class BoardDao {
 	
@@ -31,7 +32,21 @@ public class BoardDao {
 			e.printStackTrace();
 		}
 	}
-		
+	/*
+	 * public int boardDelete(Connection conn, Board vo) { int result = 0;
+	 * 
+	 * String sql = "delete from board where bno = ?";
+	 * 
+	 * pstmt = null;
+	 * 
+	 * try { pstmt = conn.prepareStatement(sql); pstmt.setInt(1, vo.getBno());
+	 * result = pstmt.executeUpdate();
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }finally { close(); }
+	 * 
+	 * return result; }
+	 */
+	
 	public int getBoardCount(Connection conn, String search) {
 		int cnt = 0;
 		String sql = "SELECT COUNT(*) FROM BOARD";
@@ -151,31 +166,59 @@ public class BoardDao {
 
 		return result;
 	}
+
 	public int boardDelete(Connection conn, Board vo) {
-		int result = 0;
+		      int result = 0;
 
-		String sql = "delete from board where bno = ?";
+		      String sql = "delete from board where bno = ?";
 
+		      pstmt = null;
+
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setInt(1, vo.getBno());
+		         result = pstmt.executeUpdate();
+
+		      } catch (Exception e) {
+		         e.printStackTrace();
+}finally {
+            close();
+		      }
+
+		      return result;
+		   }
+	public Board boardRead(Connection conn, Board vo) {
+		
+		int bno = vo.getBno();
+		String sql = "select * from board where bno = ?";
 		pstmt = null;
-
+		rs = null;
+		Board resultVO = new Board();
+		
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, vo.getBno());
-			result = pstmt.executeUpdate();
-
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			  if (rs.next()) {
+				  resultVO.setBno(bno);
+	                resultVO.setBsubject(rs.getString("bsubject"));
+	                resultVO.setBcontent(rs.getString("bcontent"));
+	                resultVO.setBfilePath(rs.getString("bfilePath"));
+			  }
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-            close();
+			close();
 		}
-
-
-		return result;
+		
+		return resultVO;
 	}
-	
+
 	public int boardupdate(Connection conn, Board vo) {
 		int result = 0;
-		String sql = "update board set , bsubject = ?, bcontent = ?, bfilepath = ? where bno = ? ";
+		String sql = "update board set bsubject = ?, bcontent = ?, bfilepath = ? where bno = ? ";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -194,5 +237,4 @@ public class BoardDao {
 		return result;
 
 	}
-
 }

@@ -1,9 +1,6 @@
 package member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,19 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 
-
-
 /**
- * Servlet implementation class MemberGradeServlet
+ * Servlet implementation class MemberGradeUpServlet
  */
-@WebServlet("/page/indexpage/point")
-public class MemberGradeServlet extends HttpServlet {
+@WebServlet("/page/indexpage/gradeup")
+public class MemberGradeUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberGradeServlet() {
+    public MemberGradeUpServlet() {
         super();
     }
 
@@ -45,35 +40,34 @@ public class MemberGradeServlet extends HttpServlet {
 	
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberService sv = new MemberService();
-		ArrayList<Member> list = null;
-		Member resultVO = new Member();
-
-		/********** 검색 *************/
-		String search = request.getParameter("keyword");
-		System.out.println("search: " + search);
+		Member vo = new Member();
 		
 		
-		if(search != null && !search.equals("")) {
+		int gradeid = 0;
+		
+		String id = request.getParameter("id");
+		int mpoint = Integer.parseInt(request.getParameter("mpoint"));
+		
+		System.out.println("mp" + mpoint);
+		System.out.println("gi" + gradeid);
+		System.out.println("vo.mp" + vo.getMpoint());
+		System.out.println("vo.gi" + vo.getId());
+		System.out.println(id);
+		
+		vo.setMpoint(mpoint);
+		vo.setId(id);
+		
+		
+		
+		int result = new MemberService().gradeUp(vo);
+		if(result == 1) {
+			System.out.println("회원 등업 성공");
 		} else {
-			search = null;
+			System.out.println(result);
+			System.out.println("등업 실패");
 		}
-		list = sv.memberPoint(search);
-		
-		
-		if(list != null && list.size() > 0 ) {
-			System.out.println("조회 성공");
-			
-		} else {
-			System.out.println("조회 실패");
-			}
-		
-		
-		request.setAttribute("mlist", list);
-		request.setAttribute("search", search);
-		request.getRequestDispatcher("/page/admin/adminPageGrade.jsp").forward(request, response);
-
-		
-		
 	}
-}
+	
+	
 
+}

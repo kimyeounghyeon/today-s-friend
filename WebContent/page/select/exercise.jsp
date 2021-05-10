@@ -14,12 +14,12 @@
 			frm.method = "post";
 			frm.submit();
 		});
-           $(".btnMod").click(function(){
-            var frm = document.getElementById("frmSearch");
-            frm.action = "<%=request.getContextPath()%>/page/board/boardupdate.jsp?bsubject=}";
-			frm.method = "post";
-			frm.submit();
-		});
+         <%--   $(".btnMod").click(function(){
+			var frmmod = document.getElementById("frmmod");
+			frmmod.action = "<%=request.getContextPath()%>/page/board/boardupdate";
+			frmmod.method = "post";
+			frmmod.submit();
+						}); --%>
 	});
 </script>
 <section class="setop">
@@ -40,10 +40,9 @@
 				<input type="text" name="search" id="search"> <input
 					type="hidden" name="hobbyId" value="4"> <input
 					type="button" id="btnSearch" value="검색">
-
-				<c:forEach items="${blist }" var="v">
+			</form>
+				<c:forEach items="${blist }" var="v" varStatus="status">
 					<table border="1">
-
 						<tr>
 							<td>글번호</td>
 							<td>${v.bno }</td>
@@ -65,21 +64,24 @@
 							<td>내용</td>
 							<td>${v.bcontent }</td>
 						</tr>
-
 						<tr>
-
-							<td colspan="2"><input type="button" value="답글작성"> <input
-								type="button" value="수정" class="btnMod"> <%-- onclick="location.href='<%=request.getContextPath()%>/page/board/boardupdate.jsp?bsubject=${v.bsubject }&bcontent=${v.bcontent }&bfilePath=${v.bfilePath }'" --%>
-								<button type="button"
-									onclick="location.href='<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=1'">삭제</button></td>
+							<td colspan="2">
+							<!-- <button type="button" class="btnMod">수정</button> -->
+							<button type="button" onclick="location.href='<%=request.getContextPath()%>/page/board/simread?bno=${v.bno}'">수정</button>
+							<button type="button" onclick="location.href='<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=1'">삭제</button></td>
 						</tr>
+	<form id="frmmod" class="frmmod">
+						<input type="hidden" name="bno" value="${v.bno }">
+						<input type="hidden" name="id" value="${v.id }">
+						<input type="hidden" name="bsubject" value="${v.bsubject }">
+						<input type="hidden" name="bfilePath" value="${v.bfilePath }">
+						<input type="hidden" name="bcontent" value="${v.bcontent }">
+						<input type="hidden" name="hobbyId" value="1">
+					</form>
 					</table>
-
 					<br>
 				</c:forEach>
-			</form>
 		</c:if>
-		
 		<c:if test="${startPage != 1 }">
 			<a
 				href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=1">이전</a>

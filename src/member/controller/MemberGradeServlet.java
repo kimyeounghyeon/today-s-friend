@@ -67,6 +67,7 @@ public class MemberGradeServlet extends HttpServlet {
 			System.out.println("조회 실패");
 			}
 		
+		System.out.println(list);
 		
 		request.setAttribute("mlist", list);
 		request.setAttribute("search", search);

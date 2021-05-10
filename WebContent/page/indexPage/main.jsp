@@ -2,6 +2,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp"></jsp:include>
+<%
+   Member member = (Member)session.getAttribute("member");
+   if (member != null){
+   System.out.println("member.getLEVnum() : " + member.getLEVnum());
+   if(member.getLEVnum() == 2){
+%>
+<jsp:include page="/page/admin/adminheader.jsp"></jsp:include>
+<%   
+	   	 }else if(member.getLEVnum() == 1){
+%>
+<jsp:include page="/page/admin/adminheader.jsp"></jsp:include>
+<%
+	   	 }
+   }  		
+%>
+<%
+if (member == null){ 
+%>
 <section class="setop">
 	<article>
 		<div id="mainlog_">
@@ -21,6 +39,9 @@
 		</div>
 	</article>
 </section>
+<%
+}  else {
+%>
 <section class="setop">
 	<article>
 		<br>
@@ -61,4 +82,7 @@
 		</div>
 	</article>
 </section>
+<%   
+}
+%>
 <jsp:include page="footer.jsp"></jsp:include>

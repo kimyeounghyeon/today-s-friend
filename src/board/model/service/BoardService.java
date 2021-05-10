@@ -8,6 +8,7 @@ import java.util.List;
 
 import board.model.dao.BoardDao;
 import board.model.vo.Board;
+import member.model.dao.MemberDao;
 
 public class BoardService {
 
@@ -19,8 +20,8 @@ public class BoardService {
 //	}
 
 	public int boardWrite(Board vo) {
-		Connection conn = getConnection();
 		int result = 0;
+		Connection conn = getConnection();
 		try {
 			result = new BoardDao().boardWrite(conn, vo);
 			if (result != 0) {
@@ -48,10 +49,11 @@ public class BoardService {
 	}
 
 	public int boardDelete(Board vo) {
-		Connection conn = getConnection();
 		int result = 0;
+		Connection conn = getConnection();
 		try {
 			result = new BoardDao().boardDelete(conn, vo);
+
 			if (result != 0) {
 				commit(conn);
 			}
@@ -60,7 +62,6 @@ public class BoardService {
 		}
 		close(conn);
 		return result;
-
 	}
 
 	public int boardupdate(Board vo) {
@@ -79,4 +80,18 @@ public class BoardService {
 		return result;
 
 	}
+
+	public Board boardRead(Board vo) {
+		Board result = null;
+		Connection conn = getConnection();
+		try {
+			result = new BoardDao().boardRead(conn, vo);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close(conn);
+		return result;
+	}
+
 }

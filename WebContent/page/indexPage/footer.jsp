@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<style>
+#fdiv {
+    border: 3px solid gray;
+    width: 100%;
+    height: 100;
+    position: absolute;
+    bottom: -2200;
+    text-align: center;
+}
+</style>
 <footer>
 	<div id="fdiv">
 		<p id="pcs">고객센터 : 1544-1000</p>

@@ -174,4 +174,104 @@ public class MemberDao {
 		}
 		return list;
 	}
+	public ArrayList<Member> memberUser (Connection conn, String search) {
+	      ArrayList<Member> list = null;
+	      String sql = "select * from member ";
+	      
+	      if(search == null) {
+	         sql += " order by id";
+	      } else {
+	         sql += " where id like '%" + search + "%' order by i";
+	      }
+	      
+	      pstmt = null;
+	      rs = null;
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         if(rs.next()) {
+	            list = new ArrayList<Member>();
+	            do {
+	               Member ResultVO = new Member();
+	               
+	               ResultVO.setId(rs.getString("id"));
+	               ResultVO.setName(rs.getString("name"));
+	               ResultVO.setLocnum(rs.getInt("locnum"));
+	               ResultVO.setPhone(rs.getString("phone"));
+
+	               list.add(ResultVO);
+	            }while(rs.next());
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      return list;
+	   }
+	
+	public int gradeUp (Connection conn, Member vo) {
+		int result = 0;
+		int gradeid = 0;
+		int mpoint = vo.getMpoint();
+		
+		String sql = "update member set gradeid = ? where id = ?";
+		
+		if(0<=mpoint && mpoint<=299){
+			gradeid=1;
+		}
+		else if(300<=mpoint && mpoint<=999) {
+			gradeid=2;
+		}
+		else if(1000<=mpoint && mpoint<=2999) {
+			gradeid=3;
+		}
+		else if(3000<=mpoint && mpoint<=5999) {
+			gradeid=4;
+		}
+		else if(6000<=mpoint && mpoint<=9999) {
+			gradeid=5;
+		}
+		
+		
+		pstmt = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gradeid);
+			pstmt.setString(2, vo.getId());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+
+	}
+//	public int getMemberCount(Connection conn, String search) {
+//	int cnt = 0;
+//	String sql = "SELECT COUNT(*) FROM member";
+//	if (search != null) {
+//		sql += " WHERE id LIKE '%" + search+ "%'";
+//	}
+//	
+//	pstmt = null;
+//	rs = null;
+//	
+//	try {
+//		pstmt = conn.prepareStatement(sql);
+//		rs = pstmt.executeQuery();
+//		if(rs.next()) {
+//			cnt = rs.getInt(1);
+//		}
+//	
+//	} catch(Exception e) {
+//		e.printStackTrace();
+//	} finally {
+//		close();
+//	}
+//	return cnt;
+//}
 }

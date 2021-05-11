@@ -3,16 +3,13 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
 <section class="setop">
-
 	<div class="mypagelist">
-		<h2>내가 쓴 글/댓글</h2>
+		<p class="pabouttitle">내가 쓴 글/댓글</p>
 		<button>내 글</button>
 		<button>내 댓글</button>
-
 		<div class=row>
 			<table class="table" id="table">
 				<thead>
-
 					<tr>
 						<th><input type="checkbox" id="checkall" /></th>
 						<th>No.</th>

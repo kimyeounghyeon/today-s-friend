@@ -1,0 +1,102 @@
+@charset "UTF-8";
+@charset "UTF-8";
+/*  메인페이지 */
+section {
+	text-align: center;
+	font-weight: bold;
+	font-size: 30pt;
+	color: gray;
+	font-style: italic;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+th {
+	background-color: #BEE64B;
+	color: white;
+}
+
+
+
+#center {
+	display: block;
+	text-align: center;
+	padding: 5px 100px 5px 100px;
+	
+	
+}
+
+#bcontent {
+	width: 500px;
+	height: 100px;
+	font-size: 20px;
+}
+/* 버튼속성  */
+#btnchange {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	margin-right: -4px;
+	width: 100px;
+	height: 50px;
+	font-size: 20px;
+	font: inherit;
+
+}
+
+#listbtn {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left: -3px;
+	width: 100px;
+	height: 50px;
+	font-size: 20px;
+	font: inherit;
+
+}
+#submit{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left: -3px;
+	width: 100px;
+	height: 50px;
+	font-size: 20px;
+	font: inherit;
+}
+#reset{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left: -3px;
+	width: 100px;
+	height: 50px;
+	font-size: 20px;
+	font: inherit;
+}
+
+#btn_group button {
+	border: 1px solid #E2E2E2;
+	background-color: rgba(0, 0, 0, 0);
+	color: #404040;
+	padding: 5px;
+	
+}
+
+#btn_group button:hover {
+	color: #404040;
+	background-color: #E2E2E2;
+}
+#btn_group{
+float: right;
+}

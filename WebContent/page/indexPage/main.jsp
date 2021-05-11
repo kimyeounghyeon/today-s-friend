@@ -3,39 +3,25 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp"></jsp:include>
 <%
-   Member member = (Member)session.getAttribute("member");
-   if (member != null){
-   System.out.println("member.getLEVnum() : " + member.getLEVnum());
-   if(member.getLEVnum() == 2){
-%>
-<jsp:include page="/page/admin/adminheader.jsp"></jsp:include>
-<%   
-	   	 }else if(member.getLEVnum() == 1){
-%>
-<jsp:include page="/page/admin/adminheader.jsp"></jsp:include>
-<%
-	   	 }
-   }  		
-%>
-<%
+Member member = (Member)session.getAttribute("member");
 if (member == null){ 
 %>
 <section class="setop">
 	<article>
 		<div id="mainlog_">
-			<p id="pabouttitle">ABOUT</p>v
+			<p id="pabouttitle">ABOUT</p>
 			<img id="mainlog" src="../../img/about.png">
 		</div>
 	</article>
 	<article>
 		<div id="review">
 			<p id="pabouttitle">친구들 후기</p>
-			<img id="rv" src="../../img/review1.jpg"> <img id="rv"
-				src="../../img/review2.jpg"> <br> <img id="rv"
-				src="../../img/logo.png"> <img id="rv"
-				src="../../img/logo.png"> <br> <img id="rv"
-				src="../../img/logo.png"> <img id="rv"
-				src="../../img/logo.png">
+			<img id="rv" src="../../img/review1.jpg"> 
+			<img id="rv" src="../../img/review2.jpg"> <br> 
+			<img id="rv" src="../../img/logo.png"> 
+			<img id="rv" src="../../img/logo.png"> <br> 
+			<img id="rv" src="../../img/logo.png"> 
+			<img id="rv" src="../../img/logo.png">
 		</div>
 	</article>
 </section>

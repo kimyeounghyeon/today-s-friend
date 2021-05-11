@@ -37,12 +37,6 @@ public class BoardUpdateServlet extends HttpServlet {
 		Board vo = new Board();
 		String bno = request.getParameter("bno");
 
-		System.out.println(request.getParameter("bsubject"));
-		System.out.println(request.getParameter("bcontent"));
-		System.out.println(request.getParameter("bfilepath"));
-		System.out.println(request.getParameter("bno"));
-		
-
 		if (bno != null && !bno.equals("")) {
 			vo.setBno(Integer.parseInt(request.getParameter("bno")));
 			vo.setBsubject(request.getParameter("bsubject"));

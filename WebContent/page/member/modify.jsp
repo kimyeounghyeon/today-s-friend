@@ -6,18 +6,25 @@
 
 <%
 Member member = (Member)session.getAttribute("member");
-
 String phone = member.getPhone();
-
 %>
-      
+<script>
+$(function () {
+	 $("#btnModify").click(function(){
+		     var frmmod = document.getElementById("frm");
+		     frm.action = "<%=request.getContextPath()%>/page/member/update";
+			frm.method = "post";
+			frm.submit();
+		});
+	});
+</script>  
 <section class="setop">
     
    <!-- wrapper -->
    <div id="wrapper">
       <!-- content-->
       <div id="content">
-      <form id="frm" method=post action="<%= request.getContextPath()%>/page/member/MemberUpdateServlet">
+      <form id="frm" >
          <!-- ID -->
          <div>
             <h3 class="join_title">
@@ -125,13 +132,5 @@ String phone = member.getPhone();
    <!-- wrapper -->
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
 
-<%--    $("#btnModify").click(function(){
-      var frm = document.getElementById("frm");
-      frm.action = "<%= request.getContextPath()%>/member/controller/MemberUpdateServlet.java";
-      frm.method = "post";
-      frm.submit();
-   }); --%>
-</script>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

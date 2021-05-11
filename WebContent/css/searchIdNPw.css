@@ -8,7 +8,6 @@
 	background-color: rgba(255, 255, 255, 0.719);
 	text-align: center;
 }
-
 .pabouttitle {
 	margin: 0;
 	text-align: center;
@@ -17,7 +16,6 @@
 	color: gray;
 	font-style: italic;
 }
-
 .btnsearch {
 	margin: 0 30px 0 0;
 	border-radius: 30px;
@@ -26,26 +24,24 @@
 	font: inherit;
 	clear: both;
 }
-
 .idpw{
 	text-align: center;
 }
 .smsg {
 	color: gray;
 	text-align: center;
+	font-size : 80%;
 }
-
 .btns {
 	text-align: center;
 }
-
 .btn-search {
 	font: inherit;
 	text-transform: uppercase;
 	outline: 0;
 	background: radial-gradient(circle, #8cd8c5, white, white);
 	width: 40%;
-	height: 40%;
+	height: 20%;
 	border: 0;
 	padding: 15px;
 	color: #FFFFFF;
@@ -53,7 +49,6 @@
 	cursor: pointer;
 	border-radius: 50%
 }
-
 .btn-search:hover, btn-search:active, btn-search:focus {
 	background: radial-gradient(circle, #00d9a3, white, white);
 	background-position: right;

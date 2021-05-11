@@ -5,7 +5,7 @@
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
 <section class="setop">
     <div class="mypage">
-        <h2>마이 페이지</h2>
+        <p class="pabouttitle">마이페이지</p>
 <%
 Member member = (Member)session.getAttribute("member");
 %>

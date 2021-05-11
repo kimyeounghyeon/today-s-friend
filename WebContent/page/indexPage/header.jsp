@@ -61,11 +61,6 @@ if (member == null){
       <a class="bar-item button" id="amyPage">마이페이지</a>
 <%} %>
       <div id="d2">
-      
-     
-      
- 
-    
 <%
 if (member == null){ 
 	
@@ -86,13 +81,21 @@ if (member == null){
      }else{
         grade = "다이아몬드";
      }
+     
+     if(member.getLEVnum()==0){
 %>
 <p>반가운 <%=member.getName()%>님! <br> <span class="pointspan"><span>등급 : <%=grade%> / </span> <span>포인트: <%=member.getMpoint()%></span></span></p>
-			<div class="myinfo_btn">
-			
 			<button type="button" id="btnLogout" onclick="location.href='<%=CPath%>/page/indexpage/logout';">로그아웃</button>
-			</div>
 <%	
+	} else{
+%>
+<p>
+<div>관리자님!</div>
+	<button type="button" id="btnLogout" onclick="window.open('<%=CPath%>/page/admin/adminPageIndex.jsp')">관리자모드</button>
+	<button type="button" id="btnLogout" onclick="location.href='<%=CPath%>/page/indexpage/logout';">로그아웃</button>
+</p>
+<%
+	}
 }
 %>
       </div>
@@ -108,8 +111,8 @@ if (member == null){
                <br>
                <button class="btnsearch" id="btnLogin">login</button>
                <p class="message">
-                  <a href="<%=CPath%>/page/member/searchIdNPw.jsp">ID/PW찾기</a>
-                  <a href="<%=CPath%>/page/member/join" id="join" class="join">회원가입</a>
+                  <a href="<%=request.getContextPath() %>/page/member/searchIdNPw.jsp">ID/PW찾기</a>
+                  <a href="<%=request.getContextPath() %>/page/member/join" id="join" class="join">회원가입</a>
                </p>
             </form>
          </div>
@@ -183,5 +186,4 @@ if (member == null){
         	});	
         });
     */
-
 </script>

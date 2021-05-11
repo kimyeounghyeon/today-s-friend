@@ -99,19 +99,6 @@ public class MemberService {
 		return list;
 	}
 
-	// 회원관리
-	public ArrayList<Member> memberUser(String search) {
-		ArrayList<Member> list = null;
-		Connection conn = getConnection();
-		try {
-			list = new MemberDao().memberUser(conn, search);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		close(conn);
-		return list;
-	}
-	
 	public int memberupdate(Member vo) {
 		Connection conn = getConnection();
 		int result = 0;
@@ -127,6 +114,38 @@ public class MemberService {
 		close(conn);
 		return result;
 
+	}
+
+	// 회원관리
+	public ArrayList<Member> memberUser(String search) {
+		ArrayList<Member> list = null;
+		Connection conn = getConnection();
+		try {
+			list = new MemberDao().memberUser(conn, search);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close(conn);
+		return list;
+	}
+
+	// 회원탈퇴
+
+	public int memberDelete(Member vo, String id, int phone) {
+		int result = 0;
+		Connection conn = getConnection();
+		try {
+			result = new MemberDao().memberDelete(conn, vo, id, phone);
+
+			if (result != 0) {
+				commit(conn);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		return result;
 	}
 
 }

@@ -1,6 +1,7 @@
 <%@page import="member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/update.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
     <section class="setop">
@@ -22,7 +23,8 @@ Member member = (Member)session.getAttribute("member");
             </tr>
             <tr>
                 <td>내용</td>
-                <td><input type="text" name="bcontent" id="bcontent"></td>
+                <td><textarea rows="10" cols="150" name="bcontent"
+								id="bcontent"></textarea></td>
             </tr>
              <tr>
                 <td>파일선택-여러개</td>

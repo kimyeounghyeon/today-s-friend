@@ -42,21 +42,9 @@ public class Member {
 		this.Mpoint = Mpoint;
 		this.gradeid = gradeid;
 		this.LEVnum = LEVnum;
-	}
-	
-	public Member(String passwd, String email, String phone, int age) {
-		super();
-		this.passwd = passwd;
-		this.email = email;
-		this.phone = phone;
-		this.age = age;
+
 	}
 
-	public Member() {
-	}
-
-	
-	
 	public String getId() {
 		return id;
 	}
@@ -165,5 +153,7 @@ public class Member {
 		return serialVersionUID;
 	}
 
-	
+	public Member() {
+	}
+
 }

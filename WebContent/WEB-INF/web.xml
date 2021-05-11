@@ -111,17 +111,6 @@
 		<url-pattern>/page/member/modify</url-pattern>
 	</servlet-mapping>
 
-
-
-
-
-
-
-
-
-
-
-
 	<servlet>
 		<servlet-name>header</servlet-name>
 		<jsp-file>/page/indexPage/header.jsp</jsp-file>

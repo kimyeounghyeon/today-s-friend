@@ -67,8 +67,8 @@ public class MemberGradeUpServlet extends HttpServlet {
       
       if (result == 1) {
          System.out.println("회원 등업 성공");
-         out.print("<script>alert'등업이 완료되었습니다.'</script>");
-		request.getRequestDispatcher("/page/indexpage/point").forward(request, response);
+         out.println("<script>alert('등업이 완료되었습니다.'); location.href='/semiproject/page/indexpage/point';</script>");
+//       request.getRequestDispatcher("/page/indexpage/point").forward(request, response);
       } else {
          System.out.println(result);
          System.out.println("등업 실패");

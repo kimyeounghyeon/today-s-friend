@@ -29,7 +29,7 @@
          </tr>
          <tr>
             <td><input type="checkbox" name="item" /></td>
-            <td>1</td>
+            <td>2</td>
             <td>${m.id}</td>
             <td>${m.name}</td>
             <td name="mpoint" >${m.mpoint}</td>
@@ -56,9 +56,10 @@
             </thead>
             <tbody>
       <c:forEach items="${mlist }" var="m">
+      <c:set var="i" value="${i+1 }"/>
                <tr>
                   <td><input type="checkbox" name="item" id="item" value="${m.id}" /></td>
-                  <td class="num">1</td>
+                  <td class="num">${i }</td>
                   <td class="id">${m.id}</td>
                   <td class="name">${m.name}</td>
                   <td class="mpoint">${m.mpoint}</td>

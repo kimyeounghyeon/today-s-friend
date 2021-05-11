@@ -40,6 +40,7 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	
 
 	public List<Board> getBoardByPage(int start, int end, String search, int hobbyId) {
 		Connection conn = getConnection();
@@ -86,6 +87,19 @@ public class BoardService {
 		Connection conn = getConnection();
 		try {
 			result = new BoardDao().boardRead(conn, vo);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close(conn);
+		return result;
+	}
+	
+	public Board myBoardRead(Board vo, String str) {
+		Board result = null;
+		Connection conn = getConnection();
+		try {
+			result = new BoardDao().myboardRead(conn, vo, str);
 
 		} catch (Exception e) {
 			e.printStackTrace();

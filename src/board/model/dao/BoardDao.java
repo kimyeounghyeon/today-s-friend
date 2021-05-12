@@ -12,23 +12,23 @@ import board.model.vo.Board;
 import member.model.vo.Member;
 
 public class BoardDao {
-	
+
 	private Statement stmt = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-	
+
 	private void close() {
 		try {
-			if(rs!=null) {
+			if (rs != null) {
 				rs.close();
 			}
-			if(pstmt != null) {
+			if (pstmt != null) {
 				pstmt.close();
 			}
-			if(stmt != null) {
+			if (stmt != null) {
 				stmt.close();
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -46,70 +46,70 @@ public class BoardDao {
 	 * 
 	 * return result; }
 	 */
-	
-	public int getBoardCount(Connection conn, String search) {
+
+	public int getBoardCount(Connection conn, String search, int hobbyId) {
 		int cnt = 0;
-		String sql = "SELECT COUNT(*) FROM BOARD";
+		String sql = "SELECT COUNT(*) FROM BOARD WHERE HOBBYID=?";
 		if (search != null) {
-			sql += " WHERE BSUBJECT LIKE '%" + search+ "%' OR BCONTENT LIKE '%"+ search+ "%'";
+			sql += " AND BSUBJECT LIKE '%" + search + "%' OR BCONTENT LIKE '%" + search + "%'";
 		}
-		
+
 		pstmt = null;
 		rs = null;
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hobbyId);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				cnt = rs.getInt(1);
 			}
-		
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
 		return cnt;
 	}
-	
-	public List<Board> getBoardByPage(Connection conn, int start, int end, String search, int hobbyId) {
+
+	public List<Board> getBoardByPage(Connection conn, int hobbyId, int startRnum, int endRnum, String search) {
 		List<Board> list = null;
-		String sql_1= "(SELECT * FROM BOARD ";
-		
-		if(search == null) {
+		String sql_1 = "(SELECT * FROM BOARD WHERE HOBBYID = ?";
+
+		if (search == null) {
 			sql_1 += " ORDER BY BDATE DESC) D";
 		} else {
-			sql_1 += " WHERE BSUBJECT LIKE '%" + search+ "%' OR BCONTENT LIKE '%"+ search+ "%'"
+			sql_1 += " AND BSUBJECT LIKE '%" + search + "%' OR BCONTENT LIKE '%" + search + "%'"
 					+ " ORDER BY BDATE DESC) D";
 		}
-		
-		String sql = "SELECT * FROM "
-					+ " (SELECT ROWNUM R, D.* FROM " + sql_1  + " ) "
-					+ " WHERE R >= ? AND R <= ? AND HOBBYID = ? ";
-		
-		pstmt = null; 
+
+		String sql = "SELECT * FROM " + " (SELECT ROWNUM R, D.* FROM " + sql_1 + " ) " + " WHERE R >= ? AND R <= ?";
+
+		pstmt = null;
 		rs = null;
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
-			pstmt.setInt(3, hobbyId);
+			pstmt.setInt(1, hobbyId);
+			pstmt.setInt(2, startRnum);
+			pstmt.setInt(3, endRnum);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				list = new ArrayList<Board>();
 				do {
-					 Board vo = new Board();
-                     vo.setBno(rs.getInt("bno"));
-                     vo.setBsubject(rs.getString("bsubject"));
-                     vo.setBcontent(rs.getString("bcontent"));
-                     vo.setBdate(rs.getDate("bdate"));
-                     vo.setId(rs.getString("id"));
-                     vo.setBfilePath(rs.getString("bfilePath"));
-                     vo.setLocNum(rs.getInt("locNum"));
-                     vo.setHobbyId(rs.getInt("hobbyId"));
-					 list.add(vo);					
-				}while(rs.next());
+					Board vo = new Board();
+					vo.setBno(rs.getInt("bno"));
+					vo.setBsubject(rs.getString("bsubject"));
+					vo.setBcontent(rs.getString("bcontent"));
+					vo.setBdate(rs.getDate("bdate"));
+					vo.setId(rs.getString("id"));
+					vo.setBfilePath(rs.getString("bfilePath"));
+					vo.setLocNum(rs.getInt("locNum"));
+					vo.setHobbyId(hobbyId);
+					list.add(vo);
+					System.out.println("dao에서 리스트" + list);
+				} while (rs.next());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,7 +118,7 @@ public class BoardDao {
 		}
 		return list;
 	}
-	
+
 	public int boardWrite(Connection conn, Board vo) {
 		int result = 0;
 		int max = 1;
@@ -127,8 +127,7 @@ public class BoardDao {
 		String sqlMaxBno = "SELECT NVL(MAX(BNO),0)+1 FROM BOARD";
 
 		// 원글
-		String sql = "INSERT INTO BOARD VALUES(?, ?, ?, " 
-				+ " DEFAULT, ?, ?, ?, ?)";
+		String sql = "INSERT INTO BOARD VALUES(?, ?, ?, " + " DEFAULT, ?, ?, ?, ?)";
 
 		pstmt = null;
 		rs = null;
@@ -145,7 +144,7 @@ public class BoardDao {
 			}
 
 			close();
-			
+
 			// 글 작성
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, max);
@@ -161,58 +160,57 @@ public class BoardDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-            close();
+			close();
 		}
 
 		return result;
 	}
 
 	public int boardDelete(Connection conn, Board vo) {
-		      int result = 0;
+		int result = 0;
 
-		      String sql = "delete from board where bno = ?";
+		String sql = "delete from board where bno = ?";
 
-		      pstmt = null;
+		pstmt = null;
 
-		      try {
-		         pstmt = conn.prepareStatement(sql);
-		         pstmt.setInt(1, vo.getBno());
-		         result = pstmt.executeUpdate();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getBno());
+			result = pstmt.executeUpdate();
 
-		      } catch (Exception e) {
-		         e.printStackTrace();
-		      }finally {
-            close();
-		      }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
 
-		      return result;
-		   }
+		return result;
+	}
+
 	public Board boardRead(Connection conn, Board vo) {
-		
+
 		int bno = vo.getBno();
 		String sql = "select * from board where bno = ?";
 		pstmt = null;
 		rs = null;
 		Board resultVO = new Board();
-		
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bno);
 			rs = pstmt.executeQuery();
-			  if (rs.next()) {
-				  resultVO.setBno(bno);
-	                resultVO.setBsubject(rs.getString("bsubject"));
-	                resultVO.setBcontent(rs.getString("bcontent"));
-	                resultVO.setBfilePath(rs.getString("bfilePath"));
-			  }
-			
+			if (rs.next()) {
+				resultVO.setBno(bno);
+				resultVO.setBsubject(rs.getString("bsubject"));
+				resultVO.setBcontent(rs.getString("bcontent"));
+				resultVO.setBfilePath(rs.getString("bfilePath"));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
-		
+
 		return resultVO;
 	}
 
@@ -221,25 +219,25 @@ public class BoardDao {
 		String sql = "update board set bsubject = ?, bcontent = ?, bfilepath = ? where bno = ? ";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, vo.getBsubject());
 			pstmt.setString(2, vo.getBcontent());
 			pstmt.setString(3, vo.getBfilePath());
 			pstmt.setInt(4, vo.getBno());
 			result = pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-            close();
+			close();
 		}
 
 		return result;
 
 	}
-	
+
 	public Board myboardRead(Connection conn, Board vo, String str) {
-		
+
 		System.out.println("str : " + str);
 		String id = vo.getId();
 		int hobbyId = vo.getHobbyId();
@@ -247,37 +245,36 @@ public class BoardDao {
 		pstmt = null;
 		rs = null;
 		Board resultVO = new Board();
-		
+
 		System.out.println("Sql : " + sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, str);
-			//pstmt.setInt(2, hobbyId);
+			// pstmt.setInt(2, hobbyId);
 			rs = pstmt.executeQuery();
 			System.out.println("Rs  :" + rs);
 			/* int i = 1; */
-			  if (rs.next()) {
-					/*
-					 * System.out.println(i+ rs.getString("id")); i++;
-					 */
-				    //resultVO.setId(id);
-					
-					  resultVO.setBsubject(rs.getString("bsubject"));
-					  resultVO.setBcontent(rs.getString("bcontent"));
-					  resultVO.setBfilePath(rs.getString("bfilePath"));
-					  resultVO.setLocNum(rs.getInt("locNum"));
-					  resultVO.setHobbyId(rs.getInt("hobbyId"));
-					 
-			  }
-			
+			if (rs.next()) {
+				/*
+				 * System.out.println(i+ rs.getString("id")); i++;
+				 */
+				// resultVO.setId(id);
+
+				resultVO.setBsubject(rs.getString("bsubject"));
+				resultVO.setBcontent(rs.getString("bcontent"));
+				resultVO.setBfilePath(rs.getString("bfilePath"));
+				resultVO.setLocNum(rs.getInt("locNum"));
+				resultVO.setHobbyId(rs.getInt("hobbyId"));
+
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
-		
+
 		return resultVO;
 	}
-	
-	
+
 }

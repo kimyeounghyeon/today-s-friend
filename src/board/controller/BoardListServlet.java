@@ -34,29 +34,27 @@ public class BoardListServlet extends HttpServlet {
 
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		final int pageSize = 10; // 한페이지당 글 수
-		final int pageBlock = 5; // 화면에 나타날 페이지 링크 수 dP) 화면 하단에 1 2 3
-		System.out.println("하비아이디" + request.getParameter("hobbyId"));
-		int hobbyId = Integer.parseInt(request.getParameter("hobbyId"));
+		final int PAGESIZE = 5; // 한 페이지당 글 수
+		final int PAGEBLOCK = 5; // 화면에 나타날 페이지 링크 수 dP) 화면 하단에 1 2 3
 
+		int hobbyId = Integer.parseInt(request.getParameter("hobbyId"));
 		BoardService sv = new BoardService();
 
 		int cnt = 0; // 총 글 개수
 		/********** 검색 *************/
 		String search = request.getParameter("search");
-		System.out.println("search: " + search);
 
 		if (search != null && !search.equals("")) {
 		} else {
-			search = null;
+			search = null; // ""로 들어오면 null로 처리해버림.
 		}
-		cnt = sv.getBoardCount(search);
+		
+		cnt = sv.getBoardCount(search, hobbyId);
 
-		int pageCnt = (cnt / pageSize) + (cnt % pageSize == 0 ? 0 : 1); // 총 페이지 개수
-
+		int pageCnt = (cnt / PAGESIZE) + (cnt % PAGESIZE == 0 ? 0 : 1); // 총 페이지 개수
 		int currentPage = 1; // 현재 페이지. 기본 세팅 1. 클릭되면 바뀌게 됨.
 		String pageNum = request.getParameter("pageNum");
-		System.out.println("pageNum" + pageNum);
+
 		if (pageNum != null && !pageNum.equals("")) { // 클린 된 숫자를 가지고 온다면
 			try {
 				currentPage = Integer.parseInt(pageNum);
@@ -66,32 +64,43 @@ public class BoardListServlet extends HttpServlet {
 		} else {
 			currentPage = 1;
 		}
-
+		
 		int startPage = 1; // 화면에 나타날 시작 페이지
 		int endPage = 1; // 화면에 나타날 마지막 페이지
 
 		// 문제 구간 생김. currentPage가 pageBlock 배수인 경우 오류 발생 즉, 3,6,9..
-		if (currentPage % pageBlock == 0) { // currentPage가 pageBlock 배수인 경우
-			startPage = ((currentPage / pageBlock) - 1) * pageBlock + 1;
+		if (currentPage % PAGEBLOCK == 0) { // currentPage가 pageBlock 배수인 경우
+			if((currentPage / PAGEBLOCK)==1) {
+				startPage = 1;
+			} else {
+				startPage = ((currentPage / PAGEBLOCK) - 1) * PAGEBLOCK + 1;
+			}
 		} else {
-			startPage = (currentPage / pageBlock) * pageBlock + 1;
+			startPage = (currentPage / PAGEBLOCK) * PAGEBLOCK + 1;
 		}
-		endPage = startPage + pageBlock - 1;
+		endPage = startPage + PAGEBLOCK - 1;
 		// 총 페이지 개수보다 endPage가 더 클 수 없음.
-		if (endPage > pageCnt)
+		if (endPage > pageCnt) {
 			endPage = pageCnt;
-
-		int start = (currentPage - 1) * pageSize + 1;
-		int end = start + pageSize - 1;
-		if (end > cnt)
-			end = cnt;
+		}
+		
+		int startRnum = 0;
+		if(currentPage==1) {
+			startRnum = 1;
+		} else{
+			startRnum = (currentPage-1) * PAGESIZE +1;
+		}
+		
+		int endRnum = startRnum + PAGESIZE - 1;
+		if(endRnum > cnt) {
+			endRnum = cnt; // 마지막 그
+		}
 
 		List<Board> list = null;
 		/********** 검색 *************/
 
-		list = sv.getBoardByPage(start, end, search, hobbyId);
+		list = sv.getBoardByPage(hobbyId, startRnum, endRnum, search);
 
-		// ajax 아닌 경우 기존 처럼 forward 하면 됨.
 		System.out.println("search" + search);
 		request.setAttribute("pageCnt", pageCnt);
 		request.setAttribute("startPage", startPage);

@@ -113,7 +113,6 @@ public class MemberService {
 		}
 		close(conn);
 		return result;
-
 	}
 
 	// 회원관리

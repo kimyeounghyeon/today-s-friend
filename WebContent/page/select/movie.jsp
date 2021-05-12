@@ -54,6 +54,12 @@
 						<td>${v.bcontent }</td>
 					</tr>
 					<tr>
+						<td>댓글</td>
+						<td>
+							<button type="button" onclick="location.href='<%=request.getContextPath()%>/page/comment/commentlist?bno=${v.bno}'">댓글쓰러가기</button>
+						</td>
+					<tr>
+					<tr>
 						<td colspan="2">
 							<!-- <button type="button" class="btnMod">수정</button> -->
 							<button type="button"
@@ -75,13 +81,13 @@
 			</c:forEach>
 		</c:if>
 		<c:if test="${startPage != 1 }">
-			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=2">이전</a>
+			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=2">&#60;</a>
 		</c:if>
 		<c:forEach begin="${startPage }" end="${endPage }" var="s" step="1">
 			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${s }&search=${search }&hobbyId=2">${s }</a>
 		</c:forEach>
 		<c:if test="${endPage < pageCnt }">
-			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${endPage+1}&search=${search }&hobbyId=2">다음</a>
+			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${endPage+1}&search=${search }&hobbyId=2">&#62;</a>
 		</c:if>
 	</article>
 </section>

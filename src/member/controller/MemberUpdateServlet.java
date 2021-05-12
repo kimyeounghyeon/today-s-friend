@@ -36,28 +36,29 @@ public class MemberUpdateServlet extends HttpServlet {
 	
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int result = 0;
 		
+		int result = 0;
 		Member vo = new Member();
+		PrintWriter out = response.getWriter();
 		String id = request.getParameter("id");
 		
 		if (id != null && !id.equals("")) {
-			vo.setPasswd(request.getParameter("pswd1")); 
+			vo.setId(id);
+			vo.setPasswd(request.getParameter("passwd")); 
+			vo.setEmail(request.getParameter("email"));
+			vo.setLocnum(Integer.parseInt(request.getParameter("locnum")));
 			vo.setPhone(request.getParameter("phone"));
 			vo.setAge(Integer.parseInt(request.getParameter("age")));
-			vo.setEmail(request.getParameter("email"));
-			vo.setId(request.getParameter("id"));
 		}
 		
 		result = new MemberService().memberupdate(vo);
-		PrintWriter out = response.getWriter();
 		
-		if (result > 0) { 
-			out.println("<script>alert('회원정보수정 성공');</script>");
-			request.getRequestDispatcher("page/member/myPageIndex").forward(request, response);
+		if (result==1) { 
+			System.out.println("회원정보 수정 성공");
+			out.println("<script>alert('회원 정보 수정에 성공하였습니다! 다시 한 번 로그인 해주세요!');location.href='/semiproject/page/indexpage/logout';</script>");
 		}else {
 			System.out.println("회원정보수정 실패");
-			out.println("<script>history.back();</script>");
+			out.println("<script>alert('회원 정보 수정에 실패하였습니다 관리자에게 문의해주세요');history.back();</script>");
 		}
 		
 	}

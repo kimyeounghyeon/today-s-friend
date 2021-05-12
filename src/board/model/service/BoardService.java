@@ -34,17 +34,17 @@ public class BoardService {
 		return result;
 	}
 
-	public int getBoardCount(String search) {
+	public int getBoardCount(String search, int hobbyId) {
 		Connection conn = getConnection();
-		int result = new BoardDao().getBoardCount(conn, search);
+		int result = new BoardDao().getBoardCount(conn, search, hobbyId);
 		close(conn);
 		return result;
 	}
 	
 
-	public List<Board> getBoardByPage(int start, int end, String search, int hobbyId) {
+	public List<Board> getBoardByPage(int hobbyId, int startRnum, int endRnum, String search) {
 		Connection conn = getConnection();
-		List<Board> list = new BoardDao().getBoardByPage(conn, start, end, search, hobbyId);
+		List<Board> list = new BoardDao().getBoardByPage(conn, hobbyId, startRnum, endRnum, search);
 		close(conn);
 		return list;
 	}

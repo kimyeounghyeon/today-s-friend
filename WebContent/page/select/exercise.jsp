@@ -4,16 +4,133 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
+<style type="text/css">
+div.container {
+	width: 90%;
+	margin: 0 auto;
+	padding: 2% 2%;
+	text-align: center;
+}
+
+div.noticeInfo {
+	margin: 2% 0;
+}
+
+div#title {
+	width: 60%;
+	margin: 5% 0 0 16%;
+	border-top: 1px solid gray;
+	padding-top: 1%;
+	text-align: left;
+	font-weight: bold;
+}
+
+div.register {
+	display: inline-block;
+	height: 70px;
+	margin-top: 2%;
+}
+
+form .customHeight {
+	height: 100px;
+}
+
+button.btnOK {
+	position: relative;
+	top: -50px;
+	width: 100px;
+	background-color: #4d4dff;
+	color: #fff;
+	border-style: none;
+	cursor: pointer;
+}
+
+textarea#commentContents {
+	font-size: 12pt;
+}
+
+div#viewComments {
+	width: 60%;
+	margin: 1% 0 0 16%;
+	text-align: left;
+	max-height: 300px;
+	overflow: auto;
+}
+
+span.markColor {
+	color: #ff0000;
+}
+
+div.customDisplay {
+	display: inline-block;
+	margin: 1% 3% 0 0;
+}
+
+div.commentDel {
+	margin-bottom: 2%;
+	font-size: 8pt;
+	font-style: italic;
+	cursor: pointer;
+}
+</style>
 <script>
     $(function () {
+          /*  func_init(); */
            $("#btnSearch").click(function(){
             var frm = document.getElementById("frmSearch");
-            frm.action = "<%=request.getContextPath()%>
-	/page/board/boardread";
+            frm.action = "<%=request.getContextPath()%>/page/board/boardread";
 			frm.method = "post";
 			frm.submit();
 		});
-	});
+			
+          <%--  $("button#btnOK").click(function(){
+           	console.log("aaa");
+               var queryString = $("form[name=commentFrm]").serialize();
+               console.log(queryString);
+               $.ajax({
+             		url:"<%=request.getContextPath()%>/page/board/register",
+               	type:"POST",
+                	data:queryString,
+                	
+                   success:function(){	
+       	  	   func_init();
+       	    	   $("#commentContents").val("").focus();
+                   },
+       	    	error: function(request, status, error){
+       		         alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+       		    }
+                   
+       	      }); 
+            });
+       		
+           function func_init() {
+          		$.ajax({
+          		url:"<%=request.getContextPath()%>/page/board/list",
+          		type:"GET",
+          		dataType:"JSON",
+          		success:function(json){
+          			var html = "";
+          			console.log(json);
+          			if (json.length > 0) {
+          				$.each(json, function(entryIndex, entry){
+          					html += "<div> <span class='markColor'>▶</span> "+entry.commentContents+"</div>"
+          					+ "<div class='customDisplay'>"+entry.writeDate+"</div>"
+          					+ "<div class='customDisplay commentDel'>댓글삭제</div>";
+          				});
+          			}
+          		
+          			else {
+          				html += "<div>데이터가 없습니다.</div>";
+          			}
+          			$("#viewComments").html(html);
+              	},
+          		error: function(request, status, error){
+          			alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+          		    }
+          		});  
+   	} --%>
+         });
+       	
 </script>
 <section class="setop">
 	<article>
@@ -57,10 +174,15 @@
 						<td>${v.bcontent }</td>
 					</tr>
 					<tr>
+						<td>댓글</td>
+						<td>
+							<button type="button" onclick="location.href='<%=request.getContextPath()%>/page/comment/commentlist?bno=${v.bno}'">댓글쓰러가기</button>
+						</td>
+					<tr>
 						<td colspan="2">
 							<!-- <button type="button" class="btnMod">수정</button> -->
 							<button type="button"
-								onclick="location.href='<%=request.getContextPath()%>/page/board/simread?bno=${v.bno}'">수정</button>
+								onclick="location.href='<%=request.getContextPath()%>/page/board/commentlist?bno=${v.bno}'">수정</button>
 							<button type="button"
 								onclick="location.href='<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=1'">삭제</button>
 						</td>
@@ -78,13 +200,16 @@
 			</c:forEach>
 		</c:if>
 		<c:if test="${startPage != 1 }">
-			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=1">이전</a>
+			<a
+				href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=1">이전</a>
 		</c:if>
 		<c:forEach begin="${startPage }" end="${endPage }" var="s" step="1">
-			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${s }&search=${search }&hobbyId=1">${s }</a>
+			<a
+				href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${s }&search=${search }&hobbyId=1">${s }</a>
 		</c:forEach>
 		<c:if test="${endPage < pageCnt }">
-			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${endPage+1}&search=${search }&hobbyId=1">다음</a>
+			<a
+				href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${endPage+1}&search=${search }&hobbyId=1">다음</a>
 		</c:if>
 	</article>
 </section>

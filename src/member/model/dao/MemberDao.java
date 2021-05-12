@@ -87,7 +87,7 @@ public class MemberDao {
 				resultVO.setPhone(rs.getString("phone"));
 				resultVO.setAge(rs.getInt("age"));
 				resultVO.setEmail(rs.getString("email"));
-				/* resultVO.setGender(char).rs.getString("gender"); */
+				resultVO.setGender(rs.getString("gender").charAt(0));
 				resultVO.setLEVnum(rs.getInt("LEVnum"));
 				System.out.println("아이디 확인 성공");
 			} else {
@@ -174,25 +174,50 @@ public class MemberDao {
 
 	public int updateMember(Connection conn, Member vo) {
 
-		String sql = "UPDATE Member SET passwd = ?, age = ?, phone = ?, email = ? WHERE id = ?";
+		String sql = "UPDATE MEMBER SET PASSWD = ?, EMAIL = ?, LOCNUM = ?, PHONE = ?, AGE = ?, AGEID = ? WHERE ID = ?";
 		int result = 0;
 		pstmt = null;
+		
+		int age = vo.getAge();
+		int ageid = 0;
+		
+		switch(age/10) {
+		case 1 :
+			ageid = 1;
+			break;
+		case 2 :
+			ageid = 2;
+			break;
+		case 3 :
+			ageid = 3;
+			break;
+		case 4 :
+			ageid = 4;
+			break;
+		case 5 :
+			ageid = 5;
+			break;
+		case 6 :
+			ageid = 6;
+			break;
+		}
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getPasswd());
-			pstmt.setInt(2, vo.getAge());
-			pstmt.setString(3, vo.getPhone());
-			pstmt.setString(4, vo.getEmail());
-			pstmt.setString(5, vo.getId());
+			pstmt.setString(2, vo.getEmail());
+			pstmt.setInt(3, vo.getLocnum());
+			pstmt.setString(4, vo.getPhone());
+			pstmt.setInt(5, age);
+			pstmt.setInt(6, ageid);
+			pstmt.setString(7, vo.getId());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("하윙");
+			System.out.println("업데이트 SQL에서 문제가 생겼어요");
 		} finally {
 			close();
 		}
 		return result;
-
 	}
 
 	public int gradeUp(Connection conn, Member vo, String id, int mpoint) {

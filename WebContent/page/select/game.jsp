@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/select.css">
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
 <script>
     $(function () {
@@ -12,12 +14,21 @@
 			frm.method = "post";
 			frm.submit();
 		});
+
 	});
 </script>
+<div class="click"
+	style="position: fixed; right: 100px; bottom: 50px; z-index: 100">
+	<a
+		href="<%=request.getContextPath()%>/page/board/boardwrite.jsp?hobbyId=3"
+		id="write" class="write"><img class="click" src="../../img/클릭.png"
+		onmouseover="this.src='../../img/클릭.png'"
+		onmouseout="this.src='../../img/클릭1.png'"> </a>
+</div>
 <section class="setop">
 	<article>
 		<p class="pabouttitle">게임친구</p>
-		<a href="<%=request.getContextPath()%>/page/board/boardwrite.jsp?hobbyId=3" id="write" class="write">글쓰기</a>
+		<br> <br> <br>
 		<c:if test="${not empty search }">
 			<h1>${search }에대한검색결과입니다.</h1>
 		</c:if>
@@ -27,65 +38,71 @@
 		</c:if>
 		<c:if test="${not empty blist }">
 			<form id="frmSearch">
-				<input type="text" name="search" id="search"> 
-				<input type="hidden" name="hobbyId" value="3"> 
-				<input type="button" id="btnSearch" value="검색">
+				<input type="text" name="search" id="search"> <input
+					type="hidden" name="hobbyId" value="3"> <input
+					type="button" id="btnSearch" value="검색">
 			</form>
 			<c:forEach items="${blist }" var="v" varStatus="status">
-				<table border="1">
-					<tr>
-						<td>글번호</td>
-						<td>${v.bno }</td>
+				<table border="1" class="trd">
+					<tr class="line" id="sub">
+						<td colspan=2;>&nbsp;${v.bsubject }</td>
 					</tr>
-					<tr>
-						<td>작성자</td>
-						<td>${v.id }</td>
-					</tr>
-					<tr>
-						<td>제목</td>
-						<td>${v.bsubject }</td>
-					</tr>
-					<tr>
-						<td>파일경로</td>
-						<td><img src="<%=request.getContextPath()%>/files/${v.bfilePath }"></td>
-					</tr>
-					<tr>
-						<td>내용</td>
-						<td>${v.bcontent }</td>
-					</tr>
-					<tr>
-						<td>댓글</td>
-						<td>
-							<button type="button" onclick="location.href='<%=request.getContextPath()%>/page/comment/commentlist?bno=${v.bno}'">댓글쓰러가기</button>
+					<tr class="nline" id="vid">
+						<td style="padding-left: 10px;" valign="top">${v.id }</td>
+
+						<td class="btnn" style="text-align: right">
+							<button type="button" class="btn" id="ed"
+								onclick="location.href='<%=request.getContextPath()%>/page/board/simread?bno=${v.bno}'">수정</button>
+							<button type="button" class="btn" id="ed"
+								onclick="location.href='<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=3'">삭제</button>
+
+
 						</td>
-					<tr>
-					<tr>
+					</tr>
+					<tr class="nline">
+						<td colspan="2" height="500" width="600"><img
+							src="<%=request.getContextPath()%>/files/${v.bfilePath }"></td>
+					</tr>
+					<tr class="nline" height="50">
+						<td valign="bottom" colspan="2">${v.bcontent }</td>
+					</tr>
+					<tr class="nline" height="20">
+						<td class="ar" colspan="2"
+							style="text-align: right; valign: bottom;">${v.bno }</td>
+					</tr>
+					<tr class="nline" id="pan" bgcolor="#57d2b4">
+
 						<td colspan="2">
-							<button type="button" onclick="location.href='<%=request.getContextPath()%>/page/board/simread?bno=${v.bno}'">수정</button>
-							<button type="button" onclick="location.href='<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=3'">삭제</button>
+							<button type="button" class="btn"
+								onclick="location.href='<%=request.getContextPath()%>/page/comment/commentlist?bno=${v.bno}'">댓글쓰러가기</button>
 						</td>
-					</tr>
-					<form id="frmmod" class="frmmod">
-						<input type="hidden" name="bno" value="${v.bno }"> 
-						<input type="hidden" name="id" value="${v.id }"> 
-						<input type="hidden" name="bsubject" value="${v.bsubject }"> 
-						<input type="hidden" name="bfilePath" value="${v.bfilePath }"> 
-						<input type="hidden" name="bcontent" value="${v.bcontent }"> 
-						<input type="hidden" name="hobbyId" value="3">
-					</form>
+
+						<form id="frmmod" class="frmmod">
+							<input type="hidden" name="bno" value="${v.bno }"> <input
+								type="hidden" name="id" value="${v.id }"> <input
+								type="hidden" name="bsubject" value="${v.bsubject }"> <input
+								type="hidden" name="bfilePath" value="${v.bfilePath }">
+							<input type="hidden" name="bcontent" value="${v.bcontent }">
+							<input type="hidden" name="hobbyId" value="3">
+						</form>
 				</table>
 				<br>
 			</c:forEach>
 		</c:if>
+		<div id="pagen">
 		<c:if test="${startPage != 1 }">
-			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=3">&#60;</a>
+			<a
+				href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=3">이전</a>
 		</c:if>
 		<c:forEach begin="${startPage }" end="${endPage }" var="s" step="1">
-			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${s }&search=${search }&hobbyId=3">${s }</a>
+			<a
+				href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${s }&search=${search }&hobbyId=3">${s }</a>
 		</c:forEach>
 		<c:if test="${endPage < pageCnt }">
-			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${endPage+1}&search=${search }&hobbyId=3">&#62;</a>
+			<a
+				href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${endPage+1}&search=${search }&hobbyId=3">다음</a>
 		</c:if>
+		</div>
 	</article>
 </section>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

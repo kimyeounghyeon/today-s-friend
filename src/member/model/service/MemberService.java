@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import admin.model.dao.AdminDao;
 import board.model.dao.BoardDao;
 import board.model.vo.Board;
 import member.model.dao.MemberDao;
@@ -55,50 +56,6 @@ public class MemberService {
 		return result;
 	}
 
-	// 멤버 포인트 조회
-	public ArrayList<Member> memberPoint(String search) {
-		ArrayList<Member> list = null;
-		Connection conn = getConnection();
-		try {
-			list = new MemberDao().memberPoint(conn, search);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		close(conn);
-		return list;
-	}
-
-	// 멤버 등급 업
-	public int gradeUp(Member vo, String id, int mpoint) {
-		int result = 0;
-		Connection conn = getConnection();
-		try {
-			result = new MemberDao().gradeUp(conn, vo, id, mpoint);
-			if (result != 0) {
-				commit(conn);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close(conn);
-		}
-		return result;
-	}
-
-	public int getMemberCount(String search) {
-		Connection conn = getConnection();
-		int result = new MemberDao().getMemberCount(conn, search);
-		close(conn);
-		return result;
-	}
-
-	public List<Member> getMemberByPage(int start, int end, String search) {
-		Connection conn = getConnection();
-		List<Member> list = new MemberDao().getMemberByPage(conn, start, end, search);
-		close(conn);
-		return list;
-	}
-
 	public int memberupdate(Member vo) {
 		Connection conn = getConnection();
 		int result = 0;
@@ -114,29 +71,14 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
-
-	// 회원관리
-	public ArrayList<Member> memberUser(String search) {
-		ArrayList<Member> list = null;
+	
+	public int duplecateID(String id) {
+		int cnt = 0;
 		Connection conn = getConnection();
 		try {
-			list = new MemberDao().memberUser(conn, search);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		close(conn);
-		return list;
-	}
+			cnt = new MemberDao().duplecateID(conn, id);
 
-	// 회원탈퇴
-
-	public int memberDelete(Member vo, String id, int phone) {
-		int result = 0;
-		Connection conn = getConnection();
-		try {
-			result = new MemberDao().memberDelete(conn, vo, id, phone);
-
-			if (result != 0) {
+			if (cnt != 0) {
 				commit(conn);
 			}
 		} catch (Exception e) {
@@ -144,7 +86,32 @@ public class MemberService {
 		} finally {
 			close(conn);
 		}
-		return result;
+		return cnt;
+	}
+	
+	
+	public int duplecateEmail(String email) {
+		int cnt = 0;
+		Connection conn = getConnection();
+		try {
+			cnt = new MemberDao().duplecateEmail(conn, email);
+
+			if (cnt != 0) {
+				commit(conn);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		return cnt;
+	}
+	
+	public List<Board>  myBoardRead(Board vo, String str, int hobbyid, Date bdate) {
+		Connection conn = getConnection();
+		List<Board> list = new MemberDao().myboardRead(conn, vo, str, hobbyid , bdate );
+		close(conn);
+		return list;
 	}
 
 }

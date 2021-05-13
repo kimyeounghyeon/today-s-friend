@@ -94,18 +94,5 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
-	
-	public Board myBoardRead(Board vo, String str) {
-		Board result = null;
-		Connection conn = getConnection();
-		try {
-			result = new BoardDao().myboardRead(conn, vo, str);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		close(conn);
-		return result;
-	}
 
 }

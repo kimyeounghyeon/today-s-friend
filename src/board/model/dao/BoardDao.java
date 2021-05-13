@@ -108,7 +108,6 @@ public class BoardDao {
 					vo.setLocNum(rs.getInt("locNum"));
 					vo.setHobbyId(hobbyId);
 					list.add(vo);
-					System.out.println("dao에서 리스트" + list);
 				} while (rs.next());
 			}
 		} catch (Exception e) {
@@ -234,47 +233,6 @@ public class BoardDao {
 
 		return result;
 
-	}
-
-	public Board myboardRead(Connection conn, Board vo, String str) {
-
-		System.out.println("str : " + str);
-		String id = vo.getId();
-		int hobbyId = vo.getHobbyId();
-		String sql = "select * from board where id = ? ";
-		pstmt = null;
-		rs = null;
-		Board resultVO = new Board();
-
-		System.out.println("Sql : " + sql);
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, str);
-			// pstmt.setInt(2, hobbyId);
-			rs = pstmt.executeQuery();
-			System.out.println("Rs  :" + rs);
-			/* int i = 1; */
-			if (rs.next()) {
-				/*
-				 * System.out.println(i+ rs.getString("id")); i++;
-				 */
-				// resultVO.setId(id);
-
-				resultVO.setBsubject(rs.getString("bsubject"));
-				resultVO.setBcontent(rs.getString("bcontent"));
-				resultVO.setBfilePath(rs.getString("bfilePath"));
-				resultVO.setLocNum(rs.getInt("locNum"));
-				resultVO.setHobbyId(rs.getInt("hobbyId"));
-
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-
-		return resultVO;
 	}
 
 }

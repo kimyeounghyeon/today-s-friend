@@ -134,70 +134,32 @@ public class MemberDao {
 		return resultVO;
 	}
 
-	public ArrayList<Member> memberPoint(Connection conn, String search) {
-		ArrayList<Member> list = null;
-		String sql = "select * from member ";
-
-		if (search == null) {
-			sql += " order by mpoint";
-		} else {
-			sql += " where id like '%" + search + "%' order by mpoint";
-		}
-
-		pstmt = null;
-		rs = null;
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				list = new ArrayList<Member>();
-				do {
-					Member ResultVO = new Member();
-
-					ResultVO.setId(rs.getString("id"));
-					ResultVO.setName(rs.getString("name"));
-					ResultVO.setLocnum(rs.getInt("locnum"));
-					ResultVO.setMpoint(rs.getInt("mpoint"));
-					ResultVO.setGradeid(rs.getInt("gradeid"));
-
-					list.add(ResultVO);
-				} while (rs.next());
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-	}
-
 	public int updateMember(Connection conn, Member vo) {
 
 		String sql = "UPDATE MEMBER SET PASSWD = ?, EMAIL = ?, LOCNUM = ?, PHONE = ?, AGE = ?, AGEID = ? WHERE ID = ?";
 		int result = 0;
 		pstmt = null;
-		
+
 		int age = vo.getAge();
 		int ageid = 0;
-		
-		switch(age/10) {
-		case 1 :
+
+		switch (age / 10) {
+		case 1:
 			ageid = 1;
 			break;
-		case 2 :
+		case 2:
 			ageid = 2;
 			break;
-		case 3 :
+		case 3:
 			ageid = 3;
 			break;
-		case 4 :
+		case 4:
 			ageid = 4;
 			break;
-		case 5 :
+		case 5:
 			ageid = 5;
 			break;
-		case 6 :
+		case 6:
 			ageid = 6;
 			break;
 		}
@@ -219,121 +181,151 @@ public class MemberDao {
 		}
 		return result;
 	}
+	
+	// 아이디 중복확인
+	public int duplecateID(Connection conn, String id) {
 
-	public int gradeUp(Connection conn, Member vo, String id, int mpoint) {
-		int gradeid = 0;
-		int result = 0;
-
-		String sql = "update member set gradeid = ? where id = ?";
-
-		if (0 <= mpoint && mpoint <= 299) {
-			gradeid = 1;
-		} else if (300 <= mpoint && mpoint <= 999) {
-			gradeid = 2;
-		} else if (1000 <= mpoint && mpoint <= 2999) {
-			gradeid = 3;
-		} else if (3000 <= mpoint && mpoint <= 5999) {
-			gradeid = 4;
-		} else if (6000 <= mpoint && mpoint <= 9999) {
-			gradeid = 5;
-		}
-
-		pstmt = null;
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, gradeid);
-			pstmt.setString(2, id);
-			result = pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} finally {
-
-			close();
-		}
-
-		return result;
-
-	}
-
-	public int getMemberCount(Connection conn, String search) {
 		int cnt = 0;
-		String sql = "SELECT COUNT(*) FROM member";
-		if (search != null) {
-			sql += " WHERE id LIKE '%" + search + "%'";
-		}
-
-		pstmt = null;
-		rs = null;
 
 		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				cnt = rs.getInt(1);
-			}
+			StringBuilder sql = new StringBuilder();
+			// 아이디 중복 확인
+			sql.append(" SELECT count(id) as cnt ");
+			sql.append(" FROM member ");
+			sql.append(" WHERE id = ? ");
 
+			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				cnt = rs.getInt("cnt");
+			}
 		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
+			System.out.println("아이디 중복 확인 실패 : " + e);
 		}
 		return cnt;
 	}
 
-	public List<Member> getMemberByPage(Connection conn, int start, int end, String search) {
-		List<Member> list = null;
-		String sql_1 = "(select * from member ";
+	// 이메일 중복확인
+	public int duplecateEmail(Connection conn, String email) {
 
-		if (search == null) {
-			sql_1 += " order by mpoint desc) d";
-		} else {
-			sql_1 += " where id like '%" + search + "%' order by mpoint desc) d";
+		int cnt = 0;
+
+		try {
+			StringBuilder sql = new StringBuilder();
+			// 아이디 중복 확인
+			sql.append(" SELECT count(email) as cnt ");
+			sql.append(" FROM member ");
+			sql.append(" WHERE email = ? ");
+
+			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, email);
+
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				cnt = rs.getInt("cnt");
+			}
+		} catch (Exception e) {
+			System.out.println("이메일 중복 확인 실패 : " + e);
 		}
+		return cnt;
+	}
+	
+	public ArrayList<Board> myboardRead(Connection conn, Board vo, String id, int hobbyId, Date bdate) {
 
-		String sql = "SELECT * FROM "
-				+ " (SELECT ROWNUM R, D.* FROM " + sql_1  + " ) "
-				+ " WHERE R >= ? AND R <= ? ";
-		
+		ArrayList<Board> list = null;
+		String sql = "select * from board where id = ?";
+
+		/*
+		 * if (search == null) { sql += " order by id"; } else { sql +=
+		 * " where id like '%" + search + "%' order by i"; }
+		 */
+		Board ResultVO = new Board();
 		pstmt = null;
 		rs = null;
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setString(1, id);
+
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				list = new ArrayList<Member>();
+				list = new ArrayList<Board>();
 				do {
-					Member ResultVO = new Member();
 
+					/*
+					 * ResultVO.setId(rs.getString("id")); ResultVO.setName(rs.getString("name"));
+					 * ResultVO.setLocnum(rs.getInt("locnum"));
+					 * ResultVO.setPhone(rs.getString("phone"));
+					 */
+					ResultVO.setBsubject(rs.getString("bsubject"));
 					ResultVO.setId(rs.getString("id"));
-					ResultVO.setName(rs.getString("name"));
-					ResultVO.setLocnum(rs.getInt("locnum"));
-					ResultVO.setMpoint(rs.getInt("mpoint"));
-					ResultVO.setGradeid(rs.getInt("gradeid"));
-					ResultVO.setPhone(rs.getString("phone"));
+					ResultVO.setHobbyId(rs.getInt("hobbyId"));
+					ResultVO.setBcontent(rs.getString("bcontent"));
+					ResultVO.setBdate(rs.getDate("bdate"));
 
 					list.add(ResultVO);
-
-					System.out.println("list : " + list);
 				} while (rs.next());
 			}
+			System.out.println("list : " + list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-
+	//	
+//		System.out.println("str : " + str);
+//		List<Board> list = null;
+//		
+//		String id = vo.getId();
+//		int hobbyId = vo.getHobbyId();
+//		String sql = "select BSUBJECT from board where id = ? ";
+//		pstmt = null;
+//		rs = null;
+//		Board resultVO = new Board();
+//		
+//		System.out.println("Sql : " + sql);
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, "id1");
+//			//pstmt.setInt(2, hobbyId);
+//			rs = pstmt.executeQuery();
+//			int count = pstmt.executeUpdate();
+//			System.out.println("count : " + count);
+//			System.out.println("rs : " + rs);
+//			
+//			//http://localhost:8090/semiproject/page/member/myboardread
+//			
+//			if(count > 0) {
+//				System.out.println("here");
+//				list = new ArrayList<Board>();
+//				do {
+//					System.out.println("Subject : " + rs.getString("BSUBJECT"));
+//					
+//					  resultVO.setBsubject(rs.getString("BSUBJECT"));
+////					  resultVO.setBcontent(rs.getString("bcontent"));
+////					  //resultVO.setBfilePath(rs.getString("bfilePath"));
+////					  resultVO.setLocNum(rs.getInt("locNum"));
+////					  resultVO.setHobbyId(rs.getInt("hobbyId"));
+////					  
+//					 list.add(resultVO);					
+//				}while(rs.next());
+//				
+//			}
+//			System.out.println("list : " + list);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			close();
+//		}
 		return list;
 	}
 
-	public ArrayList<Member> memberUser(Connection conn, String search) {
-		ArrayList<Member> list = null;
-		String sql = "select * from member ";
+	public ArrayList<Board> myboardlist(Connection conn, String search, int hobbyId, Date bdate, String bsubject,
+			String bcontent) {
+		ArrayList<Board> list = null;
+		String sql = "select * from board ";
 
 		if (search == null) {
 			sql += " order by id";
@@ -348,14 +340,20 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				list = new ArrayList<Member>();
+				list = new ArrayList<Board>();
 				do {
-					Member ResultVO = new Member();
+					Board ResultVO = new Board();
 
-					ResultVO.setId(rs.getString("id"));
-					ResultVO.setName(rs.getString("name"));
-					ResultVO.setLocnum(rs.getInt("locnum"));
-					ResultVO.setPhone(rs.getString("phone"));
+					/*
+					 * ResultVO.setId(rs.getString("id")); ResultVO.setName(rs.getString("name"));
+					 * ResultVO.setLocnum(rs.getInt("locnum"));
+					 * ResultVO.setPhone(rs.getString("phone"));
+					 */
+					
+					ResultVO.setHobbyId(rs.getInt("hobbyId"));
+					ResultVO.setBsubject(rs.getString("bsubject"));
+					ResultVO.setBcontent(rs.getString("bcontent"));
+					ResultVO.setBdate(rs.getDate("bdate"));
 
 					list.add(ResultVO);
 				} while (rs.next());
@@ -366,27 +364,5 @@ public class MemberDao {
 			close();
 		}
 		return list;
-	}
-
-	public int memberDelete(Connection conn, Member vo, String id, int phone) {
-
-		int result = 0;
-		
-		String sql = "delete from member where id = ?";
-		
-		pstmt = null;
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return result; 
-		
 	}
 }

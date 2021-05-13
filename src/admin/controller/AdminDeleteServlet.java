@@ -14,6 +14,7 @@ import admin.model.vo.Admin;
 
 @WebServlet("/page/admin/admboarddelete")
 public class AdminDeleteServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     public AdminDeleteServlet() {

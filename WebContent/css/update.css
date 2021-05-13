@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 @charset "UTF-8";
 /*  메인페이지 */
 section {
@@ -12,7 +13,6 @@ section {
 table {
 	border-collapse: collapse;
 	width: 100%;
-	
 }
 
 th, td {
@@ -29,14 +29,10 @@ th {
 	color: white;
 }
 
-
-
 #center {
 	display: block;
 	text-align: center;
 	padding: 5px 100px 5px 100px;
-	
-	
 }
 
 #bcontent {
@@ -53,7 +49,6 @@ th {
 	height: 50px;
 	font-size: 20px;
 	font: inherit;
-
 }
 
 #listbtn {
@@ -64,9 +59,9 @@ th {
 	height: 50px;
 	font-size: 20px;
 	font: inherit;
-
 }
-#submit{
+
+#submit {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	margin-left: -3px;
@@ -75,7 +70,8 @@ th {
 	font-size: 20px;
 	font: inherit;
 }
-#reset{
+
+#reset {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	margin-left: -3px;
@@ -90,13 +86,13 @@ th {
 	background-color: rgba(0, 0, 0, 0);
 	color: #404040;
 	padding: 5px;
-	
 }
 
 #btn_group button:hover {
 	color: #404040;
 	background-color: #E2E2E2;
 }
-#btn_group{
-float: right;
+
+#btn_group {
+	float: right;
 }

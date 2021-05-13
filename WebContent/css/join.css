@@ -90,3 +90,7 @@ select {
     font-size: 20px;
     font-weight: 400;
 }
+.chk_re {
+	text-align : center;
+	text-decoration : none;
+}

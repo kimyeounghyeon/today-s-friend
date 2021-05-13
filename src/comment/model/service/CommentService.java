@@ -28,4 +28,34 @@ public class CommentService {
 		close(conn);
 		return CommentVOList;
 	}
+	
+	public int modComment(Comment commentVO) throws SQLException {
+		int result = 0;
+		Connection conn = getConnection();
+		result = new CommentDao().modComment(conn, commentVO);
+			if (result != 0) {
+				commit(conn);
+			}
+		close(conn);
+		return result;
+	}
+	
+	public Comment readComment(Comment commentVO) throws SQLException{
+		Comment resultVO = null;
+		Connection conn = getConnection();
+		resultVO = new CommentDao().readComment(conn, commentVO);
+		close(conn);
+		return resultVO;
+	}
+	
+	public int deleteComment(Comment commentVO) throws SQLException {
+	      int result = 0;
+	      Connection conn = getConnection();
+	      result = new CommentDao().deleteComment(conn, commentVO);
+	         if (result != 0) {
+	            commit(conn);
+	         }
+	      close(conn);
+	      return result;
+	   }
 }

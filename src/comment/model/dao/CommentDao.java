@@ -52,6 +52,7 @@ public class CommentDao {
                 vo.setRecontent(rs.getString("recontent"));
                 vo.setId(rs.getString("id"));
                 vo.setRedate(rs.getString("redate"));
+                vo.setBno(commentVO.getBno());
                 CommentVOList.add(vo);
             }
         } finally {
@@ -78,5 +79,65 @@ public class CommentDao {
 		}
 		return result;
 	}
+	
+	public int modComment(Connection conn, Comment commentVO) {
+		int result = 0;
+		String sql = "UPDATE BOARDRE SET RECONTENT = ?, REDATE = DEFAULT WHERE RENO = ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, commentVO.getRecontent());
+			pstmt.setInt(2, commentVO.getReno());
+			result = pstmt.executeUpdate();
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return result;
+	}
+	public Comment readComment(Connection conn, Comment commentVO) {
+
+		int reno = commentVO.getReno();
+		String sql = "SELECT RENO, RECONTENT, ID, TO_CHAR(REDATE, 'yyyy-mm-dd hh24:mi:ss') AS redate FROM BOARDRE WHERE RENO = ?";
+		pstmt = null;
+		rs = null;
+		Comment resultVO = new Comment();
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reno);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				resultVO.setReno(reno);
+				resultVO.setRecontent(rs.getString("recontent"));
+				resultVO.setId(rs.getString("id"));
+				resultVO.setRedate(rs.getString("redate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return resultVO;
+	}
+	
+	public int deleteComment(Connection conn, Comment commentVO) {
+        int result = 0;
+        
+        String sql = "DELETE BOARDRE WHERE RENO = ? ";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, commentVO.getReno());
+            result = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+
+        return result;
+    }
 }

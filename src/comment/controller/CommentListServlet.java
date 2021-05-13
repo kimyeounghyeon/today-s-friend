@@ -9,15 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import board.model.service.BoardService;
 import board.model.vo.Board;
 import comment.model.service.CommentService;
 import comment.model.vo.Comment;
+import member.model.vo.Member;
 
-/**
- * Servlet implementation class BoardReadOneServlet
- */
 @WebServlet("/page/comment/commentlist")
 public class CommentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,6 +51,10 @@ public class CommentListServlet extends HttpServlet {
             vo.setBno(bno);
             commentVO.setBno(bno);
 
+            HttpSession session = request.getSession();
+            Member member = (Member)session.getAttribute("member");
+            String userId = member.getId();
+            
             Board resultVo = new BoardService().boardRead(vo);
 
             try {
@@ -61,6 +64,7 @@ public class CommentListServlet extends HttpServlet {
                 }else {
                 	commentVOList=null;
                 }
+                request.setAttribute("id", userId);
                 request.setAttribute("board", resultVo);
                 request.setAttribute("comment", commentVOList);
                 request.getRequestDispatcher("/page/board/boardread.jsp").forward(request, response);

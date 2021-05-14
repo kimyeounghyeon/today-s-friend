@@ -4,11 +4,13 @@ import static common.JDBCPool.*;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import admin.model.dao.AdminDao;
 import admin.model.vo.Admin;
+import admin.model.vo.Grade;
 import board.model.dao.BoardDao;
 import board.model.vo.Board;
 import member.model.dao.MemberDao;
@@ -121,9 +123,25 @@ public class AdminService {
 		return result;
 	}
 
+	public int getGradeCount(String search) {
+		Connection conn = getConnection();
+		int result = new AdminDao().getGradeCount(conn, search);
+		close(conn);
+		return result;
+	}
+
+
 	public List<Member> getMemberByPage(int start, int end, String search) {
 		Connection conn = getConnection();
 		List<Member> list = new AdminDao().getMemberByPage(conn, start, end, search);
+		close(conn);
+		return list;
+	}
+
+	
+	public List<Grade> getGradeByPage(int start, int end, String search) {
+		Connection conn = getConnection();
+		List<Grade> list = new AdminDao().getGradeByPage(conn, start, end, search);
 		close(conn);
 		return list;
 	}

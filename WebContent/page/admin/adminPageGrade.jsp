@@ -46,6 +46,7 @@
 								<th>아이디</th>
 								<th>이름</th>
 								<th>포인트</th>
+								<th>등급</th>
 						</thead>
 						<tbody>
 							<c:forEach items="${mlist }" var="m">
@@ -56,6 +57,7 @@
 									<td class="id">${m.id}</td>
 									<td class="name">${m.name}</td>
 									<td class="mpoint">${m.mpoint}</td>
+									<td class="gradename">${m.gradeName}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -80,6 +82,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
    $(function(){
+	      $("#checkall").change(function(){
+	          if($("#checkall").is(":checked")){
+	  			//alert("체크박스 체크했음!");
+	  			$("input[name='item']").prop('checked', true);
+	          }else{
+	              //alert("체크박스 체크 해제!");
+	  			$("input[name='item']").prop('checked', false);
+	          }
+	          });
+	      
       $(".levelup_btn").click(levelup);
       
       function levelup(){
@@ -96,6 +108,8 @@
             console.log("실패");
          }
       }
+      
+
    });
    </script>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

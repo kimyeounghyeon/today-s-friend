@@ -231,5 +231,83 @@ public class MemberDao {
 		}
 		return cnt;
 	}
+
+		public ArrayList<Board> myboardRead(Connection conn, Board vo, String id, int hobbyId, Date bdate) {
+
+		ArrayList<Board> list = null;
+		String sql = "select * from board where id = ?";
+
+		/*
+		 * if (search == null) { sql += " order by id"; } else { sql +=
+		 * " where id like '%" + search + "%' order by i"; }
+		 */
+		Board ResultVO = new Board();
+		pstmt = null;
+		rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList<Board>();
+				do {
+
+					ResultVO.setBsubject(rs.getString("bsubject"));
+					ResultVO.setId(rs.getString("id"));
+					ResultVO.setHobbyId(rs.getInt("hobbyId"));
+					ResultVO.setBcontent(rs.getString("bcontent"));
+					ResultVO.setBdate(rs.getDate("bdate"));
+
+					list.add(ResultVO);
+				} while (rs.next());
+			}
+			System.out.println("list : " + list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return list;
+	}
+
+	public ArrayList<Board> myboardlist(Connection conn, String search, int hobbyId, Date bdate, String bsubject,
+			String bcontent) {
+		ArrayList<Board> list = null;
+		String sql = "select * from board ";
+
+		if (search == null) {
+			sql += " order by id";
+		} else {
+			sql += " where id like '%" + search + "%' order by i";
+		}
+
+		pstmt = null;
+		rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList<Board>();
+				do {
+					Board ResultVO = new Board();
+					ResultVO.setHobbyId(rs.getInt("hobbyId"));
+					ResultVO.setBsubject(rs.getString("bsubject"));
+					ResultVO.setBcontent(rs.getString("bcontent"));
+					ResultVO.setBdate(rs.getDate("bdate"));
+
+					list.add(ResultVO);
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
 	
 }

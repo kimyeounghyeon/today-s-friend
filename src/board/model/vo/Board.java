@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Board {
 	
+	private int fbno; // 페이크 번호
 	private int bno;
 	private String bsubject;
 	private String bcontent;
@@ -15,9 +16,10 @@ public class Board {
 	
 	public Board() {}
 	
-	public Board(int bno, String bsubject, String bcontent, Date bdate, String id, String bfilePath, int locNum,
+	public Board(int fbno, int bno, String bsubject, String bcontent, Date bdate, String id, String bfilePath, int locNum,
 			int hobbyId) {
 		super();
+		this.fbno = fbno;
 		this.bno = bno;
 		this.bsubject = bsubject;
 		this.bcontent = bcontent;
@@ -30,8 +32,16 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [bno=" + bno + ", bsubject=" + bsubject + ", bcontent=" + bcontent + ", bdate=" + bdate + ", id="
+		return "Board [fbno=" + fbno + ", bno=" + bno + ", bsubject=" + bsubject + ", bcontent=" + bcontent + ", bdate=" + bdate + ", id="
 				+ id + ", bfilePath=" + bfilePath + ", locNum=" + locNum + ", hobbyId=" + hobbyId + "]";
+	}
+	
+	public int getFbno() {
+		return fbno;
+	}
+
+	public void setFbno(int fbno) {
+		this.fbno = fbno;
 	}
 
 	public int getBno() {

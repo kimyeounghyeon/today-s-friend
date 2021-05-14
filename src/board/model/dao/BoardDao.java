@@ -32,24 +32,10 @@ public class BoardDao {
 			e.printStackTrace();
 		}
 	}
-	/*
-	 * public int boardDelete(Connection conn, Board vo) { int result = 0;
-	 * 
-	 * String sql = "delete from board where bno = ?";
-	 * 
-	 * pstmt = null;
-	 * 
-	 * try { pstmt = conn.prepareStatement(sql); pstmt.setInt(1, vo.getBno());
-	 * result = pstmt.executeUpdate();
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); }finally { close(); }
-	 * 
-	 * return result; }
-	 */
 
-	public int getBoardCount(Connection conn, String search, int hobbyId) {
+	public int getBoardCount(Connection conn, String search, int hobbyId, int locnum) {
 		int cnt = 0;
-		String sql = "SELECT COUNT(*) FROM BOARD WHERE HOBBYID=?";
+		String sql = "SELECT COUNT(*) FROM BOARD WHERE HOBBYID=? AND LOCNUM = ?";
 		if (search != null) {
 			sql += " AND BSUBJECT LIKE '%" + search + "%' OR BCONTENT LIKE '%" + search + "%'";
 		}
@@ -60,6 +46,7 @@ public class BoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, hobbyId);
+			pstmt.setInt(2, locnum);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				cnt = rs.getInt(1);
@@ -73,9 +60,9 @@ public class BoardDao {
 		return cnt;
 	}
 
-	public List<Board> getBoardByPage(Connection conn, int hobbyId, int startRnum, int endRnum, String search) {
+	public List<Board> getBoardByPage(Connection conn, int hobbyId, int locnum, int startRnum, int endRnum, String search) {
 		List<Board> list = null;
-		String sql_1 = "(SELECT * FROM BOARD WHERE HOBBYID = ?";
+		String sql_1 = "(SELECT * FROM BOARD WHERE HOBBYID = "+hobbyId+" AND LOCNUM = "+locnum;
 
 		if (search == null) {
 			sql_1 += " ORDER BY BDATE DESC) D";
@@ -84,30 +71,33 @@ public class BoardDao {
 					+ " ORDER BY BDATE DESC) D";
 		}
 
-		String sql = "SELECT * FROM " + " (SELECT ROWNUM R, D.* FROM " + sql_1 + " ) " + " WHERE R >= ? AND R <= ?";
+		String sql = "SELECT * FROM (SELECT ROWNUM N, E.* FROM " + " (SELECT ROWNUM R, D.* FROM " + sql_1 + " ORDER BY R DESC)E)" + " WHERE R >= ? AND R <= ? ORDER BY N DESC";
 
 		pstmt = null;
 		rs = null;
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, hobbyId);
-			pstmt.setInt(2, startRnum);
-			pstmt.setInt(3, endRnum);
+			pstmt.setInt(1, startRnum);
+			pstmt.setInt(2, endRnum);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				list = new ArrayList<Board>();
 				do {
 					Board vo = new Board();
+
+					vo.setFbno(rs.getInt("N"));
 					vo.setBno(rs.getInt("bno"));
 					vo.setBsubject(rs.getString("bsubject"));
 					vo.setBcontent(rs.getString("bcontent"));
 					vo.setBdate(rs.getDate("bdate"));
 					vo.setId(rs.getString("id"));
 					vo.setBfilePath(rs.getString("bfilePath"));
-					vo.setLocNum(rs.getInt("locNum"));
-					vo.setHobbyId(hobbyId);
+					vo.setHobbyId(rs.getInt("hobbyId"));
+					vo.setLocNum(rs.getInt("locnum"));
+
 					list.add(vo);
+
 				} while (rs.next());
 			}
 		} catch (Exception e) {
@@ -115,6 +105,7 @@ public class BoardDao {
 		} finally {
 			close();
 		}
+		System.out.println("리턴전list" + list);
 		return list;
 	}
 
@@ -234,5 +225,4 @@ public class BoardDao {
 		return result;
 
 	}
-
 }

@@ -12,13 +12,6 @@ import member.model.dao.MemberDao;
 
 public class BoardService {
 
-//	public List<Board> getBoardAll(int hobbyId) throws SQLException{
-//		Connection conn = getConnection();
-//		List<Board> list = new BoardDao().getBoardAll(hobbyId,conn);
-//		close(conn);
-//		return list;
-//	}
-
 	public int boardWrite(Board vo) {
 		int result = 0;
 		Connection conn = getConnection();
@@ -34,17 +27,16 @@ public class BoardService {
 		return result;
 	}
 
-	public int getBoardCount(String search, int hobbyId) {
+	public int getBoardCount(String search, int hobbyId, int locnum) {
 		Connection conn = getConnection();
-		int result = new BoardDao().getBoardCount(conn, search, hobbyId);
+		int result = new BoardDao().getBoardCount(conn, search, hobbyId, locnum);
 		close(conn);
 		return result;
 	}
-	
 
-	public List<Board> getBoardByPage(int hobbyId, int startRnum, int endRnum, String search) {
+	public List<Board> getBoardByPage(int hobbyId, int locnum, int startRnum, int endRnum, String search) {
 		Connection conn = getConnection();
-		List<Board> list = new BoardDao().getBoardByPage(conn, hobbyId, startRnum, endRnum, search);
+		List<Board> list = new BoardDao().getBoardByPage(conn, hobbyId, locnum, startRnum, endRnum, search);
 		close(conn);
 		return list;
 	}
@@ -94,5 +86,4 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
-
 }

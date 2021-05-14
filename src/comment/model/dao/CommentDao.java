@@ -97,20 +97,21 @@ public class CommentDao {
 
 		return result;
 	}
+	
 	public Comment readComment(Connection conn, Comment commentVO) {
 
-		int reno = commentVO.getReno();
-		String sql = "SELECT RENO, RECONTENT, ID, TO_CHAR(REDATE, 'yyyy-mm-dd hh24:mi:ss') AS redate FROM BOARDRE WHERE RENO = ?";
+		String sql = "SELECT BNO, RENO, RECONTENT, ID, TO_CHAR(REDATE, 'yyyy-mm-dd hh24:mi:ss') AS redate FROM BOARDRE WHERE RENO = ?";
 		pstmt = null;
 		rs = null;
 		Comment resultVO = new Comment();
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, reno);
+			pstmt.setInt(1, commentVO.getReno());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				resultVO.setReno(reno);
+				resultVO.setReno(commentVO.getReno());
+				resultVO.setBno(rs.getInt("bno"));
 				resultVO.setRecontent(rs.getString("recontent"));
 				resultVO.setId(rs.getString("id"));
 				resultVO.setRedate(rs.getString("redate"));

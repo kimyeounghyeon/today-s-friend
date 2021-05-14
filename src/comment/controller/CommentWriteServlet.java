@@ -53,8 +53,9 @@ public class CommentWriteServlet extends HttpServlet {
 			
 			if(result==1) {
 				System.out.println("댓글 인서트 됨");
-				request.getRequestDispatcher("/page/comment/commentlist").forward(request, response);				
-			}else {
+	            response.sendRedirect("commentlist?bno="+ strbno);        
+				
+				}else {
 				System.out.println("댓글 인서트 안됐음?");
 				out.println("<script>alert('댓글 작성에 실패했습니다.'); history.back();</script>");
 			}

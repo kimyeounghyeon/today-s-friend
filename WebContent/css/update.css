@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-@charset "UTF-8";
 /*  메인페이지 */
 section {
 	text-align: center;
@@ -10,6 +9,91 @@ section {
 	font-style: italic;
 }
 
+.CModBg {
+	display : none;
+	width : 100%;
+	height : 80%;
+	position: fixed;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.CMod {
+	width : 70%;
+	height : 80%;
+	margin : auto;
+	border : 1px solid gray;
+	position: relative;
+	text-align : center;
+	
+}
+
+#close3 {
+    color: #81b1a6;
+    right: 10;
+    margin: 0 16% 0 0;
+    z-index: 999;
+    position: fixed;
+}
+
+#close3:hover{
+	cursor:pointer;
+}
+
+.subject {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30pt;
+    color: gray;
+    margin: 2%;
+    padding: 15px;
+}
+
+.modModalT {
+	width : 100%;
+	height : 40%;
+	text-align : center;
+}
+
+
+.cmodText {
+    width: 80%;
+    height: 50%;
+    left: 10%;
+    position: absolute;
+    top: 20%;
+    border : 1px solid gray;
+}
+
+.modMoalTd {
+	width : 100%;
+	height: 100%;
+}
+
+.modMoalTdR {
+    position: absolute;
+    background-color: white;
+    top: 80%;
+    left: 40%;
+}
+
+#btnCModWrite {
+	display : block;
+	border : none;
+	text-align : center;
+	margin : auto;
+	background: #d4eae4;
+	color: #4a4a4a;
+	width : 200px;
+	height : 50px;
+	font: inherit;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #f7f7f7;
+	
+}
+
+#btnCModWrite:hover {
+	cursor:pointer;
+}
 table {
 	border-collapse: collapse;
 	width: 100%;
@@ -60,6 +144,8 @@ th {
 	font-size: 20px;
 	font: inherit;
 }
+
+
 
 #submit {
 	border-top-right-radius: 5px;

@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import admin.model.vo.Grade;
 import admin.model.vo.Admin;
 import board.model.vo.Board;
 import member.model.vo.Member;
@@ -407,4 +408,77 @@ public class AdminDao {
 		}
 		return list;
 	}
+
+	
+	public List<Grade> getGradeByPage(Connection conn, int start, int end, String search) {
+		List<Grade> list = null;
+		String sql_1 = "(select m.id, m.name, m.mpoint, g.gradeid, g.gradename from member m, grade g ";
+
+		if (search == null) {
+			sql_1 += " where m.gradeid = g.gradeid order by mpoint desc) d";
+		} else {
+			sql_1 += " where m.gradeid = g.gradeid and id like '%" + search + "%' order by mpoint desc) d";
+		}
+
+		String sql = "SELECT * FROM "
+				+ " (SELECT ROWNUM R, D.* FROM " + sql_1  + " ) "
+				+ " WHERE R >= ? AND R <= ? ";
+		
+		pstmt = null;
+		rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				list = new ArrayList<Grade>();
+				do {
+					Grade gradeVO = new Grade();
+
+					gradeVO.setId(rs.getString("id"));
+					gradeVO.setName(rs.getString("name"));
+					gradeVO.setMpoint(rs.getInt("mpoint"));
+					gradeVO.setGradeId(rs.getInt("gradeid"));
+					gradeVO.setGradeName(rs.getString("gradename"));
+					list.add(gradeVO);
+
+				} while (rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return list;
+	}
+	
+	public int getGradeCount(Connection conn, String search) {
+		int cnt = 0;
+		String sql = "SELECT COUNT(*) FROM member m, grade g";
+		if (search != null) {
+			sql += " WHERE m.gradeid = g.gradeid and id LIKE '%" + search + "%'";
+		}
+
+		pstmt = null;
+		rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				cnt = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+
 }

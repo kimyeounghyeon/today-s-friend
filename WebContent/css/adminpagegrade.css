@@ -42,14 +42,19 @@ table {
 	width: 10%;
 }
 .id {
-	width: 30%;
+	width: 20%;
 }
 .name {
-	width: 30%;
+	width: 20%;
 }
 .mpoint {
+	width: 20%;
+}
+
+.gradename {
 	width: 30%;
 }
+
 .levelup_btn {
 	margin-top: 20px;
 	text-align: center;

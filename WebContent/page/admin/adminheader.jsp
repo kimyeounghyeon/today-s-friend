@@ -30,7 +30,7 @@
 		<a href="<%=CPath%>/page/indexpage/point" class="bar-item button">등급관리</a>
 		<a href="#" class="bar-item button">게시글관리</a>
 		<a href="#" class="bar-item button">인기분석</a>
-		<div id="d2">
+		<div id="d3">
 			<div>관리자님!</div>
 			<button type="button" class="adminLogout" onclick="window.close()">관리자모드 나가기</button>
 		</div>

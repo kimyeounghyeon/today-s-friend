@@ -85,6 +85,19 @@
 	</c:if>
 </section>
 <script>
+
+
+	$("#checkall").change(function(){
+	    if($("#checkall").is(":checked")){
+	     //alert("체크박스 체크했음!");
+	     $("input[name='item']").prop('checked', true);
+	    }else{
+	        //alert("체크박스 체크 해제!");
+	     $("input[name='item']").prop('checked', false);
+	    }
+	});
+
+
 	$(function (){
 		   $("#delete_btn").click(Withdrawal);
 		  
@@ -104,24 +117,7 @@
 		         }
 		   });
 		   
-		   <%-- $(function () {
-			      
-			      $("#delete_btn").click(Withdrawal);
-			      
-			      function Withdrawal(){
-			          if($("input:checkbox[name='item']:checked")) {
-			             var result = confirm("정말 탈퇴를 진행하시겠습니까?");
-			             var ids = "#frmhidden"
-			             console.log("테스트");
-			             console.log(result);
-			             // confirm은 확인 버튼을 누르면 true, 취소 버튼을 누르면 false가 들어옴.
-			             
-			             if(result == true){
-			                location.href="<%=request.getContextPath()%>/page/indexpage/deletepage"; // a 태그의 href 경로로 이동하는 로직 진행
-			             } else {
-			                return false; // a 태그의 href 경로 이동하지 않음
-			             }
-			         }
-			   }); --%>
+	
+	
 </script>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

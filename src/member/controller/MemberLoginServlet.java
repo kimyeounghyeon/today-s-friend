@@ -48,7 +48,7 @@ public class MemberLoginServlet extends HttpServlet {
 		
 		if(resultVO==null) {
 			System.out.println("아이디 조회 실패");
-			out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요!'); location.href='main'</script>");
+			out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요!'); location.href='/semiproject/page/indexPage/main'</script>");
 		} else if(passwd.equals(resultVO.getPasswd())) {
 			System.out.println("유저정보조회성공");
 			request.getSession().setAttribute("member", resultVO);
@@ -57,7 +57,7 @@ public class MemberLoginServlet extends HttpServlet {
 			out.println("<script>alert('로그인에 성공하였습니다!');</script>");
 		} else {
 			System.out.println("비밀번호 조회 실패");
-			out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요!'); location.href='main'</script>");
+			out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요!'); location.href='/semiproject/page/indexPage/main'</script>");
 		}
 	}
 }

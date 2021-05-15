@@ -47,12 +47,12 @@ $("#meet").click(function(){
 		});
 </script>
 <%}else{ %>
-            <a href="<%=CPath%>/page/board/boardread?hobbyId=1" class="bar-item button">운동</a> 
-            <a href="<%=CPath%>/page/board/boardread?hobbyId=2" class="bar-item button">영화</a>
-            <a href="<%=CPath%>/page/board/boardread?hobbyId=3" class="bar-item button">게임</a>
-            <a href="<%=CPath%>/page/board/boardread?hobbyId=4" class="bar-item button">음식</a> 
-            <a href="<%=CPath%>/page/board/boardread?hobbyId=5" class="bar-item button">주식</a> 
-            <a href="<%=CPath%>/page/board/boardread?hobbyId=6" class="bar-item button">자유/후기</a>
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=1&locnum=<%=member.getLocnum() %>'" class="bar-item button">운동</a> 
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=2&locnum=<%=member.getLocnum() %>'" class="bar-item button">영화</a>
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=3&locnum=<%=member.getLocnum() %>'" class="bar-item button">게임</a>
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=4&locnum=<%=member.getLocnum() %>'" class="bar-item button">음식</a> 
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=5&locnum=<%=member.getLocnum() %>'" class="bar-item button">주식</a> 
+            <a href="<%=CPath%>/page/board/boardread?hobbyId=6&locnum=<%=member.getLocnum() %>'" class="bar-item button">자유/후기</a>
 <%} %>
          </div>
       </div>

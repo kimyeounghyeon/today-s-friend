@@ -49,6 +49,15 @@ img {
     float: right;
     right:40px;
 }
+
+#d3{
+	position: relative;
+    display: inline-block;
+    float: right;
+    right:40px;
+    top:15px;
+}
+
 .dropdown-click,.dropdown-hover {
     position: relative;
     display: inline-block;

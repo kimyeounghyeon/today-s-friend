@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/modify.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/searchIdNPw.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css">
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -167,24 +168,4 @@ if (member == null){
            
            
    });
-        
-        /* $(document).ready(function(e) {
-        	
-        	$("#all_chk").click(function(){
-        		var chk = $(this).is(":checked");
-        		if(chk) $("input[name='cart']").prop('checked', true);
-        		else  $("input[name='cart']").prop('checked', false);
-        	});
-        	
-            $("#checkall").change(function(){
-                if($("#checkall").is(":checked")){
-        			//alert("체크박스 체크했음!");
-        			$("input[name='item']").prop('checked', true);
-                }else{
-                    //alert("체크박스 체크 해제!");
-        			$("input[name='item']").prop('checked', false);
-                }	
-        	});	
-        });
-    */
 </script>

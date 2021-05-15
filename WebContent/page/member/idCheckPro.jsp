@@ -1,3 +1,4 @@
+<%@page import="member.model.service.MemberService"%>
 <%@page import="member.model.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -34,9 +35,9 @@ text-decoration:none;
 
 		<%
 			//1) 사용가능한 아이디일 경우, 아이디 입력 폼에 넣기 위함 
-		MemberDao dao = new MemberDao();
+		MemberService sv = new MemberService();
 		String id = request.getParameter("id");
-		int cnt = dao.duplecateID(id);
+		int cnt = sv.duplecateID(id);
 
 		out.println("입력 ID : <strong>" + id + "</stong>");
 		if (cnt == 0) {

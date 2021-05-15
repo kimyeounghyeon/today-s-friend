@@ -32,6 +32,6 @@
 		<a href="#" class="bar-item button">인기분석</a>
 		<div id="d2">
 			<div>관리자님!</div>
-			<button type="button" onclick="window.close()">관리자모드 나가기</button>
+			<button type="button" class="adminLogout" onclick="window.close()">관리자모드 나가기</button>
 		</div>
 	</header>

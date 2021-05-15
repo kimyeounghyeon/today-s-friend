@@ -1,3 +1,4 @@
+<%@page import="member.model.service.MemberService"%>
 <%@page import="member.model.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -34,9 +35,9 @@ text-decoration:none;
 
 		<%
 			//1) 사용가능한 이메일 경우, 이메일 입력 폼에 넣기 위함 
-		MemberDao dao = new MemberDao();
+		MemberService sv = new MemberService();
 		String email = request.getParameter("email");
-		int cnt = dao.duplecateEmail(email);
+		int cnt = sv.duplecateEmail(email);
 
 		out.println("입력 Email : <strong>" + email + "</stong>");
 		if (cnt == 0) {

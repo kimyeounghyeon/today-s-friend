@@ -1,8 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/board.css">
+	href="<%=request.getContextPath()%>/css/adminpagemember.css">
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
+<style>
+.num{
+    width: 10%;
+}
+.sub {
+	width: 30%;
+}
+.writer {
+	width: 30%;
+}
+.date {
+	width: 30%;
+}
+.Withdrawal {
+ font-family: "GmarketSansMedium";
+}
+</style>
 <section class="setop">
 	<div class=row>
 		<p id="pabouttitle">공지사항</p>
@@ -35,8 +52,8 @@
 			</table>
 		</c:if>
 		<br>
-		<input type="button" value="글목록" onclick="javascript:history.back();">
-		<c:if test="${startPage != 1 }">
+		<input type="button" value="이전 돌아가기" class="Withdrawal" onclick="javascript:history.back();">
+		<%-- <c:if test="${startPage != 1 }">
 			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=4">이전</a>
 		</c:if>
 		<c:forEach begin="${startPage }" end="${endPage }" var="s" step="1">
@@ -44,7 +61,7 @@
 		</c:forEach>
 		<c:if test="${endPage < pageCnt }">
 			<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${endPage+1}&search=${search }&hobbyId=4">다음</a>
-		</c:if>
+		</c:if> --%>
 	</div>
 </section>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

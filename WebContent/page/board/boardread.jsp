@@ -117,12 +117,13 @@ function delComment(inputreno,inputbno){
             <tr>
                <td>내용</td>
                <td><%=board.getBcontent()%></td>
-            <tr>
-               <td>파일선택-여러개</td>
-               <td><img
-                  src="<%=request.getContextPath()%>/files/<%=board.getBfilePath()%>">
-
-               </td>
+            <tr>      
+               <c:if test="${not empty board.bfilePath }">
+               <td>첨부파일</td>
+				<td><img src="<%=request.getContextPath()%>/files/${board.bfilePath }"></td>
+				</c:if>
+				<c:if test="${empty board.bfilePath }">
+				</c:if>
             </tr>
             <tr>
                <td rowspan="2">댓글보기</td>

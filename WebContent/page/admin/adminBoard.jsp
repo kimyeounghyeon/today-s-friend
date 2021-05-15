@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../admin/adminheader.jsp"></jsp:include>
+<style>
+button { 
+	font-family: 'GmarketSansMedium';
+	} 
+
+</style>
+
 <section class="setop">
 	<div class=row>
 		<p id="pabouttitle">공지사항 작성</p>

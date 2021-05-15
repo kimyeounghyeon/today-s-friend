@@ -104,9 +104,10 @@ case 8:
 		<div id="tool">
 
 			<a id="introducea" class="bar-item button"
-				href="javascript:void(window.open('https://www.youtube.com/channel/UCyn-K7rZLXjGl7VXGweIlcA', '_blank'))">백종원의 요리비책</a>
+				href="javascript:void(window.open('https://www.youtube.com/watch?v=tyiN2jjaX0g', '_blank'))">운동영상</a>
 			<a id="introduceb" class="bar-item button"
-				href="javascript:void(window.open('<%=request.getContextPath()%>/page/map/food.jsp', '_blank','width=500px, height=400px'))">치킨지도</a> <a href="<%=request.getContextPath()%>/page/board/adread"
+				href="javascript:void(window.open('<%=request.getContextPath()%>/page/map/map.jsp', '_blank','width=500px, height=400px'))">따릉이
+				대여</a> <a href="<%=request.getContextPath()%>/page/board/adread"
 				id="introducec" class="bar-item button">공지사항</a> <a id="introduced"
 				class="bar-item button"
 				href="javascript:void(window.open('<%=request.getContextPath()%>/page/channel/channel.jsp', '_blank','width=500px, height=400px'))">신고
@@ -124,7 +125,7 @@ case 8:
 		</c:if>
 		<c:if test="${not empty blist }">
 			<form id="frmSearch">
-				<input type="text" name="search" id="search"> <input
+				<input type="text" name="search" id="search" placeholder="회원아이디로 검색"> <input
 					type="hidden" name="hobbyId" value="4"> <input
 					type="button" id="btnSearch" value="검색">
 			</form>

@@ -1,4 +1,3 @@
-<%@page import="member.model.vo.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -30,7 +29,6 @@
 	display : inline-block;
  	width: 150px;
 }
-
 </style>
 <script>
     $(function () {
@@ -88,9 +86,6 @@ case 8:
 	break;
 }
 %>
-<%
-Member member = (Member)session.getAttribute("member");
-%>
 		<div class="tdiv">
 			<p class="pabouttitle">운동친구 - <%=loc %></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<select id="selloc">
@@ -130,7 +125,7 @@ Member member = (Member)session.getAttribute("member");
 		</c:if>
 		<c:if test="${not empty blist }">
 			<form id="frmSearch">
-				<input type="text" name="search" id="search"> <input
+				<input type="text" name="search" id="search" placeholder="회원아이디로 검색"> <input
 					type="hidden" name="hobbyId" value="1"> <input
 					type="button" id="btnSearch" value="검색">
 			</form>
@@ -141,11 +136,12 @@ Member member = (Member)session.getAttribute("member");
 					</tr>
 					<tr class="nline" id="vid">
 						<td style="padding-left: 10px;" valign="top">${v.id }</td>
+
 						<td class="btnn" style="text-align: right">
 							<button type="button" class="btn" id="ed"
-								onclick="location.href='<%=request.getContextPath()%>/page/board/simread?bno=${v.bno}&hobbyId=1&locnum=<%=member.getLocnum() %>'">수정</button>
+								onclick="location.href='<%=request.getContextPath()%>/page/board/simread?bno=${v.bno}'">수정</button>
 							<button type="button" class="btn" id="ed"
-								onclick="location.href='<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=1&locnum=<%=member.getLocnum() %>'">삭제</button>
+								onclick="location.href='<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=1'">삭제</button>
 						</td>
 					</tr>
 					<tr class="nline setrimg">

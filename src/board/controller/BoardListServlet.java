@@ -36,7 +36,7 @@ public class BoardListServlet extends HttpServlet {
 
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		final int PAGESIZE = 5; // 한 페이지당 글 수
+		final int PAGESIZE = 2; // 한 페이지당 글 수
 		final int PAGEBLOCK = 5; // 화면에 나타날 페이지 링크 수 dP) 화면 하단에 1 2 3
 
 		int hobbyId = Integer.parseInt(request.getParameter("hobbyId"));
@@ -114,36 +114,8 @@ public class BoardListServlet extends HttpServlet {
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("blist", list);
 		request.setAttribute("search", search);
-		
-		String loc = "";
-		switch(locnum){
-		case 1:
-			loc = "서울";
-			break;
-		case 2:
-			loc = "경기";
-			break;
-		case 3:
-			loc = "인천";
-			break;
-		case 4:
-			loc = "충청";
-			break;
-		case 5:
-			loc = "강원";
-			break;
-		case 6:
-			loc = "경상";
-			break;
-		case 7:
-			loc = "전라";
-			break;
-		case 8:
-			loc = "제주";
-			break;
-		}
-		request.setAttribute("loc", loc);
-		
+		request.setAttribute("locnum", locnum);
+	
 		System.out.println("pageCnt"+ pageCnt);
 		System.out.println("startPage"+ startPage);
 		System.out.println("endPage"+ endPage);

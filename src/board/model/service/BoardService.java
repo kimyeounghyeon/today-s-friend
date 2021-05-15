@@ -86,4 +86,19 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+
+	public List<Board> myBoardRead(Board vo) {
+		Connection conn = getConnection();
+		List<Board> list = new BoardDao().myboardRead(conn, vo);
+		close(conn);
+		return list;
+
+	}
+
+	public int getBoardCount(int hobbyId) {
+		Connection conn = getConnection();
+		int result = new BoardDao().getBoardCount(conn, hobbyId);
+		close(conn);
+		return result;
+	}
 }

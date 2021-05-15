@@ -1,59 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/join.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/font.css">
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
 <style>
 .id_chk_re {
-	background-color:#53cf74;
-	border-radius:10px;
-	border:2px solid #1fba2f; 
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:13px;
-	padding:5px 15px;
-	text-decoration:none;
+	background-color: #53cf74;
+	border-radius: 10px;
+	border: 2px solid #1fba2f;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 13px;
+	padding: 5px 15px;
+	text-decoration: none;
 	/* text-shadow:0px 1px 0px #2f6627; */
 	font-family: GmarketSansMedium;
-	margin-left:330px;
-	
-}
-.id_chk_re:hover {
-	background-color:#6bcf36;
-}
-.id_chk_re:active {
-	position:relative;
-	top:1px;
-}
-.mail_chk_re {
-	background-color:#53cf74;
-	border-radius:10px;
-	border:2px solid #1fba2f; 
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:13px;
-	padding:5px 15px;
-	text-decoration:none;
-	/* text-shadow:0px 1px 0px #2f6627; */
-	font-family: GmarketSansMedium;
-	margin-left:375px;
-	margin-top:-23px;
-}
-.mail_chk_re:hover {
-	background-color:#6bcf36;
-}
-.mail_chk_re:active {
-	position:relative;
-	top:1px;
-}
-.join_title_email{
-	height: 30px;
+	margin-left: 330px;
 }
 
+.id_chk_re:hover {
+	background-color: #6bcf36;
+}
+
+.id_chk_re:active {
+	position: relative;
+	top: 1px;
+}
+
+.mail_chk_re {
+	background-color: #53cf74;
+	border-radius: 10px;
+	border: 2px solid #1fba2f;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 13px;
+	padding: 5px 15px;
+	text-decoration: none;
+	/* text-shadow:0px 1px 0px #2f6627; */
+	font-family: GmarketSansMedium;
+	margin-left: 375px;
+	margin-top: -23px;
+}
+
+.mail_chk_re:hover {
+	background-color: #6bcf36;
+}
+
+.mail_chk_re:active {
+	position: relative;
+	top: 1px;
+}
+
+.join_title_email {
+	height: 30px;
+}
 </style>
 <section class="setop">
 	<!-- wrapper -->
@@ -64,16 +68,16 @@
 				<!-- ID -->
 				<div class="form-group">
 					<h3 class="join_title">
-						<label for="id">아이디</label>
-						<input class="id_chk_re" type="button" value="중복확인" onclick="idCheck()">
+						<label for="id">아이디</label> <input class="id_chk_re" type="button"
+							value="중복확인" onclick="idCheck()">
 					</h3>
 					<span class="box int_id"> <input type="text" id="id"
 						name="id" class="int" maxlength="20">
 					</span> <span class="error_next_box"></span>
-					
+
 					<div class="check_font" id="id_check"></div>
 				</div>
-				
+
 				<!-- PW1 -->
 				<div>
 					<h3 class="join_title">
@@ -85,7 +89,7 @@
 					</span> <span class="error_next_box"></span>
 					<div class="check_font" id="pass_check"></div>
 				</div>
-				
+
 				<!-- PW2 -->
 				<div>
 					<h3 class="join_title">
@@ -94,9 +98,11 @@
 					<span class="box int_pass_check"> <input type="password"
 						id="pswd2" name="pswd2" class="int" maxlength="20">
 					</span> <span class="error_next_box"></span>
+					<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
+    				<span id="alert-danger" style="display: none; color: red; /* font-weight: bold; */ ">비밀번호가 일치하지 않습니다.</span>
 					<div class="check_font" id="passre_check"></div>
 				</div>
-				
+
 				<!-- NAME -->
 				<div>
 					<h3 class="join_title">
@@ -107,7 +113,7 @@
 					</span> <span class="error_next_box"></span>
 					<div class="check_font" id="name_check"></div>
 				</div>
-				
+
 				<!-- AGE -->
 				<div>
 					<h3 class="join_title">
@@ -123,7 +129,7 @@
 					</div>
 					<span class="error_next_box"></span>
 				</div>
-				
+
 				<!-- GENDER -->
 				<div>
 					<h3 class="join_title">
@@ -138,7 +144,7 @@
 					</span> <span class="error_next_box">필수 정보입니다.</span>
 					<div class="check_font" id="gender_check"></div>
 				</div>
-				
+
 				<!-- LOCAL -->
 				<div>
 					<h3 class="join_title">
@@ -159,30 +165,32 @@
 					</span> <span class="error_next_box">필수 정보입니다.</span>
 					<div class="check_font" id="local_check"></div>
 				</div>
-				
+
 				<!-- EMAIL -->
 				<div>
-					<h3 class="join_title_email" >
+					<h3 class="join_title_email">
 						<label for="email">본인 확인 이메일<span class="optional"></span></label>
-						<input class="mail_chk_re" type="button" value="중복확인" onclick="mailCheck()">
+						<input class="mail_chk_re" type="button" value="중복확인"
+							onclick="mailCheck()">
 					</h3>
 					<span class="box int_email"> <input type="text" id="email"
 						name="email" class="int" maxlength="100" placeholder="이메일 ">
 					</span> <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
 					<div class="check_font" id="mail_check"></div>
 				</div>
-				
+
 				<!-- MOBILE -->
 				<div>
 					<h3 class="join_title">
 						<label for="phoneNo">휴대전화</label>
 					</h3>
 					<span class="box int_mobile"> <input type="tel" id="mobile"
-						name="phone" class="int" maxlength="16" placeholder="숫자만 입력해주세요 :)">
+						name="phone" class="int" maxlength="16"
+						placeholder="숫자만 입력해주세요 :)">
 					</span> <span class="error_next_box"></span>
 					<div class="check_font" id="pnum_check"></div>
 				</div>
-				
+
 				<!-- JOIN BTN-->
 				<div class="btn_area">
 					<button type="button" id="btnJoin" class="header-btn">
@@ -235,17 +243,25 @@
 			$('#pass_check').css('color', 'red');
 		}
 	});
-	
+		
 	// 비밀번호 확인
-	/* $('#pswd2').blur(function(){
-		if((pwJ.test($("#pswd1").val()) == ((pwJ.test($("#pswd2").val())){
-			console.log(pwJ.test($(this).val());
-			$("#passre_check").text('');
-		} else {
-			$('#passre_check').text('비밀번호 확인 바랍니다.');
-			$('#passre_check').css('color', 'red');
-		}
-	}); */
+	$('#pswd2').focusout(function () {
+        var pwd1 = $("#pswd1").val();
+        var pwd2 = $("#pswd2").val();
+  
+        if ( pwd1 != '' && pwd2 == '' ) {
+            null;
+        } else if (pwd1 != "" || pwd2 != "") {
+            if (pwd1 == pwd2) {
+                $("#alert-success").css('display', 'inline-block');
+                $("#alert-danger").css('display', 'none');
+            } else {
+                alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
+                $("#alert-success").css('display', 'none');
+                $("#alert-danger").css('display', 'inline-block', 'red');
+            }
+        }
+    });
 	
 	// 이름에 특수문자 들어가지 않도록 설정
 	$("#name").blur(function() {

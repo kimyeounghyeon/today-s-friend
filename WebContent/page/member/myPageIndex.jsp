@@ -8,10 +8,14 @@
         <p class="pabouttitle">마이페이지</p>
 <%
 Member member = (Member)session.getAttribute("member");
+//String id = member.getId();
 %>
             <button class="outline-button" onclick="location.href='<%=request.getContextPath()%>/page/member/modify';"><%=member.getName()%>님 정보 수정</button><br>
-            <button class="outline-button" onclick="location.href='<%=request.getContextPath()%>/page/member/myPageWriting';">내가 쓴 글/댓글</button><br>
-            <button class="outline-button">내 글 알림</button><br>
+            <button class="outline-button" onclick="location.href='<%=request.getContextPath()%>/page/member/myboardread'">내가 쓴 글/댓글</button><br> 
+            <%-- <button class="outline-button" onclick="location.href='<%=request.getContextPath()%>/page/member/myPageWriting?id=<%=member.getId()%>';"">내가 쓴 글/댓글</button><br> --%>
+           
     </div>
 </section>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>jsp:include>
+
+

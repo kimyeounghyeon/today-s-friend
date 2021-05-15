@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import admin.model.service.AdminService;
 import board.model.service.BoardService;
 import board.model.vo.Board;
-import member.model.service.MemberService;
+import member.model.vo.Member;
 
 @WebServlet("/page/member/myboardread")
 public class MyBoardReadServlet extends HttpServlet {
@@ -37,30 +36,28 @@ public class MyBoardReadServlet extends HttpServlet {
 	protected void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Board vo = null;
-		Board resultVo = null;
-		MemberService sv = new MemberService();
-		String id = "";
-		Date bdate = null;
-		int hobbyid = 0;
-		HttpSession session = request.getSession(); // 잘못됨 구글 찾아보기
-		String myId = (String) session.getAttribute("sessionId");
-
-		System.out.println("id 잘 들어왔나요?" + myId); // 이렇게 해서
+		
+		BoardService sv = new BoardService();
+		HttpSession session = request.getSession(); 
+		Member member = (Member) session.getAttribute("member");
+		String id = member.getId();
+		
+		System.out.println("서블릿임 = id 잘 들어왔나요?" + id); // 이렇게 해서
 
 		if (id != null) {
 			List<Board> list = null;
-			vo = new Board();
+			Board vo = new Board();
 			vo.setId(id);
-			list = sv.myBoardRead(vo, myId, hobbyid, bdate);
-			System.out.println("list  : " + list);
+	
+			
+			list = sv.myBoardRead(vo);
 
 			request.setAttribute("blist", list);
-
 			request.getRequestDispatcher("/page/member/myPageWriting.jsp").forward(request, response);
 
 		} else {
 			System.out.println("리드가 안됐어요?");
 		}
+
 	}
 }

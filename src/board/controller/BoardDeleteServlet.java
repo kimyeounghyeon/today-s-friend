@@ -36,19 +36,23 @@ public class BoardDeleteServlet extends HttpServlet {
 		Board vo = new Board();
 		int hobbyId = Integer.parseInt(request.getParameter("hobbyId"));
 		vo.setHobbyId(hobbyId);
-
+		int loc = Integer.parseInt(request.getParameter("locnum"));
+		vo.setLocNum(loc);
+		
+		String bno = request.getParameter("bno");
 		int result = 0;
-		System.out.println("나와 ??");
-
+		
 		vo.setBno(Integer.parseInt(request.getParameter("bno")));
-
+		PrintWriter out = response.getWriter();
 		result = sv.boardDelete(vo);
 		if (result == 1) {
+		
 			System.out.println("삭제성공");
-
-			request.getRequestDispatcher("/page/board/boardread?hobbyId=" + hobbyId).forward(request, response);
+		request.getRequestDispatcher("/page/board/boardread?hobbyId="+hobbyId+"&locnum="+loc).forward(request, response);
 		} else {
 			System.out.println("삭제실패");
+			String msg = "글 삭제 실패";
+			out.println("<script>alert('" + msg + "');history.back();</script>");
 		}
 	}
 }

@@ -105,10 +105,10 @@ case 8:
 		<div id="tool">
 
 			<a id="introducea" class="bar-item button"
-				href="javascript:void(window.open('https://www.youtube.com/watch?v=tyiN2jjaX0g', '_blank'))">운동영상</a>
+				href="javascript:void(window.open('https://movie.naver.com/movie/running/premovie.nhn', '_blank'))">개봉예정영화</a>
 			<a id="introduceb" class="bar-item button"
-				href="javascript:void(window.open('<%=request.getContextPath()%>/page/map/map.jsp', '_blank','width=500px, height=400px'))">따릉이
-				대여</a> <a href="<%=request.getContextPath()%>/page/board/adread"
+				href="javascript:void(window.open('http://www.cgv.co.kr/ticket', '_blank'))">빠른예매</a>
+			 <a href="<%=request.getContextPath()%>/page/board/adread"
 				id="introducec" class="bar-item button">공지사항</a> <a id="introduced"
 				class="bar-item button"
 				href="javascript:void(window.open('<%=request.getContextPath()%>/page/channel/channel.jsp', '_blank','width=500px, height=400px'))">신고

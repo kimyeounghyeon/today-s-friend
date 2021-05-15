@@ -43,7 +43,8 @@ public class BoardUpdateServlet extends HttpServlet {
 			vo.setBcontent(request.getParameter("bcontent"));
 			vo.setBfilePath(request.getParameter("bfilepath"));
 		}
-		int hobbyId = Integer.parseInt(request.getParameter("hobbyId"));
+		 
+//		int hobbyId = Integer.parseInt(request.getParameter("hobbyId"));
 		result = new BoardService().boardupdate(vo);
 		PrintWriter out = response.getWriter();
 
@@ -51,13 +52,12 @@ public class BoardUpdateServlet extends HttpServlet {
 		if (result == 1) {
 			System.out.println("dddd");
 			String msg = "글 수정 완료";
-			out.println("<script>alert('" + msg + "')</script>");
-			request.getRequestDispatcher("/page/board/boardread?hobbyId="+hobbyId).forward(request, response);
+			out.println("<script>alert('" + msg + "');history.go(-2);</script>");
+
 		} else {
 			System.out.println("adadad");
 			String msg = "글 수정 실패하였습니다!";
-			out.println("<script>alert('" + msg + "')</script>");
-			out.println("<script>history.back();</script>");
+			out.println("<script>alert('" + msg + "');history.back();</script>");
 		}
 
 	}

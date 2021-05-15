@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>따릉이</title>
+    <title>치킨지도</title>
     
 </head>
 <body>
@@ -71,19 +71,17 @@
 
       // 한 클러스터 객체가 포함하는 마커의 개수에 따라 다른 텍스트 값을 표시합니다 
       if(count < 10) {
-        return '운동친구';        
-      } else if(count < 30) {
-        return '주식친구';
+        return '치킨';        
       } else if(count < 50) {
-        return '영화친구';
+        return '치킨';
       } else {
-        return '서울친구';
+        return '치킨';
       }
     }
 
     // 데이터를 가져오기 위해 jQuery를 사용합니다
     // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-      $.getJSON('exercise.json', function(data) {
+      $.getJSON('data.json', function(data) {
         // 데이터에서 좌표 값을 가지고 마커를 표시합니다
         // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
         var markers = $(data.positions).map(function(i, position) {

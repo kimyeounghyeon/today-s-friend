@@ -5,6 +5,7 @@ import java.util.*;
 
 import javax.naming.*;
 import javax.sql.DataSource;
+import common.JDBCPool;
 
 import comment.model.vo.Comment;
 

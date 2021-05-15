@@ -75,13 +75,13 @@
 	<br>
 	<br>
 	<c:if test="${startPage != 1 }">
-		<a href="<%=request.getContextPath() %>/page/indexpage/point?pageNum=${startPage-1}&search=${search }">이전</a>
+		<a href="<%=request.getContextPath() %>/page/indexpage/user?pageNum=${startPage-1}&search=${search }">이전</a>
 	</c:if>
 	<c:forEach begin="${startPage }" end="${endPage }" var="s" step="1">
-		<a href="<%=request.getContextPath() %>/page/indexpage/point?pageNum=${s }&search=${search }">${s }</a>
+		<a href="<%=request.getContextPath() %>/page/indexpage/user?pageNum=${s }&search=${search }">${s }</a>
 	</c:forEach>
 	<c:if test="${endPage < pageCnt }">
-		<a href="<%=request.getContextPath() %>/page/indexpage/point?pageNum=${endPage+1}&search=${search }">다음</a>
+		<a href="<%=request.getContextPath() %>/page/indexpage/user?pageNum=${endPage+1}&search=${search }">다음</a>
 	</c:if>
 </section>
 <script>

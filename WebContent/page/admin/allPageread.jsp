@@ -13,7 +13,7 @@
 
 <section class="setop">
 	<div class="mypagelist">
-		<p class="pabouttitle">내가 쓴 글</p>
+		<p class="pabouttitle">게시글 관리</p>
 		<div class=row>
 			<c:if test="${not empty blist }">
 				<!-- <form id="frmhidden"> -->
@@ -21,6 +21,7 @@
 					<thead>
 						<tr>
 							<th class="chk"><input type="checkbox" id="checkall" /></th>
+							<th class="id">작성자</th>
 							<th class="hobbyid">게시판</th>
 							<th class="subj">제목</th>
 							<th class="con">내용</th>
@@ -31,27 +32,22 @@
 
 							<tr>
 								<td class="chk"><input type="checkbox" name="item"
-									id="item" value="${b.id }" /></td>
+									id="item" /></td>
+								<td class="subj">${b.id }</td>
 
 								<td class="hobbyid"><c:if test="${b.hobbyId eq 1 }">
 										<c:out value="운동"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 2 }">
+									</c:if> <c:if test="${b.hobbyId eq 2 }">
 										<c:out value="영화"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 3 }">
+									</c:if> <c:if test="${b.hobbyId eq 3 }">
 										<c:out value="게임"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 4 }">
+									</c:if> <c:if test="${b.hobbyId eq 4 }">
 										<c:out value="음식"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 5 }">
+									</c:if> <c:if test="${b.hobbyId eq 5 }">
 										<c:out value="주식"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 6 }">
+									</c:if> <c:if test="${b.hobbyId eq 6 }">
 										<c:out value="자유"></c:out>
-									</c:if>
-								</td>
+									</c:if></td>
 
 								<td class="subj">${b.bsubject }</td>
 								<td class="con">${b.bcontent }</td>

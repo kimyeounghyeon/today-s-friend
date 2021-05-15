@@ -28,8 +28,9 @@
 		<a href="<%=CPath%>/page/admin/admboardread" class="bar-item button">공지사항</a>
 		<a href="<%=CPath%>/page/indexpage/user" class="bar-item button">회원관리</a>
 		<a href="<%=CPath%>/page/indexpage/point" class="bar-item button">등급관리</a>
-		<a href="#" class="bar-item button">게시글관리</a>
-		<a href="#" class="bar-item button">인기분석</a>
+		<a href="<%=CPath%>/page/board/myboardread1" class="bar-item button">게시글관리</a>
+		
+		<a href="javascript:void(window.open('<%=request.getContextPath()%>/page/board/allcount', '_blank','width=1000px, height=600px'));" class="bar-item button">인기분석</a>
 		<div id="d3">
 			<div>관리자님!</div>
 			<button type="button" class="adminLogout" onclick="window.close()">관리자모드 나가기</button>

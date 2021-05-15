@@ -1,3 +1,4 @@
+<%@page import="member.model.vo.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -87,6 +88,9 @@ case 8:
 	break;
 }
 %>
+<%
+Member member = (Member)session.getAttribute("member");
+%>
 		<div class="tdiv">
 			<p class="pabouttitle">운동친구 - <%=loc %></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<select id="selloc">
@@ -137,12 +141,11 @@ case 8:
 					</tr>
 					<tr class="nline" id="vid">
 						<td style="padding-left: 10px;" valign="top">${v.id }</td>
-
 						<td class="btnn" style="text-align: right">
 							<button type="button" class="btn" id="ed"
-								onclick="location.href='<%=request.getContextPath()%>/page/board/simread?bno=${v.bno}'">수정</button>
+								onclick="location.href='<%=request.getContextPath()%>/page/board/simread?bno=${v.bno}&hobbyId=1&locnum=<%=member.getLocnum() %>'">수정</button>
 							<button type="button" class="btn" id="ed"
-								onclick="location.href='<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=1'">삭제</button>
+								onclick="location.href='<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=1&locnum=<%=member.getLocnum() %>'">삭제</button>
 						</td>
 					</tr>
 					<tr class="nline setrimg">

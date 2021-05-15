@@ -55,7 +55,34 @@
 <section class="setop">
 	<article id="hi">
 <% 
-String loc = (String)request.getAttribute("loc");
+int locnum = (int)request.getAttribute("locnum");
+String loc = "";
+switch(locnum){
+case 1:
+	loc = "서울";
+	break;
+case 2:
+	loc = "경기";
+	break;
+case 3:
+	loc = "인천";
+	break;
+case 4:
+	loc = "충청";
+	break;
+case 5:
+	loc = "강원";
+	break;
+case 6:
+	loc = "경상";
+	break;
+case 7:
+	loc = "전라";
+	break;
+case 8:
+	loc = "제주";
+	break;
+}
 %>
 		<p class="pabouttitle">운동친구 - <%=loc %></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<select id="selloc">
@@ -149,15 +176,15 @@ String loc = (String)request.getAttribute("loc");
 		</c:if>
 		<div id="pagen">
 			<c:if test="${startPage != 1 }">
-				<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=3">이전</a>
+				<a href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${startPage-1}&search=${search }&hobbyId=3&locnum=<%=locnum%>">이전</a>
 			</c:if>
 			<c:forEach begin="${startPage }" end="${endPage }" var="s" step="1">
 				<a
-					href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${s }&search=${search }&hobbyId=3">${s }</a>
+					href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${s }&search=${search }&hobbyId=3&locnum=<%=locnum%>">${s }</a>
 			</c:forEach>
 			<c:if test="${endPage < pageCnt }">
 				<a
-					href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${endPage+1}&search=${search }&hobbyId=3">다음</a>
+					href="<%=request.getContextPath() %>/page/board/boardread?pageNum=${endPage+1}&search=${search }&hobbyId=3&locnum=<%=locnum%>">다음</a>
 			</c:if>
 		</div>
 	</article>

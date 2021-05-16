@@ -98,7 +98,7 @@
 					<span class="box int_pass_check"> <input type="password"
 						id="pswd2" name="pswd2" class="int" maxlength="20">
 					</span> <span class="error_next_box"></span>
-					<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
+					<span id="alert-success" style="display: none; color: blue;">비밀번호가 일치합니다.</span>
     				<span id="alert-danger" style="display: none; color: red; /* font-weight: bold; */ ">비밀번호가 일치하지 않습니다.</span>
 					<div class="check_font" id="passre_check"></div>
 				</div>
@@ -220,6 +220,7 @@
 	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 가운데 @ 무조건 들어가야댐
 	// 휴대폰 번호 정규식
 	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/; // 
+	
 
 	// 아이디
 	$('#id').blur(function(){
@@ -298,8 +299,14 @@
 		
 	//id 중복체크 
 	function idCheck(){ 
-		//새창 만들기 
-		window.open("idCheckForm.jsp", "idwin", "width=400, height=350"); 
+		
+		//새창 만들기
+		window.open("idCheckForm.jsp?id="+document.getElementById("id").value , "idwin", "width=400, height=350");
+		var frmJoinCheck = document.getElementById("frmJoin");
+		frmJoinCheck.action = "<%=request.getContextPath()%>/page/member/idCheckForm.jsp?id=id_chk_re";
+		frmJoinCheck.method = "get";
+		frmJoinCheck.submit(); 
+
 	}
 	
 	//mail 중복체크 

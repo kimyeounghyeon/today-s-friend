@@ -64,7 +64,7 @@ public class CommentWriteServlet extends HttpServlet {
 		         int mpoint = 15;
 		         int pResult = 0;
 		         
-		         pResult = msv.updatePoint(vo, mpoint);
+		         pResult = msv.updateMPoint(vo, mpoint);
 				
 		        if(pResult>0) {
 		        	System.out.println("포인트업 성공~");

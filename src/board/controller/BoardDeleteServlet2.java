@@ -1,6 +1,8 @@
 package board.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,21 +35,24 @@ public class BoardDeleteServlet2 extends HttpServlet {
 			throws ServletException, IOException {
 		BoardService sv = new BoardService();
 		Board vo = new Board();
-		int hobbyId = Integer.parseInt(request.getParameter("hobbyId"));
-		vo.setHobbyId(hobbyId);
+		
 
 		int result = 0;
 		System.out.println("나와 ??");
 
 		vo.setBno(Integer.parseInt(request.getParameter("bno")));
-
+		PrintWriter out = response.getWriter();
 		result = sv.boardDelete(vo);
 		if (result == 1) {
-			System.out.println("삭제성공");
+			String msg = "글  삭제 성공";
+			out.println("<script> alert('"+msg+"')</script>");
+			out.println("<script>history.back();</script>");
 
-			request.getRequestDispatcher("/page/board/boardread?hobbyId=" + hobbyId).forward(request, response);
 		} else {
-			System.out.println("삭제실패");
+			System.out.println("입력 실패");
+			String msg = "글 삭제 실패";
+			out.println("<script> alert('"+msg+"')</script>");
+			out.println("<script>history.back();</script>");
 		}
 	}
 }

@@ -71,7 +71,7 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
-	
+
 	public int duplecateID(String id) {
 		int cnt = 0;
 		Connection conn = getConnection();
@@ -88,8 +88,7 @@ public class MemberService {
 		}
 		return cnt;
 	}
-	
-	
+
 	public int duplecateEmail(String email) {
 		int cnt = 0;
 		Connection conn = getConnection();
@@ -106,12 +105,28 @@ public class MemberService {
 		}
 		return cnt;
 	}
-	
-	public List<Board>  myBoardRead(Board vo, String str, int hobbyid, Date bdate) {
+
+	public List<Board> myBoardRead(Board vo, String str, int hobbyid, Date bdate) {
 		Connection conn = getConnection();
-		List<Board> list = new MemberDao().myboardRead(conn, vo, str, hobbyid , bdate );
+		List<Board> list = new MemberDao().myboardRead(conn, vo, str, hobbyid, bdate);
 		close(conn);
 		return list;
+	}
+
+	public int memberdelete(Member vo) {
+		Connection conn = getConnection();
+		int result = 0;
+
+		try {
+			result = new MemberDao().memberDelete(conn, vo);
+			if (result != 0) {
+				commit(conn);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close(conn);
+		return result;
 	}
 
 }

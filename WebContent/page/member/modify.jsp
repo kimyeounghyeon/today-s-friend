@@ -14,6 +14,13 @@ $(function () {
 		frmmod.method = "post";
 		frmmod.submit();
 	});
+	 $("#btnDelete").click(function(){
+		var frmmod = document.getElementById("frmMod");
+		frmmod.action = "<%=request.getContextPath()%>/page/member/delete3";
+		frmmod.method = "post";
+		frmmod.submit();
+	});
+	 
 });
 </script>
 <section class="setop">
@@ -119,6 +126,9 @@ if(gender.equals("m")){
 				<div class="btn_area">
 					<button type="button" id="btnModify" class="header-btn">
 						<span>수정하기</span>
+					</button>
+					<button type="button" id="btnDelete" class="header-btn">
+						<span>탈퇴하기</span>
 					</button>
 				</div>
 				<input type="hidden" name="id" value="<%=member.getId()%>" >

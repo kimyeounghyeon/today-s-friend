@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import comment.model.service.CommentService;
 import comment.model.vo.Comment;
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 
 @WebServlet("/page/comment/commentwrite")
@@ -35,16 +37,21 @@ public class CommentWriteServlet extends HttpServlet {
 		commentVO = new Comment(); 
 		CommentService sv = null;
 		sv = new CommentService();
+		MemberService msv = null;
+		msv = new MemberService();
 		PrintWriter out = response.getWriter();
+		String id = request.getParameter("id");
+		Member vo = new Member();
 
 		int result = 0;
 		String strbno = request.getParameter("bno");
 		if(strbno!=null&&!strbno.equals("")) {
 			int bno = Integer.parseInt(strbno);
 			commentVO.setBno(bno);
-			String id = request.getParameter("id");
+
 			String recontent = request.getParameter("recontent");
 			commentVO.setId(id);
+			vo.setId(id);
 			commentVO.setRecontent(recontent);
 		}
 		
@@ -53,6 +60,15 @@ public class CommentWriteServlet extends HttpServlet {
 			
 			if(result==1) {
 				System.out.println("댓글 인서트 됨");
+				
+		         int mpoint = 15;
+		         int pResult = 0;
+		         
+		         pResult = msv.updatePoint(vo, mpoint);
+				
+		        if(pResult>0) {
+		        	System.out.println("포인트업 성공~");
+		        }
 	            response.sendRedirect("commentlist?bno="+ strbno);        
 				
 				}else {

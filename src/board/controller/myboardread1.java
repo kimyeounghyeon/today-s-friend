@@ -1,7 +1,8 @@
 package board.controller;
 
+
+
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,13 +16,16 @@ import board.model.service.BoardService;
 import board.model.vo.Board;
 import member.model.vo.Member;
 
-@WebServlet("/page/member/myboardread")
-public class MyBoardReadServlet extends HttpServlet {
+/**
+ * Servlet implementation class myboardread1
+ */
+@WebServlet("/page/board/myboardread1")
+public class myboardread1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public MyBoardReadServlet() {
-		super();
-	}
+    public myboardread1() {
+        super();
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -47,13 +51,13 @@ public class MyBoardReadServlet extends HttpServlet {
 		if (id != null) {
 			List<Board> list = null;
 			Board vo = new Board();
-			vo.setId(id);
+//			vo.setId(id);
 	
 			
-			list = sv.myBoardRead(vo);
+			list = sv.myBoardRead1(vo);
 
 			request.setAttribute("blist", list);
-			request.getRequestDispatcher("/page/member/myPageWriting.jsp").forward(request, response);
+			request.getRequestDispatcher("/page/admin/allPageread.jsp").forward(request, response);
 
 		} else {
 			System.out.println("리드가 안됐어요?");

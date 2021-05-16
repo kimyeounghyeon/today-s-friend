@@ -7,6 +7,9 @@
 	href="<%=request.getContextPath()%>/css/select.css">
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
 <style>
+.tdiv{
+	text-align: center;
+}
 .pabouttitle{
 	display : inline-block;
 }
@@ -84,18 +87,20 @@ case 8:
 	break;
 }
 %>
-		<p class="pabouttitle">운동친구 - <%=loc %></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<select id="selloc">
-			<option value="">--지역 선택--</option>
-			<option value="1">서울</option>
-			<option value="2">경기</option>
-			<option value="3">인천</option>
-			<option value="4">충청</option>
-			<option value="5">강원</option>
-			<option value="6">경상</option>
-			<option value="7">전라</option>
-			<option value="8">제주</option>
-		</select>
+		<div class="tdiv">
+			<p class="pabouttitle">게임친구 - <%=loc %></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<select id="selloc">
+				<option value="">--지역 선택--</option>
+				<option value="1">서울</option>
+				<option value="2">경기</option>
+				<option value="3">인천</option>
+				<option value="4">충청</option>
+				<option value="5">강원</option>
+				<option value="6">경상</option>
+				<option value="7">전라</option>
+				<option value="8">제주</option>
+			</select>
+		</div>
 		<br>
 		<div id="tool">
 
@@ -121,7 +126,7 @@ case 8:
 		</c:if>
 		<c:if test="${not empty blist }">
 			<form id="frmSearch">
-				<input type="text" name="search" id="search"> <input
+				<input type="text" name="search" id="search" placeholder="회원아이디로 검색"> <input
 					type="hidden" name="hobbyId" value="3"> <input
 					type="button" id="btnSearch" value="검색">
 			</form>

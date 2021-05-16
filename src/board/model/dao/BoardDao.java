@@ -60,9 +60,10 @@ public class BoardDao {
 		return cnt;
 	}
 
-	public List<Board> getBoardByPage(Connection conn, int hobbyId, int locnum, int startRnum, int endRnum, String search) {
+	public List<Board> getBoardByPage(Connection conn, int hobbyId, int locnum, int startRnum, int endRnum,
+			String search) {
 		List<Board> list = null;
-		String sql_1 = "(SELECT * FROM BOARD WHERE HOBBYID = "+hobbyId+" AND LOCNUM = "+locnum;
+		String sql_1 = "(SELECT * FROM BOARD WHERE HOBBYID = " + hobbyId + " AND LOCNUM = " + locnum;
 
 		if (search == null) {
 			sql_1 += " ORDER BY BDATE DESC) D";
@@ -71,7 +72,8 @@ public class BoardDao {
 					+ " ORDER BY BDATE DESC) D";
 		}
 
-		String sql = "SELECT * FROM (SELECT ROWNUM N, E.* FROM " + " (SELECT ROWNUM R, D.* FROM " + sql_1 + " ORDER BY R DESC)E)" + " WHERE R >= ? AND R <= ? ORDER BY N DESC";
+		String sql = "SELECT * FROM (SELECT ROWNUM N, E.* FROM " + " (SELECT ROWNUM R, D.* FROM " + sql_1
+				+ " ORDER BY R DESC)E)" + " WHERE R >= ? AND R <= ? ORDER BY N DESC";
 
 		pstmt = null;
 		rs = null;
@@ -224,5 +226,105 @@ public class BoardDao {
 
 		return result;
 
+	}
+
+	public ArrayList<Board> myboardRead(Connection conn, Board vo) {
+
+		ArrayList<Board> list = null;
+		String sql = "select * from board where id = ?";
+
+		pstmt = null;
+		rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList<Board>();
+				do {
+
+					vo = new Board();
+
+					vo.setId(vo.getId());
+					vo.setBno(rs.getInt("bno"));
+					vo.setHobbyId(rs.getInt("hobbyId"));
+					vo.setBsubject(rs.getString("bsubject"));
+					vo.setBcontent(rs.getString("bcontent"));
+					vo.setBdate(rs.getDate("bdate"));
+					list.add(vo);
+
+					System.out.println("리절트vo :" + vo);
+				} while (rs.next());
+			}
+
+			System.out.println("다오임 = list : " + list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+
+	public int getBoardCount(Connection conn, int hobbyId) {
+		int cnt = 0;
+		String sql = "SELECT COUNT(*) FROM BOARD WHERE HOBBYID=?";
+		pstmt = null;
+		rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hobbyId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				cnt = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+
+	public List<Board> myboardRead1(Connection conn, Board vo) {
+
+		ArrayList<Board> list = null;
+		String sql = "select * from board";
+
+		pstmt = null;
+		rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList<Board>();
+				do {
+
+					vo = new Board();
+
+					vo.setId(rs.getString("id"));
+					vo.setBno(rs.getInt("bno"));
+					vo.setHobbyId(rs.getInt("hobbyId"));
+					vo.setBsubject(rs.getString("bsubject"));
+					vo.setBcontent(rs.getString("bcontent"));
+					vo.setBdate(rs.getDate("bdate"));
+					list.add(vo);
+
+					System.out.println("리절트vo :" + vo);
+				} while (rs.next());
+			}
+
+			System.out.println("다오임 = list : " + list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
 	}
 }

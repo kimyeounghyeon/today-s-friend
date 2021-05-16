@@ -34,7 +34,7 @@ Member member = (Member)session.getAttribute("member");
                 <td colspan="2">
                     <input type="submit" value="글등록">
                     <input type="reset" value="다시작성">
-                    <input type="button" value="글목록" onclick="#">
+                    <input type="button" value="글목록" onclick="javascript:history.back();">
                 </td>
             </tr>
         </table>

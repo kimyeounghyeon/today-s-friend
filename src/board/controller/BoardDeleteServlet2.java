@@ -1,8 +1,6 @@
 package board.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,12 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import board.model.service.BoardService;
 import board.model.vo.Board;
 
-@WebServlet("/page/board/delete1")
-public class BoardDeleteServlet extends HttpServlet {
+@WebServlet("/page/board/delete2")
+public class BoardDeleteServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BoardDeleteServlet() {
+	public BoardDeleteServlet2() {
 		super();
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,23 +35,19 @@ public class BoardDeleteServlet extends HttpServlet {
 		Board vo = new Board();
 		int hobbyId = Integer.parseInt(request.getParameter("hobbyId"));
 		vo.setHobbyId(hobbyId);
-		int loc = Integer.parseInt(request.getParameter("locnum"));
-		vo.setLocNum(loc);
-		
-		String bno = request.getParameter("bno");
+
 		int result = 0;
-		
+		System.out.println("나와 ??");
+
 		vo.setBno(Integer.parseInt(request.getParameter("bno")));
-		PrintWriter out = response.getWriter();
+
 		result = sv.boardDelete(vo);
 		if (result == 1) {
-		
 			System.out.println("삭제성공");
-		request.getRequestDispatcher("/page/board/boardread?hobbyId="+hobbyId+"&locnum="+loc).forward(request, response);
+
+			request.getRequestDispatcher("/page/board/boardread?hobbyId=" + hobbyId).forward(request, response);
 		} else {
 			System.out.println("삭제실패");
-			String msg = "글 삭제 실패";
-			out.println("<script>alert('" + msg + "');history.back();</script>");
 		}
 	}
 }

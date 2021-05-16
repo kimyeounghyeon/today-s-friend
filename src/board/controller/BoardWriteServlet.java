@@ -82,8 +82,9 @@ public class BoardWriteServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if(result>0) { // 정상 등록
 			System.out.println("정상 등록");
-			out.println("<script> alert('글 등록 완료')</script>");
-			request.getRequestDispatcher("/page/board/boardread?hobbyId="+hobbyId).forward(request, response);
+			String msg = "글 등록 성공";
+			out.println("<script> alert('"+msg+"')</script>");
+			out.println("<script>history.go(-2);</script>");
 		} else { // 등록 실패
 			System.out.println("입력 실패");
 			String msg = "글 등록 실패";

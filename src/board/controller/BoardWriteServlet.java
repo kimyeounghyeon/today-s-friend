@@ -87,7 +87,7 @@ public class BoardWriteServlet extends HttpServlet {
          MemberService msv = new MemberService();
          int mpoint = 30;
          int pResult = 0;
-         pResult = msv.updateMpoint(id, mpoint);
+         pResult = msv.updateMPoint(id, mpoint);
          if(pResult>0) {
             System.out.println("포인트 업 성공!");
          }

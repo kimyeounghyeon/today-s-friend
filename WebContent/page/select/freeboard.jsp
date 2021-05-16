@@ -30,6 +30,10 @@
  	width: 150px;
 }
 
+.emptyList {
+	text-align : center;
+}
+
 </style>
 <script>
     $(function () {
@@ -121,8 +125,8 @@ case 8:
 			<h1>${search }에대한검색결과입니다.</h1>
 		</c:if>
 		<c:if test="${empty blist }">
-			<h1>게시물이 없습니다</h1>
-			<h1>${search }글의주인공이되어주세요!</h1>
+			<h1 class="emptyList">게시물이 없습니다</h1>
+			<h1 class="emptyList">${search }글의 주인공이 되어주세요!</h1>
 		</c:if>
 		<c:if test="${not empty blist }">
 			<form id="frmSearch">

@@ -61,7 +61,8 @@
 		<h3> </h3>
 		<form class="form" method="post" action="idCheckPro.jsp"
 			onsubmit="return blankCheck(this)">
-			아이디 <input class="bar" type="text" name="id" maxlength="10" autofocus>
+			<% String str=request.getParameter("id"); %>
+			아이디 <input class="bar" type="text" name="id" maxlength="10" value="<%=str %>" autofocus>
 			<input class="submit" type="submit" value="중복확인">
 		</form>
 	</div>

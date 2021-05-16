@@ -309,5 +309,25 @@ public class MemberDao {
 		}
 		return list;
 	}
+	public int memberDelete(Connection conn, Member vo) {
+		int result = 0;
+
+		String sql = "delete from member where id = ?";
+
+		pstmt = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return result;
+	}
 	
 }

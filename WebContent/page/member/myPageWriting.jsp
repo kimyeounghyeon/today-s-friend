@@ -25,6 +25,7 @@
 							<th class="subj">제목</th>
 							<th class="con">내용</th>
 							<th class="date">작성일</th>
+							<th class="del">삭제</th>
 					</thead>
 					<tbody>
 						<c:forEach items="${blist }" var="b" varStatus="status">
@@ -56,6 +57,10 @@
 								<td class="subj">${b.bsubject }</td>
 								<td class="con">${b.bcontent }</td>
 								<td class="date">${b.bdate }</td>
+								<td class="date">
+								<button type="button" class="btn" id="ed"
+								onclick="location.href='<%=request.getContextPath()%>/page/board/delete2?bno=${b.bno}'">삭제</button>
+								</td>
 							</tr>
 
 						</c:forEach>

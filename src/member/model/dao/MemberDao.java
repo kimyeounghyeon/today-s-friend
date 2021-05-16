@@ -330,7 +330,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int updateMPoint(Connection conn, Member vo, int mpoint) {
+	public int updateMPoint(Connection conn, String id, int mpoint) {
 	      int result = 0;
 	      int max = 1;
 	      
@@ -342,7 +342,7 @@ public class MemberDao {
 	      
 	      try {
 	         pstmt = conn.prepareStatement(sqlMaxMpoint);
-	         pstmt.setString(1, vo.getId());
+	         pstmt.setString(1, id);
 	         rs = pstmt.executeQuery();
 	         if(rs.next()) {
 	            max = rs.getInt(1);
@@ -355,7 +355,7 @@ public class MemberDao {
 	         
 	         pstmt = conn.prepareStatement(sql);
 	         pstmt.setInt(1, max+mpoint);
-	         pstmt.setString(2, vo.getId());
+	         pstmt.setString(2, id);
 	         
 	         result = pstmt.executeUpdate();
 	         

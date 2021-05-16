@@ -330,4 +330,42 @@ public class MemberDao {
 		return result;
 	}
 	
+	public int updatePoint(Connection conn, Member vo, int mpoint) {
+	      int result = 0;
+	      int max = 1;
+	      
+	      // 현재 포인트 알아오기
+	      String sqlMaxMpoint = "SELECT MPOINT FROM MEMBER WHERE ID = ?";
+	      
+	      // 글이나 댓글 작성시 포인트 업데이트
+	      String sql = "UPDATE MEMBER SET MPOINT = ? WHERE ID = ?";
+	      
+	      try {
+	         pstmt = conn.prepareStatement(sqlMaxMpoint);
+	         pstmt.setString(1, vo.getId());
+	         rs = pstmt.executeQuery();
+	         if(rs.next()) {
+	            max = rs.getInt(1);
+	         }else {
+	            System.out.println("포인트를 읽어오지 못 함");
+	            return 0;
+	         }
+	         
+	         close();
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, max+mpoint);
+	         pstmt.setString(2, vo.getId());
+	         
+	         result = pstmt.executeUpdate();
+	         
+	      }catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      
+	      return result;
+	   }
+	
 }

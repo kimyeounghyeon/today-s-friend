@@ -7,6 +7,7 @@ import java.util.List;
 import admin.model.dao.AdminDao;
 import board.model.dao.BoardDao;
 import board.model.vo.Board;
+import comment.model.dao.CommentDao;
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
 
@@ -129,4 +130,20 @@ public class MemberService {
 		return result;
 	}
 
+	// update point
+	   public int updatePoint(Member vo, int mpoint) {
+	      Connection conn = getConnection();
+	      int result = 0;
+
+	      try {
+	         result = new MemberDao().updatePoint(conn, vo, mpoint);
+	         if (result != 0) {
+	            commit(conn);
+	         }
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      close(conn);
+	      return result;
+	   }
 }

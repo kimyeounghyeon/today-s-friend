@@ -131,12 +131,12 @@ public class MemberService {
 	}
 
 	// update point
-	   public int updatePoint(Member vo, int mpoint) {
+	   public int updateMPoint(Member vo, int mpoint) {
 	      Connection conn = getConnection();
 	      int result = 0;
 
 	      try {
-	         result = new MemberDao().updatePoint(conn, vo, mpoint);
+	         result = new MemberDao().updateMPoint(conn, vo, mpoint);
 	         if (result != 0) {
 	            commit(conn);
 	         }

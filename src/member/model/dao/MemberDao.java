@@ -330,7 +330,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int updatePoint(Connection conn, Member vo, int mpoint) {
+	public int updateMPoint(Connection conn, Member vo, int mpoint) {
 	      int result = 0;
 	      int max = 1;
 	      

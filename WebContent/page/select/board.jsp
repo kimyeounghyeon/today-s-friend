@@ -161,7 +161,7 @@ function deleteBoard(inputbno) {
          <a id="introduceb" class="bar-item button" href="javascript:void(window.open('<%=request.getContextPath()%>/page/indexPage/main.jsp', '_blank'))">인기글</a>  
 <%} %>                  
          <a href="<%=request.getContextPath()%>/page/board/adread" id="introducec" class="bar-item button">공지사항</a> 
-         <a id="introduced" class="bar-item button" href="javascript:void(window.open('<%=request.getContextPath()%>/page/channel/channel.jsp', '_blank','width=500px, height=400px'))">신고
+         <a id="introduced" class="bar-item button" href="javascript:void(window.open('<%=request.getContextPath()%>/page/channel/channel.jsp', '_blank','width=500px, height=600px'))">신고
             & 문의</a> 
          <a id="introducee" class="bar-item button" href="javascript:void(window.open('<%=request.getContextPath()%>/page/channel/chatting.jsp', '_blank','width=500px, height=700px'))">채팅하기</a>
 

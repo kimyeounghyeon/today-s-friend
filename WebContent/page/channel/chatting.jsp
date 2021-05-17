@@ -1,16 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/font.css">
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style type="text/css">
+#img {
+	height: 100%;
+	width: 100%;
+}
+
+p {
+	font-family: "GmarketSansMedium";
+}
+</style>
 </head>
 <body>
-	<p>
+	<p id="id">
 		채팅방 사용 설명서를 받으실 분들은 <a href="채팅설명서.pdf" download>여기</a>를 눌러주세요
 	</p>
-	
+	<a href='http://m.site.naver.com/0NM4w'> <img id="img"
+		src='../../img/QR.png' /></a>
 
 	<!--Start of Tawk.to Script-->
 	<script type="text/javascript">

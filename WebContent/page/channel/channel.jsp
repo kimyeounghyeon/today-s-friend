@@ -1,23 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/font.css">
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-h2 {
+p {
 	align-content : center;
 	    text-align: center;
-}</style>
+	    font-family: "GmarketSansMedium";
+}
+
+span{
+
+ position: relative;
+
+ animation:test 2s;
+
+}
+
+@keyframes test{
+
+ 0%{top:-300px;}
+
+ 100%{top:0;}
+
+}
+</style>
 </head>
 <body>
-	<h2>이미지를 눌러주세요</h2>
+	<p>이미지를 눌러주세요<p>
+	<span>
 	
 	<a id="channel-chat-button" href="http://pf.kakao.com/_CLEMs"
 		onclick="void chatChannel();"> <img
 		src="../../img/channel.png" />
 	</a>
+	</span>
 	<script type="text/javascript">
 		function chatChannel() {
 			Kakao.Channel.chat({

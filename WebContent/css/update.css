@@ -98,8 +98,7 @@ section {
    cursor:pointer;
 }
 table {
-   /* border-collapse: collapse; */
-   width: 800px;
+   border-collapse: collapse;
    border: solid 1px #ddd;
    display:inline-block;
 }
@@ -108,7 +107,6 @@ table {
    text-align : center;
    
 }
-
 
 th, td {
    text-align: left;
@@ -129,8 +127,12 @@ tr:nth-child(even) {
 
 .textarea1, .textarea2 {
    resize: none;
+   font : inherit;
 }
 
+input, textarea {
+	font : inherit;
+}
 
 th {
    background-color: #eee;
@@ -147,7 +149,7 @@ th {
 #bcontent {
    width: 500px;
    height: 100px;
-   font-size: 20px;
+   font-size: 18px;
 }
 /* 버튼속성  */
 #btnchange {
@@ -170,8 +172,6 @@ th {
    font: inherit;
 }
 
-
-
 #submit {
    border-top-right-radius: 5px;
    border-bottom-right-radius: 5px;
@@ -192,12 +192,13 @@ th {
    font: inherit;
 }
 
-#btn_group button {
+#btn_group button{
    border: 1px solid #E2E2E2;
    background-color: rgba(0, 0, 0, 0);
    color: #404040;
    padding: 5px;
 }
+
 
 #btn_group button:hover {
    color: #404040;

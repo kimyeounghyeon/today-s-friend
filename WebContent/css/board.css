@@ -32,6 +32,25 @@ section #listbtn {
     font-family: "GmarketSansMedium";
     float : right;
 }
+section #btnchange {
+	height:40px;
+	width:80px;
+    border: none;
+    color:#fff;;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius:10px;
+    background-color: #1bcda9;
+    font-family: "GmarketSansMedium";
+    float : right;
+	
+}
+
 .modComment{
     border: none;
     color:#fff;;
@@ -60,8 +79,3 @@ section #listbtn {
     font-family: "GmarketSansMedium";
     height:33px;
 }
-
-
-
-	
-

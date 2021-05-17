@@ -282,7 +282,7 @@ public class BoardDao {
 					ResultVO.setBsubject(rs.getString("bsubject"));
 					ResultVO.setBcontent(rs.getString("bcontent"));
 					ResultVO.setBdate(rs.getDate("bdate"));
-
+					ResultVO.setBno(rs.getInt("bno"));
 					list.add(ResultVO);
 				} while (rs.next());
 			}

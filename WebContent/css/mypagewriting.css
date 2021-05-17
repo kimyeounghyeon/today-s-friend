@@ -2,11 +2,13 @@
 	text-align: center;
 }
 
-th {
+th, td:first-child{
 	background-color: #eee;
 	text-align: center;
 }
-
+td:first-child:hover{
+	background-color: #1bcda9;
+}
 th, td{
 	height: 40px;
 }
@@ -87,4 +89,8 @@ body {
 #pagen>a {
 	text-decoration: none;
 	color: black;
+}
+.subj > a{
+	text-decoration: none;
+	color:black;
 }

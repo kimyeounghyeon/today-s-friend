@@ -228,10 +228,13 @@ public class BoardDao {
 
 	}
 
-	public ArrayList<Board> myboardRead(Connection conn, Board vo) {
-
-		ArrayList<Board> list = null;
-		String sql = "select * from board where id = ?";
+	public List<Board> myboardlist(Connection conn, int startRnum, int endRnum, Board vo) {
+		List<Board> list = null;
+		String sql_1 = "(SELECT * FROM BOARD WHERE ID = ? ORDER BY BDATE DESC)D";
+		
+		String sql = "SELECT * FROM "
+				+ " (SELECT ROWNUM R, D.* FROM " + sql_1  + " ) "
+				+ " WHERE R >= ? AND R <= ?";
 
 		pstmt = null;
 		rs = null;
@@ -239,27 +242,21 @@ public class BoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
-
+			pstmt.setInt(2, startRnum);
+			pstmt.setInt(3, endRnum);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				list = new ArrayList<Board>();
 				do {
+					Board ResultVO = new Board();
+					ResultVO.setHobbyId(rs.getInt("hobbyId"));
+					ResultVO.setBsubject(rs.getString("bsubject"));
+					ResultVO.setBcontent(rs.getString("bcontent"));
+					ResultVO.setBdate(rs.getDate("bdate"));
 
-					vo = new Board();
-
-					vo.setId(vo.getId());
-					vo.setBno(rs.getInt("bno"));
-					vo.setHobbyId(rs.getInt("hobbyId"));
-					vo.setBsubject(rs.getString("bsubject"));
-					vo.setBcontent(rs.getString("bcontent"));
-					vo.setBdate(rs.getDate("bdate"));
-					list.add(vo);
-
-					System.out.println("리절트vo :" + vo);
+					list.add(ResultVO);
 				} while (rs.next());
 			}
-
-			System.out.println("다오임 = list : " + list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -267,16 +264,17 @@ public class BoardDao {
 		}
 		return list;
 	}
-
-	public int getBoardCount(Connection conn, int hobbyId) {
+	
+	public int getMyBoardCount(Connection conn, Board vo) {
 		int cnt = 0;
-		String sql = "SELECT COUNT(*) FROM BOARD WHERE HOBBYID=?";
+		String sql = "SELECT COUNT(*) FROM BOARD WHERE ID = ?";
+
 		pstmt = null;
 		rs = null;
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, hobbyId);
+			pstmt.setString(1, vo.getId());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				cnt = rs.getInt(1);

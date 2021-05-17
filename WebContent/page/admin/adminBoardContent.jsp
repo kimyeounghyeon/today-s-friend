@@ -3,12 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../admin/adminheader.jsp"></jsp:include>
 <style>
+     
+
+          
+ table {
+   display: inline-block;
+}
+.setop {
+   text-align: center;
+} 
+     
 	.btn {
     /* border:1px solid #ddd; */
     /* width: 70px; */
     height: 30px;
     margin-bottom: 20px;
-
     margin-top: 20px;
     text-align: center;
     box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -25,7 +34,9 @@
     padding:6px 24px;
     text-decoration:none;
     text-shadow:0px 1px 0px #ffffff;
+    
     }
+    
     
     .btn:hover {
         background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
@@ -58,6 +69,10 @@
 	}
 	.td2{
 		text-align:left;
+    
+    }
+    .td3{
+        text-align: center;
 	}
 	button {
 		font-family: GmarketSansMedium;
@@ -86,7 +101,7 @@
 			<td class="td2">&nbsp;${nlist.admcontent}</td>
 		</tr>
 		<tr>
-			<td colspan="2" class="bottom_bar">
+			<td colspan="2" class="td3">
 				<button type="button" id="btnAMod" class="btn" onclick="ModifyContent();">수정</button>
 				<button type="button" id="btnAdel" class="btn" onclick="window.location='<%=request.getContextPath() %>/page/admin/admboarddelete?admno=${nlist.admno}';">삭제</button>
 				<button type="button" class="btn" onclick="window.location='<%=request.getContextPath() %>/page/admin/admboardread';">목록</button>

@@ -176,7 +176,7 @@ int gradeId = (int)request.getAttribute("gradeId");
       <c:if test="${empty blist }">
          <h1>게시물이 없습니다</h1>
          <h1>${search }글의 주인공이 되어주세요!</h1>
-         <h1><a href="javascript:window.history.back();">돌아가기</a></h1>
+         <h1><a href="<%=request.getContextPath()%>/page/indexPage/main">돌아가기</a></h1>
       </c:if>
       </div>
       <c:if test="${not empty blist }">

@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
 <section class="setop">
 	<p id="pabouttitle">아이디 / 비밀번호 찾기</p>
 	<div class="loginmodal" id="modelid">
 		<div class="form idpw" id="dfrmsi">
-			<span class=close onclick="loginclose();">&#10006;</span>
+			<span id=close onclick="loginclose();">&#10006;</span>
 			<p class="pabouttitle">아이디 찾기</p>
 			<br> <span class="smsg">회원 정보에 등록한 이름과 이메일 주소가 같아야,<br>아이디를 찾을 수 있습니다.</span>
 			<br><br>
@@ -18,7 +19,7 @@
 	</div>
 	<div class="loginmodal" id="modelpw">
 		<div class="form idpw" id="dfrmpw">
-			<span class=close onclick="loginclose();">&#10006;</span>
+			<span id=close onclick="loginclose();">&#10006;</span>
 			<p class="pabouttitle">비밀번호 찾기</p>
 			<br> <span class="smsg">회원 정보에 등록한 아이디와 이메일 주소가 같아야,<br>아이디를 찾을 수 있습니다.</span>
 			<br><br>
@@ -35,27 +36,20 @@
 	<button class="btn-search"onclick="searchPW();"><h1>비밀번호 찾기</h1></button>
 	</div>
 	<script>
-		function loginclose() {
-			$(".loginmodal").css("display", "none");
-		};
-
 		function searchId() {
 			$("#modelid").css("display", "block");
 			$("#dfrmsi").css("display", "block");
 		};
-
 		function searchPW() {
 			$("#modelpw").css("display", "block");
 			$("#dfrmpw").css("display", "block");
 		};
-
 		$("#btnSI").click(function() {
 			var frmsi = document.getElementById("frmsi");
 			frmsi.action = "<%=request.getContextPath()%>/page/member/search";
 			frmsi.method = "post";
 			frmsi.submit();
 		});
-
 		$("#btnPW").click(function() {
 			var frmpw = document.getElementById("frmpw");
 			frmpw.action = "<%=request.getContextPath()%>/page/member/search";

@@ -1,13 +1,12 @@
-.setop, .mypagelist, .row {
-	text-align: center;
+.setop{
+	font : inherit;
 }
-
+.row{
+	
+}
 th, td:first-child{
 	background-color: #eee;
 	text-align: center;
-}
-td:first-child:hover{
-	background-color: #1bcda9;
 }
 th, td{
 	height: 40px;
@@ -85,12 +84,15 @@ body {
 	align-content: center;
 	text-align: center;
 }
-
-#pagen>a {
+a{
 	text-decoration: none;
-	color: black;
+	color: #1bcda9;
 }
-.subj > a{
-	text-decoration: none;
-	color:black;
+a:hover{
+	color: gray;
+}
+#btnInsertAdmin{
+	position: relative;
+	float : rigth;
+	width: 100px;
 }

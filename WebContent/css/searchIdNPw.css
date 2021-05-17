@@ -57,3 +57,8 @@
 	outline: 0;
 	box-shadow: none
 }
+
+#close_check{
+	float : right;
+	cursor : pointer;
+}

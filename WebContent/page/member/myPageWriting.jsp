@@ -17,38 +17,37 @@
 				<table class="table" id="table">
 					<thead>
 						<tr>
-							<th class="chk"><input type="checkbox" id="checkall" /></th>
-							<th class="hobbyid">게시판</th>
+							<th>NO</th>
+							<th class="id">작성자</th>
+							<th class="hobbyid">취미</th>
+							
 							<th class="subj">제목</th>
 							<th class="con">내용</th>
 							<th class="date">작성일</th>
 							<th class="del">삭제</th>
 						</tr>
 					</thead>
+					<%Member member = (Member)session.getAttribute("member");
+					String id = member.getId(); %>
 					<tbody>
 						<c:forEach items="${blist }" var="b" varStatus="status">
 							<tr>
-								<td class="chk"><input type="checkbox" name="item"
-									id="item" value="${b.id }" /></td>
+								<td>${status.count }</td>
+								<td class="subj"><%=id %></td>
 								<td class="hobbyid"><c:if test="${b.hobbyId eq 1 }">
 										<c:out value="운동"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 2 }">
+									</c:if> <c:if test="${b.hobbyId eq 2 }">
 										<c:out value="영화"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 3 }">
+									</c:if> <c:if test="${b.hobbyId eq 3 }">
 										<c:out value="게임"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 4 }">
+									</c:if> <c:if test="${b.hobbyId eq 4 }">
 										<c:out value="음식"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 5 }">
+									</c:if> <c:if test="${b.hobbyId eq 5 }">
 										<c:out value="주식"></c:out>
-									</c:if>
-									<c:if test="${b.hobbyId eq 6 }">
+									</c:if> <c:if test="${b.hobbyId eq 6 }">
 										<c:out value="자유"></c:out>
-									</c:if>
-								</td>
+									</c:if></td>
+								
 								<td class="subj">${b.bsubject }</td>
 								<td class="con">${b.bcontent }</td>
 								<td class="date">${b.bdate }</td>

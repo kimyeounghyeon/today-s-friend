@@ -1,6 +1,7 @@
 <%@page import="member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../admin/adminheader.jsp"></jsp:include>
+<link rel="stylesheet" type="text/css" 	href="<%=request.getContextPath()%>/css/adminpagegrade.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <section class="setop">
 	<div class="mypagelist">

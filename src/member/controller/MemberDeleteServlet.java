@@ -16,7 +16,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class MemberDeleteServlet
  */
-@WebServlet("/page/member/delete3")
+@WebServlet("/page/member/deleteMember")
 public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,9 +46,8 @@ public class MemberDeleteServlet extends HttpServlet {
 		result = sv.memberdelete(vo);
 		if (result == 1) {
 			System.out.println("회원 삭제 성공");
-			out.println("<script>alert('삭제가 완료되었습니다.'); location.href='semiproject/page/indexpage/logout';</script>");
+			request.getRequestDispatcher("/page/indexpage/logout").forward(request, response);
 		} else {
-			System.out.println(result);
 			System.out.println("삭제 실패");
 		}
 	}

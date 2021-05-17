@@ -7,9 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<jsp:include page="../indexPage/header.jsp"></jsp:include>
-
+<jsp:include page="../admin/adminheader.jsp"></jsp:include>
 <section class="setop">
 	<div class="mypagelist">
 		<p class="pabouttitle">게시글 관리</p>

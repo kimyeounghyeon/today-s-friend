@@ -1,6 +1,7 @@
 <%@page import="member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/update.css">
 <jsp:include page="../admin/adminheader.jsp"></jsp:include>
 <section class="setop">
 	<p id="pabouttitle">공지사항 작성</p>

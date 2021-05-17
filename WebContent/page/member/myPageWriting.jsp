@@ -13,6 +13,11 @@
 		<p class="pabouttitle">내가 쓴 글</p>
 		<br><br>
 		<div class=row>
+			<c:if test="${empty blist }">
+        		<h1>작성한 글이 없습니다</h1>
+         		<h1>친구를 만나러 갈까요?</h1>
+         		<h1><a href="<%=request.getContextPath()%>/page/indexPage/main">게시판 보러 가기</a></h1>
+      		</c:if>
 			<c:if test="${not empty blist }">
 				<table class="table" id="table">
 					<thead>

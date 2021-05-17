@@ -13,6 +13,11 @@
 		<p class="pabouttitle">내 글에 달린 댓글</p>
 		<br><br>
 		<div class=row>
+      		<c:if test="${empty clist }">
+        		<h1>내 글에 달린 댓글이 없습니다</h1>
+         		<h1>친구 만나러 갈까요?</h1>
+         		<h1><a href="<%=request.getContextPath()%>/page/indexPage/main">게시판 보러 가기</a></h1>
+      		</c:if>
 			<c:if test="${not empty clist }">
 				<table class="table" id="table">
 					<thead>

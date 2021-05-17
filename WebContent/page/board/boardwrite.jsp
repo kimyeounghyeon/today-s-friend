@@ -50,7 +50,7 @@ Member member = (Member)session.getAttribute("member");
 								id="bcontent"></textarea></td>
             </tr>
              <tr>
-                <td>파일선택-여러개</td>
+                <td>첨부파일</td>
                 <td><input type="file" name="bfilepaths" id="bfilepaths" multiple="multiple"></td>
             </tr> 
             <tr>

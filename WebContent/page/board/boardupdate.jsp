@@ -43,7 +43,7 @@ $(function () {
 						<td><textarea rows="10" cols="150" name="bcontent"
 								id="bcontent"><%=board.getBcontent()%></textarea></td>
 					<tr>
-						<td>파일선택-여러개</td>
+						<td>첨부파일</td>
 						<td><input type="file" name="bfilepath" multiple="multiple"
 							value=<%=board.getBfilePath()%>></td>
 					</tr>

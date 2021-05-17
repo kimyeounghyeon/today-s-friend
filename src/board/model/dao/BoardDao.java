@@ -225,6 +225,8 @@ public class BoardDao {
 				resultVO.setBsubject(rs.getString("bsubject"));
 				resultVO.setBcontent(rs.getString("bcontent"));
 				resultVO.setBfilePath(rs.getString("bfilePath"));
+				resultVO.setHobbyId(rs.getInt("hobbyId"));
+				resultVO.setLocNum(rs.getInt("locNum"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

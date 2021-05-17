@@ -58,19 +58,19 @@ public class AdminDao {
 		return cnt;
 	}
 
-	public List<Admin> getAdminByPage(Connection conn, int start, int end) {
+	public List<Admin> getAdminByPage(Connection conn, int startRnum, int endRnum) {
 		List<Admin> list = null;
 		String sql_1 = "(SELECT * FROM ADMINBOARD ORDER BY ADMDATE DESC) D";
 
-		String sql = "SELECT * FROM " + " (SELECT ROWNUM R, D.* FROM " + sql_1 + " ) " + " WHERE R >= ? AND R <= ?";
+		String sql = "SELECT ADMNO, ADMSUBJECT, ADMCONTENT,TO_CHAR(ADMDATE, 'yyyy-mm-dd hh24:mi:ss') AS admdate, ID FROM " + " (SELECT ROWNUM R, D.* FROM " + sql_1 + " ) " + " WHERE R >= ? AND R <= ?";
 
 		pstmt = null;
 		rs = null;
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(1, startRnum);
+			pstmt.setInt(2, endRnum);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				list = new ArrayList<Admin>();
@@ -81,7 +81,6 @@ public class AdminDao {
 					vo.setAdmcontent(rs.getString("admcontent"));
 					vo.setAdmdate(rs.getTimestamp("admdate"));
 					vo.setId(rs.getString("id"));
-					vo.setAdmfilepath(rs.getString("admfilepath"));
 					list.add(vo);
 				} while (rs.next());
 			}

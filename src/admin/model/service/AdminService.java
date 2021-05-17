@@ -25,9 +25,9 @@ public class AdminService {
 		return result;
 	}
 
-	public List<Admin> getAdminByPage(int start, int end) {
+	public List<Admin> getAdminByPage(int startRnum, int endRnum) {
 		Connection conn = getConnection();
-		List<Admin> list = new AdminDao().getAdminByPage(conn, start, end);
+		List<Admin> list = new AdminDao().getAdminByPage(conn, startRnum, endRnum);
 		close(conn);
 		return list;
 	}

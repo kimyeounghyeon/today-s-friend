@@ -5,6 +5,7 @@
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
 <%
 Member member = (Member)session.getAttribute("member");
+/* int locnum = (int)request.getAttribute("locnum"); */
 %>
 <section class="setop">
 	<!-- wrapper -->
@@ -77,12 +78,43 @@ if(gender.equals("M")){
 					<span class="readbox gender_code"><%=gender %></span>
 				</div>
 				<!-- LOCAL -->
+			 	<%int locnum = member.getLocnum();
+				String loc = "";
+				switch(locnum){
+				case 1:
+					loc = "서울";
+				   break;
+				case 2:
+					loc = "경기";
+				   break;
+				case 3:
+					loc = "인천";
+				   break;
+				case 4:
+					loc = "충청";
+				   break;
+				case 5:
+					loc = "강원";
+				   break;
+				case 6:
+					loc = "경상";
+				   break;
+				case 7:
+					loc = "전라";
+				   break;
+				case 8:
+					loc = "제주";
+				   break;
+				}
+				/* int gradeId = (int)request.getAttribute("gradeId"); */
+				%>
 				<div>
 					<h3 class="join_title">
 						<label for="local">지역 선택</label>
 					</h3>
 					<span class="box local_code"> 
 					<select id="local" name="locnum" class="sel">
+							<option value=""><%=loc%></option>
 							<option value="1">서울</option>
 							<option value="2">경기</option>
 							<option value="3">인천</option>
@@ -271,14 +303,6 @@ var ageJ = /^[0-9]{2}$/;  // 0~9로 시작하는 2자리 나이
 		}
 		
 	});
-	
-<%-- 	 $("#btnDelete").click(function(){
-		var frmmod = document.getElementById("frmMod");
-		frmmod.action = "<%=request.getContextPath()%>/page/member/delete3";
-		frmmod.method = "post";
-		frmmod.submit();
-	}); --%>
-
 </script>
 
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

@@ -99,6 +99,17 @@ case 8:
 }
 int gradeId = (int)request.getAttribute("gradeId");
 %>
+<script>
+function deleteBoard(inputbno) {
+	var bno = inputbno;
+    var answer = confirm('글을 정말 삭제하시겠습니까?');
+    
+    if(answer==true){
+    	location ="<%=request.getContextPath()%>/page/board/delete1?bno="+bno+"&hobbyId=<%=hobbyId%>&locnum=<%=locnum%>"
+       	alert('삭제되었습니다.')
+    }
+};
+</script>
 <div class="click"
    style="position: fixed; right: 100px; bottom: 50px; z-index: 100">
    <a
@@ -183,7 +194,7 @@ int gradeId = (int)request.getAttribute("gradeId");
                   <td class="btnn" style="text-align: right">
                      <button type="button" class="btn" id="ed"
                         onclick="location.href='<%=request.getContextPath()%>/page/board/simread?bno=${v.bno}'">수정</button>
-                     <button type="button" class="btn" id="btnbdel">삭제</button>
+                     <button type="button" class="btn" id="btnbdel" onclick="deleteBoard(${v.bno });">삭제</button>
                   </td>
                   </c:if>
                </tr>
@@ -236,15 +247,4 @@ int gradeId = (int)request.getAttribute("gradeId");
       </div>
    </article>
 </section>
-<script>
-$("#btnbdel").click(function() {
-	  
-    var answer = confirm('글을 정말 삭제하시겠습니까?');
-    
-    if(answer==true){
-    	location ="<%=request.getContextPath()%>/page/board/delete1?bno=${v.bno}&hobbyId=<%=hobbyId%>&locnum=<%=locnum%>"
-       	alert('삭제되었습니다.')
-    }
-});
-</script>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

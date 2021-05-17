@@ -71,13 +71,13 @@
 
       // 한 클러스터 객체가 포함하는 마커의 개수에 따라 다른 텍스트 값을 표시합니다 
       if(count < 10) {
-        return '운동친구';        
+        return '따릉이';        
       } else if(count < 30) {
-        return '주식친구';
+        return '따릉이';
       } else if(count < 50) {
-        return '영화친구';
+        return '따릉이';
       } else {
-        return '서울친구';
+        return '따릉이';
       }
     }
 

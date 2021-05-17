@@ -347,7 +347,7 @@ $("#btnJoin").click(function(){
 	}
 	// 이메일 정규식
 	if (mailJ.test($('#email').val())){
-		console.log(phoneJ.test($('#email').val()));
+		console.log(mailJ.test($('#email').val()));
 		inval_Arr[2] = true;
 	} else {
 		inval_Arr[2] = false;

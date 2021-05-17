@@ -96,3 +96,10 @@ a:hover{
 	float : rigth;
 	width: 100px;
 }
+.pabouttitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30pt;
+    color : gray;
+    font-style: italic;
+}

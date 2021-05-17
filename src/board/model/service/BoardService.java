@@ -34,6 +34,13 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	
+	public int getBoardAllCount(int hobbyId) {
+		Connection conn = getConnection();
+		int result = new BoardDao().getBoardAllCount(conn, hobbyId);
+		close(conn);
+		return result;
+	}
 
 	public List<Board> getBoardByPage(int hobbyId, int locnum, int startRnum, int endRnum, String search) {
 		Connection conn = getConnection();

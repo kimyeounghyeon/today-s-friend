@@ -25,7 +25,7 @@ td img {
 	font-size: 20;
 }
 
-#ed {
+#ed, #btnbdel {
 	font-size: 20;
 	color: rgb(3, 122, 93);
 	background-color: #ffff
@@ -209,7 +209,6 @@ div.commentDel {
 		align-content : center;
 	    text-align: center;
 }
-
 #search{
 	 padding: 3px 0;
      outline: 1;
@@ -251,8 +250,7 @@ div.commentDel {
         position:relative;
         top:1px;
     }
- 
-#pagen > a {
+#pagen > a ,h1 > a {
 	text-decoration: none;
 	color:#1bcda9;
 }

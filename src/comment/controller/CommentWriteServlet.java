@@ -51,7 +51,7 @@ public class CommentWriteServlet extends HttpServlet {
 
 			String recontent = request.getParameter("recontent");
 			commentVO.setId(id);
-			vo.setId(id);
+
 			commentVO.setRecontent(recontent);
 		}
 		
@@ -64,7 +64,7 @@ public class CommentWriteServlet extends HttpServlet {
 		         int mpoint = 15;
 		         int pResult = 0;
 		         
-		         pResult = msv.updateMPoint(vo, mpoint);
+		         pResult = msv.updateMPoint(id, mpoint);
 				
 		        if(pResult>0) {
 		        	System.out.println("포인트업 성공~");

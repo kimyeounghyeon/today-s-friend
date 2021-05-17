@@ -1,11 +1,20 @@
+<%@page import="member.model.vo.Member"%>
 <%@page import="admin.model.vo.Admin"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	Member member = (Member) session.getAttribute("member");
+if (member.getLEVnum() != 0) {
+%>
 <jsp:include page="../admin/adminheader.jsp"></jsp:include>
-<style>
-     
-
-          
+<%
+	} else {
+%>
+<jsp:include page="../indexPage/header.jsp"></jsp:include>
+<%
+	}
+%>
+<style>    
  table {
    display: inline-block;
 }
@@ -36,7 +45,6 @@
     text-shadow:0px 1px 0px #ffffff;
     
     }
-    
     
     .btn:hover {
         background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
@@ -76,10 +84,8 @@
 	}
 	button {
 		font-family: GmarketSansMedium;
-	}
-	
+	}	
 </style>
-
 <section class="setop">
 	<p id="pabouttitle">공지사항 읽기</p>
 	<c:if test="${not empty nlist }">
@@ -102,8 +108,12 @@
 		</tr>
 		<tr>
 			<td colspan="2" class="td3">
+<%
+if (member.getLEVnum() != 0) {
+%>
 				<button type="button" id="btnAMod" class="btn" onclick="ModifyContent();">수정</button>
 				<button type="button" id="btnAdel" class="btn" onclick="window.location='<%=request.getContextPath() %>/page/admin/admboarddelete?admno=${nlist.admno}';">삭제</button>
+<%} %>
 				<button type="button" class="btn" onclick="window.location='<%=request.getContextPath() %>/page/admin/admboardread';">목록</button>
 			</td>
 		</tr>		

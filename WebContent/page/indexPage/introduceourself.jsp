@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp"></jsp:include>
+<style>
+#intr_1{
+    width:900px;
+    height:550px;
+}
+
+</style>
     <section class="setop">
     	<p id="pabouttitle">5조 소개</p>
             <div id="intr">

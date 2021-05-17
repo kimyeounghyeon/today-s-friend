@@ -30,6 +30,10 @@
     width: 150px;
 }
 </style>
+<% 
+int hobbyId = (int)request.getAttribute("hobbyId");
+int locnum = (int)request.getAttribute("locnum");
+%>
 <script>
     $(function () {
            $("#btnSearch").click(function(){
@@ -41,13 +45,20 @@
            
          $("#selloc").change(function(){ 
           var locnum = $(this).val();
-          location = "<%=request.getContextPath()%>/page/board/boardread?hobbyId=1&locnum="+locnum;
+          location = "<%=request.getContextPath()%>/page/board/boardread?hobbyId=<%=hobbyId%>&locnum="+locnum;
          });
       
    });
+    function deleteBoard(inputbno) {
+    	var bno = inputbno;
+        var answer = confirm('글을 정말 삭제하시겠습니까?');
+        
+        if(answer==true){
+        	location ="<%=request.getContextPath()%>/page/board/delete1?bno="+bno+"&hobbyId=<%=hobbyId%>&locnum=<%=locnum%>"
+        }
+    };
 </script>
-<% 
-int hobbyId = (int)request.getAttribute("hobbyId");
+<%
 String hobby = "";
 switch(hobbyId){
 case 1:
@@ -69,7 +80,7 @@ case 6:
    hobby = "자유";
    break;
 }
-int locnum = (int)request.getAttribute("locnum");
+
 String loc = "";
 switch(locnum){
 case 1:
@@ -99,17 +110,6 @@ case 8:
 }
 int gradeId = (int)request.getAttribute("gradeId");
 %>
-<script>
-function deleteBoard(inputbno) {
-	var bno = inputbno;
-    var answer = confirm('글을 정말 삭제하시겠습니까?');
-    
-    if(answer==true){
-    	location ="<%=request.getContextPath()%>/page/board/delete1?bno="+bno+"&hobbyId=<%=hobbyId%>&locnum=<%=locnum%>"
-       	alert('삭제되었습니다.')
-    }
-};
-</script>
 <div class="click"
    style="position: fixed; right: 100px; bottom: 50px; z-index: 100">
    <a
@@ -122,7 +122,7 @@ function deleteBoard(inputbno) {
    <article id="hi">
       <div class="tdiv">
          <p class="pabouttitle"><%=hobby%>친구 - <%=loc%></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<% if(gradeId>3){%> 
+<% if(gradeId>=3){%> 
          <select id="selloc">
             <option value="">--지역 선택--</option>
             <option value="1">서울</option>
@@ -163,7 +163,7 @@ function deleteBoard(inputbno) {
          <a href="<%=request.getContextPath()%>/page/admin/admboardread" id="introducec" class="bar-item button">공지사항</a> 
          <a id="introduced" class="bar-item button" href="javascript:void(window.open('<%=request.getContextPath()%>/page/channel/channel.jsp', '_blank','width=500px, height=600px'))">신고
             & 문의</a> 
-         <a id="introducee" class="bar-item button" href="javascript:void(window.open('<%=request.getContextPath()%>/page/channel/chatting.jsp', '_blank','width=500px, height=700px'))">채팅하기</a>
+         <a id="introducee" class="bar-item button" href="javascript:void(window.open('<%=request.getContextPath()%>/page/channel/chatting.jsp', '_blank','width=500px, height=600px'))">채팅하기</a>
 
       </div>
       <br>
@@ -171,6 +171,7 @@ function deleteBoard(inputbno) {
       <c:if test="${not empty search }">
          <h1>${search }에 대한 검색 결과입니다.</h1>
          <h1>총 ${cnt }건입니다.</h1>
+          <h1><a href="<%=request.getContextPath()%>/page/board/boardread?hobbyId=<%=hobbyId%>&locnum=<%=locnum%>">돌아가기</a></h1>
       </c:if>
       <c:if test="${empty blist }">
          <h1>게시물이 없습니다</h1>

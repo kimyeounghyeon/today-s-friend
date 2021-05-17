@@ -154,7 +154,7 @@ function delComment(inputreno,inputbno){
                      </form>
                      <button type="button" id="btnWriteCom">댓글등록</button>
                      <button type="button" id="listbtn"
-                        onclick="javascript:history.back();">글목록</button>
+                        onclick="location.href='<%=request.getContextPath()%>/page/board/boardread?hobbyId=<%=board.getHobbyId()%>&locnum=<%=board.getLocNum()%>'">글목록</button>
                   </div>
                </td>
             </tr>

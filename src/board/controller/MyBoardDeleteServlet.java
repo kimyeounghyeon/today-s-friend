@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import board.model.service.BoardService;
 import board.model.vo.Board;
 
-@WebServlet("/page/board/delete2")
-public class BoardDeleteServlet2 extends HttpServlet {
+@WebServlet("/page/board/deletemyboard")
+public class MyBoardDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BoardDeleteServlet2() {
+	public MyBoardDeleteServlet() {
 		super();
 
 	}
@@ -41,13 +41,14 @@ public class BoardDeleteServlet2 extends HttpServlet {
 		System.out.println("나와 ??");
 
 		vo.setBno(Integer.parseInt(request.getParameter("bno")));
+		System.out.println("bno"+request.getParameter("bno"));
 		PrintWriter out = response.getWriter();
 		result = sv.boardDelete(vo);
+		System.out.println("result" + result);
 		if (result == 1) {
 			String msg = "글  삭제 성공";
 			out.println("<script> alert('"+msg+"')</script>");
 			out.println("<script>history.back();</script>");
-
 		} else {
 			System.out.println("입력 실패");
 			String msg = "글 삭제 실패";

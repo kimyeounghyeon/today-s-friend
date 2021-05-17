@@ -96,7 +96,7 @@
 						<label for="pswd2">비밀번호 재확인</label>
 					</h3>
 					<span class="box int_pass_check"> <input type="password"
-						id="pswd2" name="pswd2" class="int" maxlength="20">
+						id="pswd2" name="pswd2" class="int" maxlength="20" >
 					</span> <span class="error_next_box"></span> <span id="alert-success"
 						style="display: none; color: blue;">비밀번호가 일치합니다.</span> <span
 						id="alert-danger" style="display: none; color: red;">비밀번호가
@@ -121,10 +121,10 @@
 						<label for="age">나이</label>
 					</h3>
 					<div id="age_wrap">
-<!-- 						<div id="age"> -->
-							<span class="box"> <input type="text" id="age" name="age"
-								class="int" maxlength="2"></span> <span class="error_next_box"></span>
-							<div class="check_font" id="age_check"></div>
+						<!-- 						<div id="age"> -->
+						<span class="box"> <input type="text" id="age" name="age"
+							class="int" maxlength="2"></span> <span class="error_next_box"></span>
+						<div class="check_font" id="age_check"></div>
 					</div>
 				</div>
 
@@ -184,7 +184,7 @@
 					</h3>
 					<span class="box int_mobile"> <input type="tel" id="mobile"
 						name="phone" class="int" maxlength="16"
-						placeholder="숫자만 입력해주세요 :)">
+						placeholder="숫자와 - 를 포함하여 입력해 주세요 :)" >
 					</span> <span class="error_next_box"></span>
 					<div class="check_font" id="pnum_check"></div>
 				</div>
@@ -217,7 +217,7 @@
 	// 이메일 검사 정규식
 	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 가운데 @ 무조건 들어가야댐
 	// 휴대폰 번호 정규식
-	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/; //
+	var phoneJ = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/; //
 	// 나이 정규식
 	var ageJ = /^[0-9]{2}$/;  // 0~9로 시작하는 2자리 나이
 	

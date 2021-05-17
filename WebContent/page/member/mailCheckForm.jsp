@@ -59,9 +59,9 @@
 <body>
 	<div class="content">
 		<h3> </h3>
-		<form class="form" method="post" action="mailCheckPro.jsp"
-			onsubmit="return blankCheck(this)">
-			이메일 <input class="bar" type="text" name="email" maxlength="20" autofocus>
+		<form class="form" method="post" action="mailCheckPro.jsp" onsubmit="return blankCheck(this)">
+			<% String str=request.getParameter("email"); %>
+			이메일 <input class="bar" type="text" name="email" maxlength="20" value="<%=str %>" autofocus>
 			<input class="submit" type="submit" value="중복확인">
 		</form>
 	</div>

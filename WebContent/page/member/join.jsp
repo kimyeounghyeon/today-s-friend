@@ -321,7 +321,8 @@
 	//mail 중복체크 
 	function mailCheck(){ 
 		//새창 만들기 
-		window.open("mailCheckForm.jsp", "mailwin", "width=400, height=350"); 
+		window.open("mailCheckForm.jsp?email="+document.getElementById("email").value , "emailwin", "width=400, height=350");
+		/* window.open("mailCheckForm.jsp", "mailwin", "width=400, height=350");  */
 	}
 		
 			

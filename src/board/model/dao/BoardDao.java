@@ -59,6 +59,29 @@ public class BoardDao {
 		}
 		return cnt;
 	}
+	
+	public int getBoardAllCount(Connection conn, int hobbyId) {
+		int cnt = 0;
+		String sql = "SELECT COUNT(*) FROM BOARD WHERE HOBBYID=?";
+
+		pstmt = null;
+		rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hobbyId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				cnt = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
 
 	public List<Board> getBoardByPage(Connection conn, int hobbyId, int locnum, int startRnum, int endRnum,
 			String search) {

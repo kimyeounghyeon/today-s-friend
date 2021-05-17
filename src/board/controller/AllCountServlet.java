@@ -33,23 +33,23 @@ public class AllCountServlet extends HttpServlet {
 		BoardService sv = new BoardService();
 		int hobbyId1 = 1;
 		int cnt1 = 0; 
-		cnt1 = sv.getBoardCount(hobbyId1);
+		cnt1 = sv.getBoardAllCount(hobbyId1);
 		
 		int hobbyId2 = 2;
 		int cnt2 = 0; 
-		cnt2 = sv.getBoardCount(hobbyId2);
+		cnt2 = sv.getBoardAllCount(hobbyId2);
 		
 		int hobbyId3 = 3;
 		int cnt3 = 0; 
-		cnt3 = sv.getBoardCount(hobbyId3);
+		cnt3 = sv.getBoardAllCount(hobbyId3);
 		
 		int hobbyId4 = 4;
 		int cnt4 = 0; 
-		cnt4 = sv.getBoardCount(hobbyId4);
+		cnt4 = sv.getBoardAllCount(hobbyId4);
 		
 		int hobbyId5 = 5;
 		int cnt5 = 0; 
-		cnt5 = sv.getBoardCount(hobbyId5);
+		cnt5 = sv.getBoardAllCount(hobbyId5);
 
 		request.setAttribute("cnt1", cnt1);		
 		request.setAttribute("cnt2", cnt2);		

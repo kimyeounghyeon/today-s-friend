@@ -60,5 +60,6 @@
 
 #close_check{
 	float : right;
+	color : gray;
 	cursor : pointer;
 }

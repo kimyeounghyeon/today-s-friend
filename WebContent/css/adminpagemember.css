@@ -41,17 +41,17 @@ table {
         top:1px;
     }
     
-.num{
-    width: 10%;
+table .num{
+    width: 100px;
 }
-.id{
-    width: 30%;
+table .id{
+    width: 250px;
 }
-.name{
-    width: 30%;
+table .name{
+    width: 250px;
 } 
-.pnum {
-    width: 90%;
+table .pnum {
+    width: 250px;
 }
 .Withdrawal {
     margin-top: 20px;

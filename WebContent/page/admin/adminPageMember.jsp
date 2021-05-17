@@ -47,7 +47,7 @@
 						<thead>
 							<tr>
 								<th><input type="checkbox" id="checkall" /></th>
-								<th>No.</th>
+								<th >No.</th>
 								<th>아이디</th>
 								<th>이름</th>
 								<th>연락처</th>

@@ -52,6 +52,8 @@ public class AdminDeleteServlet extends HttpServlet {
 				System.out.println("공지사항 삭제 실패");
 				request.getRequestDispatcher("/page/admin/admboardread").forward(request, response);
 			}
+		}else {
+			System.out.println("str 빈 값");
 		}
 	}
 }

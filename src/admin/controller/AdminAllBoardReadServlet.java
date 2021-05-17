@@ -45,7 +45,7 @@ public class AdminAllBoardReadServlet extends HttpServlet {
 
 		List<Board> list = null;
 		cnt = sv.getAllBoardCount();
-
+		
 		int pageCnt = (cnt / PAGESIZE) + (cnt % PAGESIZE == 0 ? 0 : 1); // 총 페이지 개수
 		int currentPage = 1; // 현재 페이지. 기본 세팅 1. 클릭되면 바뀌게 됨.
 		String pageNum = request.getParameter("pageNum");

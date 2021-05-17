@@ -8,6 +8,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../admin/adminheader.jsp"></jsp:include>
+<script>
+function deletetext(inputbno) {
+	var bno = inputbno;
+    var answer = confirm('글을 정말 삭제하시겠습니까?');
+    
+    if(answer==true){
+    	location ="<%=request.getContextPath()%>/page/board/deletemyboard?bno="+bno;
+    }
+};
+</script>
 <section class="setop">
 	<div class="mypagelist">
 		<p class="pabouttitle">게시글 관리</p>
@@ -67,7 +77,7 @@
 								<td class="date">${b.bdate }</td>
 								<td class="date">
 								<button type="button" class="btn" id="ed"
-								onclick="location.href='<%=request.getContextPath()%>/page/board/delete2?bno=${b.bno}'">삭제</button>
+								onclick="deletetext(${b.bno})">삭제</button>
 								</td>
 							</tr>
 						</c:forEach>

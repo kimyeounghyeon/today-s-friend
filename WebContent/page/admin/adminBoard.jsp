@@ -93,6 +93,13 @@ function deleteAdmin(inputAdmno) {
 			<a
 				href="<%=request.getContextPath() %>/page/admin/admboardread?pageNum=${endPage+1}">&#62;</a>
 		</c:if>
+		<%
+							if (member.getLEVnum() == 0) {
+						%>
+						<h1><a href="<%=request.getContextPath()%>/page/indexPage/main">돌아가기</a></h1>
+						<%
+							}
+						%>
 	</div>
 </section>
 <jsp:include page="../indexPage/footer.jsp"></jsp:include>

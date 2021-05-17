@@ -9,6 +9,7 @@ import java.util.List;
 import board.model.dao.BoardDao;
 import board.model.vo.Board;
 import member.model.dao.MemberDao;
+import member.model.vo.Member;
 
 public class BoardService {
 
@@ -87,24 +88,24 @@ public class BoardService {
 		return result;
 	}
 
-	public List<Board> myBoardRead(Board vo) {
+	public List<Board> myboardlist(int startRnum, int endRnum, Board vo) {
 		Connection conn = getConnection();
-		List<Board> list = new BoardDao().myboardRead(conn, vo);
+		List<Board> list = new BoardDao().myboardlist(conn, startRnum, endRnum, vo);
 		close(conn);
 		return list;
 
 	}
-	public List<Board> myBoardRead1(Board vo) {
-		Connection conn = getConnection();
-		List<Board> list = new BoardDao().myboardRead1(conn, vo);
-		close(conn);
-		return list;
-		
-	}
+//	public List<Board> myBoardRead1(Board vo) {
+//		Connection conn = getConnection();
+//		List<Board> list = new BoardDao().myboardRead1(conn, vo);
+//		close(conn);
+//		return list;
+//		
+//	}
 
-	public int getBoardCount(int hobbyId) {
+	public int getMyBoardCount(Board vo)  {
 		Connection conn = getConnection();
-		int result = new BoardDao().getBoardCount(conn, hobbyId);
+		int result = new BoardDao().getMyBoardCount(conn, vo);
 		close(conn);
 		return result;
 	}

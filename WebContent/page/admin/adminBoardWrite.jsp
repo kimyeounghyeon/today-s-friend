@@ -12,12 +12,12 @@
 			<thead>
 				<tr>
 					<th>제목</th>
-					<th class="sub"><textarea name="admsubject" cols="90" rows="1"></textarea></th>
+					<th class="sub"><textarea name="admsubject" class="textarea" cols="90" rows="1"></textarea></th>
 			</thead>
 			<tbody>
 				<tr>
 					<th>글쓰기</th>
-					<td class="write"><textarea name="admcontent" cols="90" rows="20"></textarea></td>
+					<td class="write"><textarea name="admcontent" class="textarea" cols="90" rows="20"></textarea></td>
 				</tr>
 			</tbody>
 		</table>

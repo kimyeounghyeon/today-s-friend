@@ -15,18 +15,18 @@
 .chk_result {
 	text-align: center;
 	font-family: GmarketSansMedium;
-	text-decoration:none;
+	text-decoration: none;
 }
-.chk_re{
+
+.chk_re {
 	text-align: center;
 	font-family: GmarketSansMedium;
-	text-decoration:none;
+	text-decoration: none;
 }
+
 a {
-text-decoration:none;
+	text-decoration: none;
 }
-
-
 </style>
 </head>
 <body>
@@ -45,16 +45,16 @@ text-decoration:none;
 			out.println("<a href='javascript:apply(\"" + id + "\")' style='color: #62e0d6'>사용할까요?</a>");
 		%>
 	</div>
-
 	<script>
 		function apply(id) {
 			//2) 중복확인 id를 부모창에 적용 
 			//부모창 opener 
 			opener.document.regForm.id.value = id;
-			opener.document.regForm.idDuplication.value = id;
-			window.close(); //창닫기 
+			/* opener.document.regForm.idDuplication.value = id; */
+			window.close(); 
 		}//apply () end
 	</script>
+
 	<%
 		} else {
 	out.println("<p style='color: red'>다른 '친구'가 사용중인 아이디 입니다</p>");
@@ -64,8 +64,9 @@ text-decoration:none;
 	<hr>
 	<br>
 	<div class="chk_re">
-		<a href="javascript:history.back()"  style='color: #68bee6'> 다시확인 </a> &nbsp; &nbsp; <a
-			href="javascript:window.close()"  style='color: #68bee6'> 닫기 </a>
+		<a href="javascript:history.back()" style='color: #68bee6'> 다시확인 </a>
+		&nbsp; &nbsp; <a href="javascript:window.close()"
+			style='color: #68bee6'> 닫기 </a>
 	</div>
 </body>
 </html>

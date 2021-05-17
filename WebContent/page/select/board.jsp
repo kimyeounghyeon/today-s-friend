@@ -167,6 +167,7 @@ function deleteBoard(inputbno) {
 
       </div>
       <br>
+      <div class = "Boardsearch">
       <c:if test="${not empty search }">
          <h1>${search }에 대한 검색 결과입니다.</h1>
          <h1>총 ${cnt }건입니다.</h1>
@@ -176,6 +177,7 @@ function deleteBoard(inputbno) {
          <h1>${search }글의 주인공이 되어주세요!</h1>
          <h1><a href="javascript:window.history.back();">돌아가기</a></h1>
       </c:if>
+      </div>
       <c:if test="${not empty blist }">
          <form id="frmSearch">
             <input type="text" name="search" id="search" placeholder="키워드로 검색"> 

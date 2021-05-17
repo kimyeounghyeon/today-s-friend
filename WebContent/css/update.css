@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
 /*  메인페이지 */
+body{
+	text-align: center;
+}
 section {
 	text-align: center;
 	font-weight: bold;
@@ -95,22 +98,42 @@ section {
 	cursor:pointer;
 }
 table {
-	border-collapse: collapse;
-	width: 100%;
+	/* border-collapse: collapse; */
+	width: 800px;
+	border: solid 1px #ddd;
 }
+
+.tablediv{
+	text-align : center;
+	display:inline-block;
+}
+
 
 th, td {
 	text-align: left;
 	padding: 8px;
 }
 
+.sub{
+	background-color:white;
+	
+}
 tr:nth-child(even) {
 	background-color: #f2f2f2
 }
 
+.write {
+	width : 670px;
+}
+
+.textarea1, .textarea2 {
+	resize: none;
+}
+
+
 th {
-	background-color: #BEE64B;
-	color: white;
+	background-color: #eee;
+	color: rgb(124, 124, 124);
 }
 
 #center {
@@ -181,4 +204,35 @@ th {
 
 #btn_group {
 	float: right;
+}
+
+#btnAInsert {
+	margin-top: -70px;
+	text-align: center;
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	background-color: #f9f9f9;
+	border-radius: 6px;
+	border: 1px solid #dcdcdc;
+	display: inline-block;
+	cursor: pointer;
+	color: #666666;
+	font-family: 'GmarketSansMedium';
+    font-size:15px; */
+	font-weight: bold;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #ffffff;
+}
+
+#btnAInsert:hover {
+	background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	background-color: #e9e9e9;
+}
+
+#btnAInsert:active {
+	position: relative;
+	top: 1px;
+}
+	
 }

@@ -5,16 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>채팅하기</title>
 
 <style type="text/css">
 #img {
-	height: 100%;
-	width: 100%;
+	height: 90%;
+	width: 90%;
 }
 
 p {
 	font-family: "GmarketSansMedium";
+}
+body{
+	text-align: center;
 }
 </style>
 </head>

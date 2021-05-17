@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>신고&문의</title>
 <style type="text/css">
 p {
 	align-content : center;
@@ -27,6 +27,10 @@ span{
 
  100%{top:0;}
 
+}
+img{
+	height: 90%;
+	width: 90%;
 }
 </style>
 </head>

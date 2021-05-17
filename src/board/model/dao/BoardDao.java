@@ -33,6 +33,7 @@ public class BoardDao {
 		}
 	}
 
+	// 게시판 주제, 지역별 총 게시글 카운트
 	public int getBoardCount(Connection conn, String search, int hobbyId, int locnum) {
 		int cnt = 0;
 		String sql = "SELECT COUNT(*) FROM BOARD WHERE HOBBYID=? AND LOCNUM = ?";
@@ -59,7 +60,8 @@ public class BoardDao {
 		}
 		return cnt;
 	}
-	
+
+	// 차트를 위한 하비 아이디 별 총 카운트
 	public int getBoardAllCount(Connection conn, int hobbyId) {
 		int cnt = 0;
 		String sql = "SELECT COUNT(*) FROM BOARD WHERE HOBBYID=?";
@@ -83,6 +85,7 @@ public class BoardDao {
 		return cnt;
 	}
 
+	// 게시판 리드, 페이징
 	public List<Board> getBoardByPage(Connection conn, int hobbyId, int locnum, int startRnum, int endRnum,
 			String search) {
 		List<Board> list = null;
@@ -134,6 +137,7 @@ public class BoardDao {
 		return list;
 	}
 
+	// 글 작성
 	public int boardWrite(Connection conn, Board vo) {
 		int result = 0;
 		int max = 1;
@@ -181,6 +185,7 @@ public class BoardDao {
 		return result;
 	}
 
+	// 글 삭제
 	public int boardDelete(Connection conn, Board vo) {
 		int result = 0;
 
@@ -202,6 +207,7 @@ public class BoardDao {
 		return result;
 	}
 
+	// 1개의 글 리드시
 	public Board boardRead(Connection conn, Board vo) {
 
 		int bno = vo.getBno();
@@ -229,6 +235,7 @@ public class BoardDao {
 		return resultVO;
 	}
 
+	// 글 수정
 	public int boardupdate(Connection conn, Board vo) {
 		int result = 0;
 		String sql = "update board set bsubject = ?, bcontent = ?, bfilepath = ? where bno = ? ";
@@ -251,13 +258,12 @@ public class BoardDao {
 
 	}
 
+	// 내가 쓴 글 리스트
 	public List<Board> myboardlist(Connection conn, int startRnum, int endRnum, Board vo) {
 		List<Board> list = null;
 		String sql_1 = "(SELECT * FROM BOARD WHERE ID = ? ORDER BY BDATE DESC)D";
-		
-		String sql = "SELECT * FROM "
-				+ " (SELECT ROWNUM R, D.* FROM " + sql_1  + " ) "
-				+ " WHERE R >= ? AND R <= ?";
+
+		String sql = "SELECT * FROM " + " (SELECT ROWNUM R, D.* FROM " + sql_1 + " ) " + " WHERE R >= ? AND R <= ?";
 
 		pstmt = null;
 		rs = null;
@@ -287,7 +293,8 @@ public class BoardDao {
 		}
 		return list;
 	}
-	
+
+	// 내가 쓴 글 카운트
 	public int getMyBoardCount(Connection conn, Board vo) {
 		int cnt = 0;
 		String sql = "SELECT COUNT(*) FROM BOARD WHERE ID = ?";
@@ -311,10 +318,53 @@ public class BoardDao {
 		return cnt;
 	}
 
-	public List<Board> myboardRead1(Connection conn, Board vo) {
+	// 모든 글 리스트
+	public List<Board> allBoardRead(Connection conn, int startRnum, int endRnum) {
 
-		ArrayList<Board> list = null;
-		String sql = "select * from board";
+		List<Board> list = null;
+		String sql_1 = "(SELECT * FROM BOARD ORDER BY BDATE DESC)D";
+
+		String sql = "SELECT * FROM " + " (SELECT ROWNUM R, D.* FROM " + sql_1 + " ) " + " WHERE R >= ? AND R <= ?";
+
+		pstmt = null;
+		rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRnum);
+			pstmt.setInt(2, endRnum);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				list = new ArrayList<Board>();
+				Board vo = new Board();
+				do {
+
+					vo = new Board();
+
+					vo.setId(rs.getString("id"));
+					vo.setBno(rs.getInt("bno"));
+					vo.setHobbyId(rs.getInt("hobbyId"));
+					vo.setLocNum(rs.getInt("locnum"));
+					vo.setBsubject(rs.getString("bsubject"));
+					vo.setBcontent(rs.getString("bcontent"));
+					vo.setBdate(rs.getDate("bdate"));
+					list.add(vo);
+					
+				} while (rs.next());
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+
+	// 모든 글 카운트
+	public int getAllBoardCount(Connection conn) {
+		int cnt = 0;
+		String sql = "SELECT COUNT(*) FROM BOARD";
 
 		pstmt = null;
 		rs = null;
@@ -323,29 +373,14 @@ public class BoardDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				list = new ArrayList<Board>();
-				do {
-
-					vo = new Board();
-
-					vo.setId(rs.getString("id"));
-					vo.setBno(rs.getInt("bno"));
-					vo.setHobbyId(rs.getInt("hobbyId"));
-					vo.setBsubject(rs.getString("bsubject"));
-					vo.setBcontent(rs.getString("bcontent"));
-					vo.setBdate(rs.getDate("bdate"));
-					list.add(vo);
-
-					System.out.println("리절트vo :" + vo);
-				} while (rs.next());
+				cnt = rs.getInt(1);
 			}
 
-			System.out.println("다오임 = list : " + list);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return list;
+		return cnt;
 	}
 }

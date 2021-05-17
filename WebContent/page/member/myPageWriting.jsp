@@ -9,6 +9,17 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="../indexPage/header.jsp"></jsp:include>
 <section class="setop">
+<script>
+function deleteMyBoard(inputbno) {
+	var Mybno = inputbno;
+	var answer = confirm('글을 정말 삭제하시겠습니까?');
+    
+    if(answer==true){
+    	location ="<%=request.getContextPath()%>/page/board/deletemyboard?bno="+Mybno;
+       	alert('삭제되었습니다.')
+    }
+};
+</script>
 	<div class="mypagelist">
 		<p class="pabouttitle">내가 쓴 글</p>
 		<br><br>
@@ -57,8 +68,7 @@
 								<td class="con">${b.bcontent }</td>
 								<td class="date">${b.bdate }</td>
 								<td class="date">
-								<button type="button" class="btn" id="ed"
-								onclick="location.href='<%=request.getContextPath()%>/page/board/delete2?bno=${b.bno}'">삭제</button>
+								<button type="button" class="btn" onclick="deleteMyBoard(${b.bno });">삭제</button>
 								</td>
 							</tr>
 						</c:forEach>

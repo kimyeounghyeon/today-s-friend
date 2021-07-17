@@ -64,9 +64,9 @@
 
 ---
 ## 주요기능
-**1. 로그인**
+**1. 친구 만나러 가기**
 <p align="center">
-    <img src = "ReadMe/01.png", width="700px">
+    <img src = "https://user-images.githubusercontent.com/79628668/126039026-67d7546b-6bef-4def-8d1e-8528ea3844f8.gif", width="700px">
 </p>
 
 **8888. 랭킹**

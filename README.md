@@ -28,21 +28,21 @@
 
 ---
 ## 개발환경
-![environment](https://user-images.githubusercontent.com/82936574/125957241-02971626-a1f4-400a-95b4-8219c22470b7.png)
 
 
 |Category|Detail|
 |:--:|:--:|
 |FrontEnd|HTML5, JavaScript, CSS3, JQuery, Bootstrap|
-|BackEnd|Java(JDK 1.8), Servlet, JSP, Spring, MyBatis|
+|BackEnd|Java(JDK 1.8), Servlet, JSP|
 |OS|Windows 10|
 |Libray&API|Apache Commons FileUpload, Imgscalr|
-|IDE|Eclipse, VisualStudio, Spring Tool Suite|
+|IDE|Eclipse, VisualStudio|
 |Server|Tomcat(v8.5)|
 |Document|Google Drive, KakaoOven, ERDCloud, diagrams.net|
 |CI|Github|
 |DateBase|SQL Developer, Oracle(11g)|
 |API|Investment Widget, Iamport Payment, Trading View, CKeditor5, Java.Mail.Sender, <br>Talk Plus, KaKao Channel
+
 
 
 ---

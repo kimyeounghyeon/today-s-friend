@@ -86,5 +86,4 @@
 ![usecase](https://user-images.githubusercontent.com/82936574/125957196-0a2b51df-9a06-4433-8781-34aae77a0c35.gif)
 
 ### 3. ERD
-![erd_board](https://user-images.githubusercontent.com/82936574/125958624-6300c3fa-1a4d-480f-98a1-d4cc5b9a5677.png)
-![erd_investment](https://user-images.githubusercontent.com/82936574/125958638-54ebf113-c747-4b82-bcb9-8e816cb6034d.png)
+![물리적 설계](https://user-images.githubusercontent.com/78994909/126037674-6937205a-19d1-4fed-a37b-43e85bc22d94.jpg)

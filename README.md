@@ -41,7 +41,8 @@
 |Document|Google Drive, KakaoOven, ERDCloud, diagrams.net|
 |CI|Github|
 |DateBase|SQL Developer, Oracle(11g)|
-|API|Investment Widget, Iamport Payment, Trading View, CKeditor5, Java.Mail.Sender, <br>Talk Plus, KaKao Channel
+|API|Investment Widget, Iamport Payment, Trading View, CKeditor5, <br>Talk Plus, KaKao Channel
+
 
 
 

@@ -1,5 +1,6 @@
 # 오늘의친구
-##### 팀원 : 김도영, 김영현, 오유진, 이은혜, 전계원, 정재만
+##### 팀원 : 김도영, 김영현, 오유진, 이은혜, 전계원, 정재만 (6명)
+2021년 04월 23일 ~ 2021년 05월 18일(25일)
 <br>
 
 ---
@@ -64,19 +65,74 @@
 
 ---
 ## 주요기능
-**1. 친구 만나러 가기**
+
+**1. 메인페이지**
+<p align="center">
+    <img src = "https://user-images.githubusercontent.com/79628668/126039404-9d84ee40-2030-4f82-8a09-bf0ae260368c.gif" width="700" height="400">
+</p>
+
+- ABOUT US 
+- 후기글 조회
+
+
+**2. 회원가입**
+<p align="center">
+    <img src = "https://user-images.githubusercontent.com/79628668/126039408-eba50d11-2cf1-4fd1-b165-1eaa44e1bf5b.gif" width="700" height="400">
+</p>
+
+- 회원가입시 각 인풋창 유효성체크 후 false일경우 red색으로 메세지 안내
+- 아이디/이메일 입력 후 중복확인 버튼 클릭시 중복확인창에 입력정보 확인
+- 회원가입 완료시 Member테이블 데이터베이스 저장/아이디 비밀번호 입력 후 로그인
+
+
+**3. 아이디/ 비밀 번호 찾기**
+<p align="center">
+    <img src = "https://user-images.githubusercontent.com/79628668/126039412-542257c7-32fd-48d4-be1c-3671238c29f5.gif" width="700" height="400">
+</p>
+
+- 이름과 이메일 입력 후 NAME/EMAIL컬럼에서 정보조회 → 아이디/비밀번호 얼럿창으로 안내
+- 정보 불일치시 회원 정보 입력을 다시 확인해주세요 라는 얼럿창 안내
+
+
+**4. 친구 만나러 가기**
 <p align="center">
     <img src = "https://user-images.githubusercontent.com/79628668/126039026-67d7546b-6bef-4def-8d1e-8528ea3844f8.gif", width="700px">
 </p>
 
-**8888. 랭킹**
+- 제목과 내용입력(수정) 후 글등록(글수정) 및 삭제
+- 제목과 내용의 입력한 키워드를 검색 후 검색결과 안내 및 조회
+
+
+**5. 맛집 지도**
 <p align="center">
-    <img src = "https://user-images.githubusercontent.com/82925724/125972371-b938481a-50f6-4803-8120-5a5e97600d82.gif" width="700" height="400">
+    <img src = "https://user-images.githubusercontent.com/79628668/126039183-94177566-1d0f-4034-bfee-cb62f1a106f2.gif" width="700" height="400">
 </p>
 
-**13. 공지사항**<br>
-<left><img src="https://user-images.githubusercontent.com/82936574/126027457-7fc8c969-3720-43f7-a3b7-ede15c2f1134.gif"  width="700" height="400" /></left>
-<br><br>
+- kakao 지도API
+
+
+**6. 채팅**
+<p align="center">
+    <img src = "https://user-images.githubusercontent.com/79628668/126039258-26da0920-bcea-4da0-8dad-01e447df1972.gif" width="700" height="400">
+</p>
+
+- tawk.to 채팅API 사용
+
+
+**7. 관리자 페이지**
+<p align="center">
+    <img src = "https://user-images.githubusercontent.com/79628668/126039256-b953b906-0bc5-4a06-abb0-aa3322fdfd96.gif" width="700" height="400">
+</p>
+
+- 공지사항 페이지(검색,등록,수정,삭제)
+- 회원관리 페이지(검색,회원탈퇴)
+- 등급관리 페이지(검색,등급업)
+- 게시글관리 페이지(모든게시글)
+- 인기글분석 페이지(해당카테고리의 게시글수를 그래프로 표현) -Google Chart API 사용
+
+
+
+
 ---
 ## Document
 ### 1. 개발일정

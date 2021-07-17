@@ -29,22 +29,17 @@
 ---
 ## 개발환경
 
-
 |Category|Detail|
 |:--:|:--:|
-|FrontEnd|HTML5, JavaScript, CSS3, JQuery, Bootstrap|
+|FrontEnd|HTML5, JavaScript, CSS3, JQuery|
 |BackEnd|Java(JDK 1.8), Servlet, JSP|
 |OS|Windows 10|
-|Libray&API|Apache Commons FileUpload, Imgscalr|
 |IDE|Eclipse, VisualStudio|
 |Server|Tomcat(v8.5)|
 |Document|Google Drive, KakaoOven, ERDCloud, diagrams.net|
 |CI|Github|
-|DateBase|SQL Developer, Oracle(11g)|
-|API|Investment Widget, Iamport Payment, Trading View, CKeditor5, <br>Talk Plus, KaKao Channel
-
-
-
+|DateBase|SQL Developer, Oracle(XE)|
+|API|Google Charts, KaKao Channel, kakao Maps
 
 ---
 ## 프로젝트 기능구현
@@ -61,7 +56,6 @@
 - 오유진
   - 화면 설계, 발표 일정, 게시판 CSS, 이미지(후기 사진)
 
-
 ---
 ## 주요기능
 **1. 로그인**
@@ -73,7 +67,6 @@
 <p align="center">
     <img src = "https://user-images.githubusercontent.com/82925724/125972371-b938481a-50f6-4803-8120-5a5e97600d82.gif" width="700" height="400">
 </p>
-
 
 **13. 공지사항**<br>
 <left><img src="https://user-images.githubusercontent.com/82936574/126027457-7fc8c969-3720-43f7-a3b7-ede15c2f1134.gif"  width="700" height="400" /></left>

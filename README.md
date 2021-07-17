@@ -42,7 +42,8 @@
 |Document|Google Drive, KakaoOven, ERDCloud, diagrams.net|
 |CI|Github|
 |DateBase|SQL Developer, Oracle(11g)|
-|API|Investment Widget, Iamport Payment, Trading View, CKeditor5, Java.Mail.Sender, <br>Talk Plus, KaKao Channel, Cryptonews, Bithumb, Upbit
+|API|Investment Widget, Iamport Payment, Trading View, CKeditor5, Java.Mail.Sender, <br>Talk Plus, KaKao Channel,
+
 
 ---
 ## 프로젝트 기능구현

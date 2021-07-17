@@ -81,12 +81,12 @@
 ---
 ## Document
 ### 1. 개발일정
-![schedule](https://user-images.githubusercontent.com/82936574/125962840-a5019046-daa8-4b37-9baf-523ee7572f41.png) <br>
-[개발일정 전체보기](https://github.com/meta1mon/final01/files/6831288/_.xlsx)
+![chedule](https://user-images.githubusercontent.com/78994909/126037974-0eddddeb-7c73-4502-922a-6f3097ab0830.png) <br>
+[5조오늘의친구스케줄표.xlsx](https://github.com/ehdud0314/semiproject/files/6834741/5.xlsx)
 
 ### 2. 유스케이스
-![image](https://user-images.githubusercontent.com/78994909/126037845-ebdd9e69-77c2-4764-b270-2bde262dec4e.png)
-![image](https://user-images.githubusercontent.com/78994909/126037858-efd16a25-24ea-4e42-8ca7-a919f3e9958d.png)
+![Usecase1](https://user-images.githubusercontent.com/78994909/126037845-ebdd9e69-77c2-4764-b270-2bde262dec4e.png)
+![Usecase2](https://user-images.githubusercontent.com/78994909/126037858-efd16a25-24ea-4e42-8ca7-a919f3e9958d.png)
 
 ### 3. ERD
 ![물리적 설계](https://user-images.githubusercontent.com/78994909/126037674-6937205a-19d1-4fed-a37b-43e85bc22d94.jpg)
